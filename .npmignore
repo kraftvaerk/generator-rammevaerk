@@ -1,0 +1,10 @@
+node_modules/
+test/
+
+npm-debug.log
+.editorconfig
+.eslintrc
+.gitignore
+.travis.yml
+.sublime-workspace
+.sublime-project

@@ -1,0 +1,12 @@
+{
+  "name": "projectName",
+  "version": "1.0.0",
+  "description": "A scaffold for company website",
+  "main": "index.html",
+  "homepage": "http://www.company.com/",
+  "private": true,
+  "author": {
+    "name": "Kraftvaerk",
+    "url": "http://www.kraftvaerk.com/"
+  }
+}

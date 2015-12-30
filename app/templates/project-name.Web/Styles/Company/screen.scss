@@ -1,0 +1,33 @@
+/*!
+ *
+ * <%= answers.projectName %> styles
+ *
+ */
+
+//Extented variables
+@import 'variables';
+
+//Shared imports
+@import '../Shared/index';
+
+// Vendor
+<% if (use.slider){ %>@import '../Shared/Vendor/owlcarousel';<% } %>
+<% if (use.cookieConsent){ %>@import '../Shared/Vendor/cookieconsent';<% } %>
+<% if (use.lightbox){ %>@import '../Shared/Vendor/fancybox';<% } %>
+
+// Basecoat extension
+@import 'layout';
+@import 'typography';
+@import 'form';
+@import 'list';
+@import 'nav';
+
+// Styles
+@import 'layout__header';
+@import 'layout__footer';
+@import 'button';
+@import 'nav__mobile';
+<% if (use.cookieConsent){ %>@import 'cookie-consent';<% } %>
+
+// Print extension
+@import 'print';

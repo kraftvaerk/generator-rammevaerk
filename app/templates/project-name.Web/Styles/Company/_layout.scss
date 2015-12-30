@@ -1,0 +1,54 @@
+//
+// <%= answers.projectName %> layout
+// Description:     Defines layout styles for the site
+//
+//
+// ========================================================================
+
+
+// Sticky footer
+// ========================================================================
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+// Sections
+// ========================================================================
+.section {
+    padding: 0 $grid-gutter/2;
+
+    .is-popup & {
+        padding: 0;
+    }
+
+    main > &:first-child .container:first-of-type,
+    main > &:first-child .grid-row:first-of-type {
+        margin-top: 12px;
+    }
+}
+
+// Modules
+// ========================================================================
+.mod {
+    padding: 20px;
+    background-color: #fff;
+
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+
+    &--no-bg {
+        background-color: transparent;
+    }
+}

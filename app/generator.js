@@ -33,8 +33,15 @@ function copyDirectory(source, destination, globPatternStr, bulk){
 
 export default class Generator extends Base {
     constructor( ...args ) {
+        // Call the parent constructor
         super(...args);
-        //this.argument('appname');
+
+        // The appname argument is optional. If not provided Yeoman infers it from
+        // the name of the current working directory.
+        // this.argument('appname', {
+        //     type: String,
+        //     required: false,
+        // });
 
         this.option('keep-silence', {
             desc: 'Test framework to be invoked',
@@ -46,6 +53,7 @@ export default class Generator extends Base {
         return {
             vaerkInit() {
                 this.projectYear = new Date().getFullYear();
+                this.answers = {};
 
                 if(!this.options['keep-silence']){
                     this.log(yosay(

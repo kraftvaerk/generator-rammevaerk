@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint app/generator.js",
-    "test": "ava test/test.js"
+    "test": "ava test/test.js --fail-fast --verbose"
   },
   "files": [
     "app"

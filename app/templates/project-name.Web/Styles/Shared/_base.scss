@@ -1,0 +1,144 @@
+//
+// Scaffold
+// Description:     Sets default values for HTML elements
+//
+//
+// ========================================================================
+
+:root {
+    font-size: #{$base-font-size};
+}
+
+// Reset the box-sizing
+// ========================================================================
+// Heads up! This reset may cause conflicts with some third-party widgets. For
+// recommendations on resolving such conflicts, see
+// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// Body
+// ========================================================================
+
+body {
+    background: $body-background;
+    color: $text-color;
+    font: unquote('1rem/#{$base-line-height}') $base-font-family;
+    text-rendering: optimizeLegibility;
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+// Links
+// ========================================================================
+
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+        text-decoration: underline;
+    }
+
+    &:link {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    }
+
+    img {
+        border: none;
+    }
+}
+
+// Images
+// ========================================================================
+
+/*
+ * 1. Responsiveness: Sets a maximum width relative to the parent and auto scales the height
+ * 2. Remove border when inside `a` element in IE 8/9/10.
+ * 3. Remove the gap between images and the bottom of their containers
+ */
+
+img {
+    /* 1 */
+    max-width: 100%;
+    height: auto;
+    /* 2 */
+    border: 0;
+    /* 3 */
+    vertical-align: middle;
+}
+
+// Correct overflow not hidden in IE 9/10/11.
+svg:not(:root) { overflow: hidden; }
+
+// Button - iOS "clickable elements" fix for role="button"
+// ========================================================================
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+[role='button'] {
+  cursor: pointer;
+}
+
+// Fieldset - Define consistent border, margin, and padding.
+// ========================================================================
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+// figure - reset normalize margin
+// ========================================================================
+figure {
+    margin: 0;
+}
+
+// Iframe
+// ========================================================================
+
+iframe { border: 0; }
+
+// Horizontal lines
+// ========================================================================
+hr {
+    height: 0;
+    margin: 1rem 0;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    overflow: hidden;
+    clear: fix;
+}
+
+// Fix viewport for IE10 snap mode
+// ========================================================================
+
+@include respond-to(400px) {
+    @-ms-viewport {
+        width: device-width;
+    }
+}
+
+// Selection pseudo-element
+// ========================================================================
+
+::selection {
+    background: $selection-color;
+}
+
+::-moz-selection {
+    background: $selection-color;
+}

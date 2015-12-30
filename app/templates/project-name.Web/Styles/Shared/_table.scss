@@ -1,0 +1,62 @@
+//
+// Tables
+// Description:     Defines generic styles for tables
+//
+//
+// ========================================================================
+
+// Variables
+// ========================================================================
+
+$table-background           :   transparent;
+$table-head-background      :   #eee;
+$table-row-hover            :   #f0f0f0;
+$table-row-odd              :   none;
+$table-row-even             :   #f5f5f5;
+$table-border               :   none;
+
+
+// Table generics
+// ========================================================================
+
+table {
+    width: 100%;
+    margin: $grid-gutter * 2 0 $grid-gutter * 2 0;
+    border: $table-border;
+    background: $table-background;
+    font-size: 1rem;
+    border-collapse: collapse;
+}
+
+th {
+    background: $table-head-background;
+    font-weight: bold;
+}
+
+th,
+td              {
+    padding: 1rem;
+    vertical-align: top;
+
+}
+
+.odd td {
+    background: $table-row-odd;
+}
+
+.even td {
+    background: $table-row-even;
+}
+
+// Table hover
+// ========================================================================
+
+.table-hover    {
+    tbody {
+        tr:hover td,
+        tr:hover th {
+            background-color: $table-row-hover;
+            cursor: pointer;
+        }
+    }
+}

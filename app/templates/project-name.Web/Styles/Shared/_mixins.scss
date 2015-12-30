@@ -1,0 +1,111 @@
+//
+// Mixins
+// Description:     Defines SASS mixins and functions
+//
+//
+// ========================================================================
+
+
+/**
+ * rem-calc - px to rem coversion
+ * @param  {px} $value pixel size
+ * @return {rem} rem value
+ */
+@function rem-calc($value, $base: $base-font-size) {
+    @return unquote('#{$value / $base}rem');
+}
+
+/**
+ * Grid - column
+ * @param  {grid-span} $span column to span across
+ * @return {column} lost grid colum fraction
+ */
+@mixin grid-col($span, $cycle: 0, $gutter: $grid-gutter, $flex: 'flex') {
+    @if type-of($span) == 'string' {
+        @if $cycle == 0 {
+            @warn 'You must define a cycle value for new fraction defination';
+        }
+
+        lost-column: unquote('#{$span} #{$cycle} #{$gutter}');
+    } @else {
+        lost-column: unquote('#{$span}/#{$grid-columns}');
+    }
+}
+
+/**
+ * Grid - offset
+ * @param  {grid-span} $span column to offset across
+ * @return {column} lost grid offset fraction
+ */
+@mixin grid-col-push($span) {
+    lost-offset: unquote('-#{$span}/#{$grid-columns}');
+}
+
+/**
+ * Media queries mixin
+ * @param  {lower/default breakpoint} $breakpoint-start breakpoint of lower limit when doing 'only'-diretion and
+ *                                                      used breakpoint for 'up'- and 'down'-directions
+ * @param  {alternative parameter} $alternative-parameter orientation or retina displays
+ * @param  {upper breakpoint} $breakpoint-end defines the upper breakpoint when doing 'only'-direction
+ * @return {media query} media query based on the given parameters
+ */
+@mixin respond-to($breakpoint-start, $alternative-parameter: '', $breakpoint-end: '', $behavior: $responsive-behavior) {
+    // Retrieves the value from the key
+    @if type-of($breakpoint-start) == 'string' and map-has-key($breakpoints, $breakpoint-start) {
+        $bp-start: map-get($breakpoints, $breakpoint-start);
+    } @else if type-of($breakpoint-start) == number {
+        $bp-start: $breakpoint-start;
+    } @else {
+        @warn 'The defined start breakpoint cannot be found in \'$breakpoints\''
+            + ' and is not a number, try again.';
+    }
+
+    @if type-of($breakpoint-end) == 'string' and map-has-key($breakpoints, $breakpoint-end) {
+        $bp-end: map-get($breakpoints, $breakpoint-end);
+    } @else if type-of($breakpoint-start) == number {
+        $bp-end: $breakpoint-end;
+    } @else if $responsive-behavior != 'only' {
+        $bp-end: $breakpoint-end;
+    } @else {
+        @warn 'The defined end breakpoint cannot be found in \'$breakpoints\''
+            + ' and is not a number, try again.';
+    }
+
+    // Generate media query from 'get-media-query'-function
+    $str: get-media-query($bp-start, $bp-end, $alternative-parameter, $behavior);
+
+    // If 'get-media-query'-function returns media query parameters
+    @if $str != null or $str != '' {
+        // Prints a media query based on the parameters
+        @media screen and #{$str} {
+            @content;
+        }
+    } @else {
+        // If something goes wrong
+        @warn 'Unfortunately, no value could be retrieved from \'#{$breakpoint}\'. '
+            + 'Please make sure it is defined in \'$breakpoints\' map.';
+    }
+}
+
+@function get-media-query($bp-start, $bp-end, $alt-param, $behavior) {
+    $str : '';
+
+    // Generates the media queries, based on the given parameters
+    @if $behavior == 'only' and $bp-start != null and $bp-end != null {
+        $str: $str + '(min-width: #{$bp-start})' + ' and (max-width: #{$bp-end})';
+    } @else if $behavior == 'up' and $bp-start != null {
+        $str: $str + '(min-width: #{$bp-start + 1px})';
+    } @else if $behavior == 'down' and $bp-start != null {
+        $str: $str + '(max-width: #{$bp-start})';
+    } @else {
+        @warn 'Unfortunately, some errors occured. Remember that you need to specify two valid values when using the 'only'-direction.\A'
+            + 'Please make sure all values is defined in \'$breakpoints\' map.\A';
+    }
+
+    // Retina media query have a unique syntax and is eventually added to the end of the media query
+    @if $alt-param == 'retina' {
+        $str: $str + ' and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+    }
+
+    @return $str;
+}

@@ -1,0 +1,33 @@
+/*
+ *
+ * Shared base styles
+ *
+ */
+
+// Index file imports all styles files in their intended order for easy mass-inclusion.
+// Should you need specific files, you can easily use separate `@import`s.
+
+// Global requirements
+@import 'variables';
+@import 'mixins';
+
+// Vendor
+@import 'Vendor/normalize';
+
+// Basecoat
+@import 'base';
+@import 'layout';
+@import 'typography';
+@import 'form';
+
+// Components
+@import 'alert';
+@import 'list';
+@import 'table';
+@import 'button';
+@import 'nav';
+@import 'section';
+@import 'print';
+
+// Utilities
+@import 'utility';

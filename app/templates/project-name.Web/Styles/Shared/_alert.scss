@@ -1,0 +1,43 @@
+//
+// Alert
+// Description:     Defines styles for alert messages
+//
+//
+// ========================================================================
+
+.alert {
+    margin-bottom: $grid-gutter;
+    padding: $grid-gutter / 2;
+    border-radius: 4px;
+    background: $info-background;
+    color: $info-color;
+    box-shadow: 0 0 1px currentColor;
+
+
+    > :first-child { margin-top: 0; }
+    > :last-child { margin-bottom: 0; }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 { color: inherit; }
+
+    &--success {
+        background: $success-background;
+        color: $success-color;
+    }
+
+    &--warning {
+        background: $warning-background;
+        color: $warning-color;
+    }
+
+    &--danger {
+        background: $danger-background;
+        color: $danger-color;
+    }
+}
+
+* + .alert { margin-top: $grid-gutter; }

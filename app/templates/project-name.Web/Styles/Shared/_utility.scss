@@ -1,0 +1,53 @@
+//
+// Utility classes
+// Description:     Collection of useful utility classes to style your
+//                  content
+//
+//
+// ========================================================================
+
+
+// Clearfix
+// ========================================================================
+
+.clearfix { clear: fix;}
+
+
+// Floats
+// ========================================================================
+
+.right { float: right; }
+.left { float: left; }
+
+
+// Center - Centers horizontally. Can be used inside or outside the grid.
+// ========================================================================
+
+.centered {
+    display: block;
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+// Text
+// ========================================================================
+
+// Text alignment
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+
+// Text states
+.danger { color: #c00; }
+.mute { color: #000; }
+
+// Visibility
+// ========================================================================
+
+.hidden { display: none; }
+.shown { display: block; }
+.border-none   {   border: none; }
+.invisible  { visibility: hidden; }
+.visible-mobile { display: none;}

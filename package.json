@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint": "eslint app/generator.js",
-    "test": "ava"
+    "test": "ava test/test.js"
   },
   "files": [
     "app"

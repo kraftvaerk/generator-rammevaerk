@@ -5,7 +5,7 @@
 [![npm](https://nodei.co/npm/generator-rammevaerk.svg?downloads=true)](https://nodei.co/npm/generator-rammevaerk/)
 
 
-> Scaffold out a web project in kraftvaek style
+> Scaffold out a web project in Kraftvaek style
 
 ## Install
 

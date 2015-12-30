@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+            "name": "<%= answers.projectName.toUpperCase() %>",
+			"path": ".",
+			"folder_exclude_patterns":
+			[
+				".vs",
+				"node_modules",
+			],
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4,
+		"translate_tabs_to_spaces": true,
+        "hot_exit": false,
+        "remember_open_files": false,
+	}
+}

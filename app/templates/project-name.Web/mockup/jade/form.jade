@@ -1,0 +1,581 @@
+extends includes/layout
+
+block append vars
+    - var pageTitle = "tpl-form"
+
+block content
+    section(role="region").section
+        div.container
+            article(role="article").mod
+
+                h1 Form elements
+                form.form(action="http://www.foo.com/" method="get")
+
+                    h2 Example of information alert
+                    div.alert
+                        strong Information headline
+                        p
+                            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam vitae justo hendrerit
+                            | erat adipiscing egestas.
+
+                        ul
+                            li Success 1
+                            li Success 2
+
+                    h2 Example of success alert
+                    div.alert.alert--success
+                        strong Success headline
+                        p
+                            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam vitae justo hendrerit
+                            | erat adipiscing egestas.
+
+                        ul
+                            li Success 1
+                            li Success 2
+
+                        p
+                            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam vitae justo hendrerit
+                            | erat adipiscing egestas.
+
+
+                    h2 Example of notice alert
+                    div.alert.alert--warning
+                        strong Warning headline
+                        p
+                            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam vitae justo hendrerit
+                            | erat adipiscing egestas.
+
+                        ul
+                            li Success 1
+                            li Success 2
+
+
+                    h2 Example of error alert:
+                    div.alert.alert--danger
+                        strong Danger headline
+                        p
+                        ul
+                            li Error 1
+                            li Error 2
+                            li Error 3
+                            li Error 4
+                            li Error 5
+                            li Error 6
+
+
+                    fieldset
+                        legend Examples of form grid:
+                        div.form__row
+                            div.form__unit-1-1
+                                input(type="text" placeholder="100").form__control--full
+
+                        div.form__row
+                            div.form__unit-1-2
+                                input(type="text" placeholder="50").form__control--full
+                            div.form__unit-1-4
+                                input(type="text" placeholder="25").form__control--full
+                            div.form__unit-1-4
+                                input(type="text" placeholder="25").form__control--full
+
+                        div.form__row
+                            div.form__unit-1-2
+                                input(type="text" placeholder="50").form__control--full
+                            div.form__unit-1-2
+                                input(type="text" placeholder="50").form__control--full
+
+                    fieldset
+                        legend Examples of input grid:
+
+                        div.form__row
+                            div.form__unit-1-1
+                                label Full:
+                                input(type="text", name="name", placeholder="form__unit-1-1").form__control--full
+
+                        div.form__row
+                            div.form__unit-1-2
+                                label Halves:
+                                input(type="text", name="name", placeholder="form__unit-1-2").form__control--full
+                            div.form__unit-1-2
+                                label Halves:
+                                input(type="text", name="name", placeholder="form__unit-1-2").form__control--full
+
+                        div.form__row
+                            div.form__unit-1-3
+                                label Thirds:
+                                input(type="text", name="name", placeholder="form__unit-1-3").form__control--full
+                            div.form__unit-1-3
+                                label Thirds:
+                                input(type="text", name="name", placeholder="form__unit-1-3").form__control--full
+                            div.form__unit-1-3
+                                label Thirds:
+                                input(type="text", name="name", placeholder="form__unit-1-3").form__control--full
+
+                        div.form__row
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                input(type="text", name="name", placeholder="form__unit-1-4", maxlength="2").form__control--full
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                input(type="text", name="name", placeholder="form__unit-1-4", maxlength="2").form__control--full
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                input(type="text", name="name", placeholder="form__unit-1-4", maxlength="2").form__control--full
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                input(type="text", name="name", placeholder="form__unit-1-4", maxlength="2").form__control--full
+
+                    fieldset
+                        legend Examples of select grid:
+                        div.form__row
+                            div.form__unit-1-1
+                                label Full:
+                                select.form__control--full
+                                    option(value="") form__unit-1-1
+                                    option(value="") option 02 (Lorem ipsum dolor sit amet, consectetuer adipiscing elit.)
+
+                        div.form__row
+                            div.form__unit-1-2
+                                label Halves:
+                                select.form__control--full
+                                    option(value="") form__unit-1-2
+                                    option(value="") option 02
+                            div.form__unit-1-2
+                                label Halves:
+                                select.form__control--full
+                                    option(value="") form__unit-1-2
+                                    option(value="") option 02
+
+                        div.form__row
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-3
+                                    option(value="") option 02
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-3
+                                    option(value="") option 02
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-3
+                                    option(value="") option 02
+
+                        div.form__row
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-4
+                                    option(value="") option 02
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-4
+                                    option(value="") option 02
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-4
+                                    option(value="") option 02
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                select.form__control--full
+                                    option(value="") form__unit-1-4
+                                    option(value="") option 02
+
+                        div.form__row
+                            div.form__unit-1-2
+                                label Halves:
+                                br
+                                select(size="5", multiple="multiple").form__control--full
+                                    option(value="") option 01
+                                    option(value="") option 02
+                                    option(value="") option 03
+                                    option(value="") option 04
+                                    option(value="", selected="selected") option 05
+                                    option(value="") option 06
+                                    option(value="") option 07
+                                    option(value="") option 08
+                                    option(value="") option 09
+                                    option(value="") option 10
+                            div.form__unit-1-2
+                                label Halves:
+                                br
+                                select(size="5", multiple="multiple", disabled="disabled").form__control--full
+                                    option(value="") option 01
+                                    option(value="") option 02
+                                    option(value="") option 03
+                                    option(value="") option 04
+                                    option(value="", selected="selected") option 05
+                                    option(value="") option 06
+                                    option(value="") option 07
+                                    option(value="") option 08
+                                    option(value="") option 09
+                                    option(value="") option 10
+
+                    fieldset
+                        legend Examples of textarea grid:
+                        div.form__row
+                            div.form__unit-1-1
+                                label Full:
+                                br
+                                textarea.form__control--full(name="name", cols="30", rows="3" placeholder="form__unit-1-1")
+                        div.form__row
+                            div.form__unit-1-2
+                                label Halves:
+                                br
+                                textarea.form__control--full(name="name", cols="15", rows="3" placeholder="form__unit-1-2")
+                            div.form__unit-1-2
+                                label Halves:
+                                br
+                                textarea.form__control--full(name="name", cols="15", rows="3" placeholder="form__unit-1-2")
+                        div.form__row
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-3")
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-3")
+                            div.form__unit-1-3
+                                label Thirds:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-3")
+                        div.form__row
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-4")
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-4")
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-4")
+                            div.form__unit-1-4
+                                label Quarters:
+                                br
+                                textarea.form__control--full(name="name", cols="7", rows="3" placeholder="form__unit-1-4")
+
+                    fieldset
+                        legend Example of specials
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Password:
+                                input(type="password", name="name", value="password", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Disabled:
+                                input(type="text", name="name", value="value", size="30", disabled="disabled").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Readonly:
+                                input(type="text", name="name", value="value", size="30", readonly="readonly").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Calendar:
+                                    strong.form-req *
+                                input(type="text", name="name", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Hint:
+                                    strong.form-req *
+                                input(type="text", name="email", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Label
+                                    sup.form-req *
+                                input(type="text", name="name", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label A very very very very very long label across 3 inputs:
+                        div.form__row.form__row--tight
+                            div.form__unit-1-3
+                                input(type="text", name="name", value="", size="7").form__control--full
+                            div.form__unit-1-3
+                                input(type="text", name="name", value="", size="7").form__control--full
+                            div.form__unit-1-3
+                                input(type="text", name="name", value="", size="7").form__control--full
+
+                    fieldset
+                        legend Example of contact form
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label First name:
+                                    strong.form-req *
+                                input(type="text", name="name", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Family name:
+                                input(type="text", name="surename", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Name:
+                                input(type="text", name="address", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Address:
+                                input(type="text", name="address", value="", size="30").form__control--full
+                        div.form__row
+                            div.form__unit-1-4
+                                label.form__label Zip:
+                                input(type="text", name="zip", value="", size="7").form__control--full
+                            div.form__unit-3-4
+                                label.form__label City:
+                                input(type="text", name="city", value="", size="15").form__control--full
+                        div.form__row
+                            div.form__unit-1-2
+                                label.form__label Phone:
+                                input(type="tel", name="phone", value="", size="15").form__control--full
+                            div.form__unit-1-2
+                                label.form__label Fax:
+                                input(type="tel", name="fax", value="", size="15").form__control--full
+                        div.form__row
+                            div.form__unit-1-1
+                                label.form__label Email:
+                                input(type="email", name="name", value="", size="30").form__control--full
+
+                        div.btn-row
+                            a.btn.btn--back.btn--link(href="#") Cancel
+                            button(disabled type="submit").btn.btn--next Send
+
+                    fieldset
+                        legend Examples of checkbox/radio
+                        div.form__row
+                            div.form__unit-1-1
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 1
+                                br
+                        div.form__row
+                            div.form__unit-1-1
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 2
+
+                        div.form__row
+                            div.form__unit-1-1
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 2
+                                br
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 3
+
+                        div.form__row
+                            div.form__unit-1-1
+                                label Radio:
+                                br
+                                input(type="radio", name="name", value="yes", checked="checked")
+                                |  Yes
+                                input(type="radio", name="name", value="no")
+                                |  No
+
+                    fieldset
+                        legend Form
+                        input(type="text" placeholder="Text input")
+                        input(type="password" placeholder="Password input")
+                        select
+                            option option 01
+                            option option 02
+                        button.btn Button
+                        label
+                            input(type="checkbox")
+                            | Checkbox
+
+                    fieldset
+                        legend Form - vertical
+                        div.form__row
+                            div.form__unit-1-1
+                                label(for="form-s-it").form__label Text input
+                                input(type="text" id="form-s-it" placeholder="Text input")
+
+                        div.form__row
+                            div.form__unit-1-1
+                                label(for="form-s-ip").form__label Password input
+                                input(type="password" id="form-s-ip" placeholder="Password input")
+
+                        div.form__row
+                            div.form__unit-1-1
+                                label(for="form-s-s").form__label Select field
+                                select(id="form-s-s")
+                                    option Option 01
+                                    option Option 02
+
+                        div.form__row
+                            div.form__unit-1-1
+                                label(for="form-s-t").form__label Textarea
+                                textarea(id="form-s-t" cols="30" rows="5" placeholder="Textarea text")
+
+                        div.form__row
+                            div.form__unit-1-1
+                                span.form__label Radio input
+                                input(type="radio" id="form-s-r" name="radio")
+                                label(for="form-s-r") Radio input
+                                br
+
+                                input(type="radio" id="form-s-r1" name="radio")
+                                label(for="form-s-r1") 1
+                                label
+                                    input(type="radio" name="radio")
+                                    | 2
+                                label
+                                    input(type="radio" name="radio")
+                                    | 3
+
+                        div.form__row
+                            div.form__unit-1-1
+                                span.form__label Checkbox input
+                                input(type="checkbox" id="form-s-c")
+                                label(for="form-s-c") Checkbox input
+                                br
+
+                                input(type="checkbox" id="form-s-c1")
+                                label(for="form-s-c1") 1
+                                label
+                                    input(type="checkbox")
+                                    | 2
+                                label
+                                    input(type="checkbox")
+                                    | 3
+
+                        div.form__row
+                            div.form__unit-1-1
+                                span.form__label Mixed controls
+                                input(type="checkbox" id="form-s-mix1")
+                                label(for="form-s-mix1") Checkbox input
+
+                                input(type="number" id="form-s-mix2" min="0" max="10" value="5")
+                                label(for="form-s-mix2") Number input
+                                select(id="form-s-mix3")
+                                    option(selected="selected") Option 01
+                                    option Option 02
+                                label(for="form-s-mix3") Select field
+
+                    fieldset.form--horizontal
+                        legend Form - horizontal
+                        div.form__row
+                            label.form__label(for="form-h-it") Text input
+                            div.form__controls
+                                input(id="form-h-it" type="text", placeholder="Text input")
+
+                        div.form__row
+                            label.form__label(for="form-h-ip") Password input
+                            div.form__controls
+                                input(id="form-h-ip" type="password", placeholder="Password input")
+
+                        div.form__row
+                            label.form__label(for="form-h-s") Select field
+                            div.form__controls
+                                select(id="form-h-s")
+                                    option Option 01
+                                    option Option 02
+
+                        div.form__row
+                            label.form__label(for="form-h-t") Textarea
+                            div.form__controls
+                                textarea(id="form-h-t" cols="30", rows="5", placeholder="Textarea text")
+
+                        div.form__row
+                            span.form__label Radio input
+                            div.form__controls
+                                input(id="form-h-r" type="radio", name="radio")
+                                label(for="form-h-r") Radio input
+                                br
+
+                                input(id="form-h-r1" type="radio", name="radio")
+                                label(for="form-h-r1") 1
+                                label
+                                    input(type="radio", name="radio")
+                                    |  2
+                                  label
+                                    input(type="radio", name="radio")
+                                    |  3
+
+                        div.form__row
+                            span.form__label Checkbox input
+                            div.form__controls
+                                input#form-h-c(type="checkbox")
+                                label(for="form-h-c") Checkbox input
+                                br
+
+                                input#form-h-c1(type="checkbox")
+                                label(for="form-h-c1") 1
+                                label
+                                    input(type="checkbox")
+                                    | 2
+                                label
+                                    input(type="checkbox")
+                                    | 3
+
+                        div.form__row
+                            span.form__label Mixed controls
+                            div.form__controls
+                                input(id="form-h-mix4" type="checkbox")
+                                label(for="form-h-mix4") Checkbox input
+                                input(id="form-h-mix5" type="number", min="0", max="10", value="5")
+                                label(for="form-h-mix5") Number input
+                                select(id="form-h-mix6")
+                                    option(selected="selected") Option 01
+                                    option Option 02
+                                label(for="form-h-mix6") Select field
+
+
+                    fieldset
+                        legend Form - validation
+                        div.form__row
+                            div.form__unit-1-1.form-validation--error
+                                input(type="text" id="form-s-it" value="form-validation--error").form__control--full
+                                div.form-validation-msg.form-validation-msg--error
+                                    p This is an error validation
+                        div.form__row
+                            div.form__unit-1-1.form-validation--warning
+                                input(type="text" id="form-s-it" value="form-validation--warning").form__control--full
+                                div.form-validation-msg.form-validation-msg--warning
+                                    p This is an warning validation
+                        div.form__row
+                            div.form__unit-1-1.form-validation--valid
+                                input(type="text" id="form-s-it" value="form-validation--valid").form__control--full
+                                div.form-validation-msg.form-validation-msg--valid
+                                    p This is an valid validation
+                        div.form__row
+                            div.form__unit-1-1.form-validation--info
+                                input(type="text" id="form-s-it" value="form-validation--info").form__control--full
+                                div.form-validation-msg.form-validation-msg--info
+                                    p This is an info msg
+
+                        div.form__row.form-validation--error
+                            div.form__unit-1-1
+                                select.form__control--full
+                                    option(value="") Select error
+                                    option(value="") option 02 (Lorem ipsum dolor sit amet, consectetuer adipiscing elit.)
+                                div.form-validation-msg.form-validation-msg--error
+                                    p This is an error validation
+                        div.form__row.form-validation--error
+                            div.form__unit-1-1
+                                textarea.form__control--full(name="name", cols="30", rows="3").form__control--full Textarea error
+                                div.form-validation-msg.form-validation-msg--error
+                                    p This is an error validation
+
+                        div.form__row.form-validation--error
+                            div.form__unit-1-1
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 2
+                                br
+                                input(type="checkbox", name="name", value="")
+                                label.checkbox Value 3
+                                div.form-validation-msg.form-validation-msg--error
+                                    p This is an error validation
+

@@ -1,0 +1,11 @@
+extends includes/layout
+
+block append vars
+    - var pageTitle = 'Fejlside - ' + site.name
+
+block content
+    section(role="region").section.section-404
+        div.container
+            article(role="article").mod
+                h1 Vi kan desværre ikke finde den side, du leder efter.
+                p Dette kan skyldes en fejl fra vores side, eller at siden ikke findes.

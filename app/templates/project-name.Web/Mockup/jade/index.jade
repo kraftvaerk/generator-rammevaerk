@@ -1,0 +1,48 @@
+extends includes/layout
+
+block append vars
+    - var header    = true
+    - var footer    = false
+
+block content
+    section(role="region").section
+        div.grid-row
+            article.grid-col-12.mod
+                h1 Frontend
+                    span  #{site.name}
+                p
+                    | #{site.description}
+
+                //-include:markdown ../../../README.md
+
+
+    section(role="region").section
+        div.grid-row
+            article.grid-col-4.mod(data-match-height)
+                h2 Pages
+                nav
+                    ul.list.link-list
+                        li
+                            a(href="tpl-frontpage.html") Front page
+                        li
+                            a(href="tpl-404.html") 404 page
+
+
+
+
+            article.grid-col-4.mod(data-match-height)
+                h2 Elements
+                nav
+                    ul.list.link-list
+                        li
+                            a(href="tpl-grid.html") Grid
+                        li
+                            a(href="tpl-form.html") Form
+                        li
+                            a(href="tpl-typography.html") Typography
+                        <% if (use.lightbox){ %>li
+                            a(href="tpl-lightbox.html") Lightbox<% } %>
+                        li
+                            a(href="tpl-popup.html" onClick="var href = this.href; this.href = document.location.href; window.open('tpl-popup.html', 'window name', 'width=650,height=740,resizable=false,statusbar=no,scrollbars=1'); return false;") Popup
+                        <% if (use.cookieConsent){ %>li
+                            a(href="tpl-cookie.html") Cookie<% } %>

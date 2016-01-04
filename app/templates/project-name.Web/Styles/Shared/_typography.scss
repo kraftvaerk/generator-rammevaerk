@@ -79,5 +79,5 @@ code {
 pre {
     margin-top: 0;
     margin-bottom: 0;
-    font: 1rem $mono-font-family;
+    font: rem-calc($base-font-size) $mono-font-family;
 }

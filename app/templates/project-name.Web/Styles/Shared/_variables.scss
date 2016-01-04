@@ -31,9 +31,9 @@ $serif-font-family  :   Georgia, Times, 'Times New Roman', serif !default;
 $mono-font-family   :   Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
 
 $base-font-size     :   12px !default;
-$base-font-family   :   $sans-font-family !default;
+$base-font-family   :   'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $base-line-height   :   1.4 !default;
-$alt-font-family    :   $serif-font-family !default;
+$alt-font-family    :   'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 
 // Brand colors
 $brand-black        :   rgb(0, 0, 0) !default;
@@ -51,9 +51,9 @@ $body-background    :   rgb(255, 255, 255) !default;
 $text-color         :   #333;
 
 // Links
-$link-color         :   #4f4f4f !default;
+$link-color         :   #333 !default;
 $link-color-alt     :   rgb(246, 45, 23) !default;
-$link-color-hover   :   lighten(#4f4f4f, 20%) !default;
+$link-color-hover   :   lighten(#333, 20%) !default;
 $link-color-active  :   darken(#4f4f4f, 20%) !default;
 
 // Selection

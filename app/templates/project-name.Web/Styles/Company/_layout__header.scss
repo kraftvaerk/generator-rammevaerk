@@ -5,5 +5,26 @@
 //
 // ========================================================================
 
-//.site-header {
-//}
+
+.site-header {
+    border: 1px solid #d1d1d1;
+    background-color: $link-color-hover;
+    color: #fff;
+
+    .container {
+        margin: 10px auto;
+    }
+
+    &__logo {
+        margin-left: 20px;
+        color: currentColor;
+        font-size: 2rem;
+        font-weight: 400;
+        text-transform: uppercase;
+
+        &:hover {
+            color: currentColor;
+            text-decoration: none;
+        }
+    }
+}

@@ -70,14 +70,15 @@
 .debug {
     [class*='grid-col-'] {
         padding: 5px;
-        background: #ccc;
+        border-radius: 4px;
+        background: #eee;
         text-align: center;
 
         [class*='grid-col-'] {
-            background: #bbb;
+            background: #ccc;
 
             [class*='grid-col-'] {
-                background: #aaa;
+                background: #bbb;
             }
         }
     }

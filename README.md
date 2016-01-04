@@ -1,6 +1,6 @@
 # generator-rammevaerk
 
-[![GitHub release](https://img.shields.io/github/release/kraftvaerk/generator-rammevaerk.svg?style=flat-square)]() [![Build Status](https://img.shields.io/travis/kraftvaerk/generator-rammevaerk/master.svg?style=flat-square)](https://travis-ci.org/kraftvaerk/generator-rammevaerk) [![David](https://img.shields.io/david/dev/kraftvaerk/generator-rammevaerk.svg?style=flat-square)]()
+[![Build Status](https://img.shields.io/travis/kraftvaerk/generator-rammevaerk/master.svg?style=flat-square)](https://travis-ci.org/kraftvaerk/generator-rammevaerk) [![David](https://img.shields.io/david/dev/kraftvaerk/generator-rammevaerk.svg?style=flat-square)]()
 
 [![npm](https://nodei.co/npm/generator-rammevaerk.svg?downloads=true)](https://nodei.co/npm/generator-rammevaerk/)
 

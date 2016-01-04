@@ -11,7 +11,7 @@
  * @param  {px} $value pixel size
  * @return {rem} rem value
  */
-@function rem-calc($value, $base: $base-font-size) {
+@function rem-calc($value, $base: 10px) {
     @return unquote('#{$value / $base}rem');
 }
 

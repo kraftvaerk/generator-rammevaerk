@@ -106,7 +106,7 @@ var Generator = (function (_Base) {
                     this.answers = {};
 
                     if (!this.options['keep-silence']) {
-                        this.log((0, _yosay2.default)(_chalk2.default.yellow('Initializing a ' + (0, _superb2.default)() + ' new rammevaerk Project')));
+                        this.log((0, _yosay2.default)(_chalk2.default.yellow('Initializing a ' + (0, _superb2.default)() + ' new rammevaerk project')));
                     }
                 }
             };
@@ -144,7 +144,7 @@ var Generator = (function (_Base) {
                         type: 'input',
                         name: 'projectDescription',
                         message: _chalk2.default.yellow('How would you describe it?'),
-                        default: 'I promise to add the description later.'
+                        default: 'N/A'
                     });
 
                     // Project URL
@@ -308,8 +308,12 @@ var Generator = (function (_Base) {
                     });
 
                     this.prompt(questions, function (answers) {
+                        var gitName = _this3.user.git.name() ? ' — ' + _this3.user.git.name().split(' ')[0] : '.';
+
                         _this3.answers = answers;
                         _this3.answers.projectName = capitalizeKebabCase(_this3.answers.projectName);
+                        _this3.answers.projectDescription = _this3.answers.projectDescription === 'N/A' ? 'I promise to add the description later on to this ' + (0, _superb2.default)() + ' new project' + gitName : _this3.answers.projectDescription;
+
                         done();
                     });
                 }

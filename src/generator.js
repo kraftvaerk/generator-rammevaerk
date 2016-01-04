@@ -57,7 +57,7 @@ export default class Generator extends Base {
 
                 if(!this.options['keep-silence']){
                     this.log(yosay(
-                        chalk.yellow(`Initializing a ${superb()} new rammevaerk Project`)
+                        chalk.yellow(`Initializing a ${superb()} new rammevaerk project`)
                     ));
                 }
             }
@@ -91,7 +91,7 @@ export default class Generator extends Base {
                     type: 'input',
                     name: 'projectDescription',
                     message: chalk.yellow('How would you describe it?'),
-                    default: 'I promise to add the description later.'
+                    default: 'N/A'
                 });
 
                 // Project URL
@@ -253,8 +253,12 @@ export default class Generator extends Base {
                 });
 
                 this.prompt(questions, (answers) => {
+                    let gitName = this.user.git.name() ? ` — ${this.user.git.name().split(' ')[0]}` : '.';
+
                     this.answers = answers;
                     this.answers.projectName = capitalizeKebabCase(this.answers.projectName);
+                    this.answers.projectDescription = this.answers.projectDescription === 'N/A' ? `I promise to add the description later on to this ${superb()} new project${gitName}`: this.answers.projectDescription;
+
                     done();
                 });
             }

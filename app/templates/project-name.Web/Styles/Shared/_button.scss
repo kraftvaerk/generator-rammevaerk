@@ -8,19 +8,20 @@
 .btn {
     display: inline-block;
     min-height: 30px;
-    padding: 0 15px;
+    padding: 0 30px;
     border: 1px solid rgba(0, 0, 0, .3);
-    border-radius: 0;
+    border-radius: 4px;
     background-color: #fff;
     background-image: none;
     color: #666;
     font: inherit;
     font-weight: bold;
-    line-height: 28px;
+    line-height: 38px;
     text-align: center;
     text-decoration: none;
     text-shadow: 0 1px 0 #fff;
     text-transform: none;
+    white-space: nowrap;
     overflow: visible;
     vertical-align: middle;
     background-origin: border-box;

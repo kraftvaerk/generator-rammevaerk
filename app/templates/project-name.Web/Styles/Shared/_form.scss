@@ -169,9 +169,9 @@ $form-supported-inputs      :  'select,
  *    `input[type="search"]` in Chrome, Safari and Opera
  *    `input[type="color"]` in Firefox
  */
-.form input,
-.form select,
-.form textarea {
+input,
+select,
+textarea {
     /* 1 */
     margin: 0;
     /* 2 */
@@ -186,7 +186,7 @@ $form-supported-inputs      :  'select,
 /*
  * Address inconsistent `text-transform` inheritance which is only inherit in Firefox
  */
-.form select {
+select {
     text-transform: none;
 }
 
@@ -195,7 +195,7 @@ $form-supported-inputs      :  'select,
  * 2. Don't inherit the `font-weight` and use `bold` instead.
  * NOTE: Both declarations don't work in Chrome, Safari and Opera.
  */
-.form optgroup {
+optgroup {
     /* 1 */
     font: inherit;
     /* 2 */
@@ -205,7 +205,7 @@ $form-supported-inputs      :  'select,
 /*
  * Removes inner padding and border in Firefox 4+.
  */
-.form input::-moz-focus-inner {
+input::-moz-focus-inner {
     padding: 0;
     border: 0;
 }
@@ -213,40 +213,40 @@ $form-supported-inputs      :  'select,
 /*
  * Removes excess padding in IE 8/9/10.
  */
-.form input[type='checkbox'],
-.form input[type='radio'] {
+input[type='checkbox'],
+input[type='radio'] {
     padding: 0;
 }
 
 /*
  * Improves consistency of cursor style for clickable elements
  */
-.form input[type='checkbox']:not(:disabled),
-.form input[type='radio']:not(:disabled) {
+input[type='checkbox']:not(:disabled),
+input[type='radio']:not(:disabled) {
     cursor: pointer;
 }
 
 /*
  * Remove default style in iOS.
  */
-.form textarea,
-.form input:not([type]),
-.form input[type='text'],
-.form input[type='password'],
-.form input[type='email'],
-.form input[type='url'],
-.form input[type='search'],
-.form input[type='tel'],
-.form input[type='number'],
-.form input[type='datetime'] {
+textarea,
+input:not([type]),
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='url'],
+input[type='search'],
+input[type='tel'],
+input[type='number'],
+input[type='datetime'] {
     -webkit-appearance: none;
 }
 
 /*
  * Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
  */
-.form input[type='search']::-webkit-search-cancel-button,
-.form input[type='search']::-webkit-search-decoration {
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 
@@ -255,8 +255,8 @@ $form-supported-inputs      :  'select,
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-.form input[type='number']::-webkit-inner-spin-button,
-.form input[type='number']::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
     height: auto;
 }
 
@@ -264,7 +264,7 @@ $form-supported-inputs      :  'select,
  * 1. Remove default vertical scrollbar in IE 8/9/10/11.
  * 2. Improve readability and alignment in all browsers.
  */
-.form textarea {
+textarea {
     /* 1 */
     overflow: auto;
     /* 2 */
@@ -274,31 +274,31 @@ $form-supported-inputs      :  'select,
 /*
  * Removes placeholder transparency in Firefox.
  */
-.form ::-moz-placeholder {
+::-moz-placeholder {
     opacity: 1;
 }
 
 /*
  * Removes `box-shadow` for invalid controls in Firefox.
  */
-.form :invalid {
+:invalid {
     box-shadow: none;
 }
 
 /*
  * Vertical alignment
  */
-.form input:not([type='radio']):not([type='checkbox']),
-.form select {
+input:not([type='radio']):not([type='checkbox']),
+select {
     vertical-align: middle;
 }
 
 /*
  * Reset height
  */
-.form textarea,
-.form select[multiple],
-.form select[size] {
+textarea,
+select[multiple],
+select[size] {
     height: auto;
 }
 
@@ -314,7 +314,6 @@ $form-supported-inputs      :  'select,
     &__label {
         display: block;
         margin-bottom: 5px;
-        font-weight: bold;
     }
 
     &__req {
@@ -338,7 +337,7 @@ $form-supported-inputs      :  'select,
         padding-bottom: 15px;
         border: 0;
         font-size: 18px;
-        line-height: 30px;
+        line-height: 40px;
 
         &:after {
             content: '';
@@ -357,7 +356,7 @@ $form-supported-inputs      :  'select,
 
     #{$form-supported-inputs} {
         max-width: 100%;
-        height: 30px;
+        height: 40px;
         padding: 4px 6px;
         border: 1px solid $form-input-border;
         border-radius: $form-input-border-radius;

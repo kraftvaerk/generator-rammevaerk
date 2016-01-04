@@ -24,7 +24,8 @@ table {
     margin: $grid-gutter * 2 0 $grid-gutter * 2 0;
     border: $table-border;
     background: $table-background;
-    font-size: 1rem;
+    font-size: rem-calc($base-font-size);
+    text-align: left;
     border-collapse: collapse;
 }
 

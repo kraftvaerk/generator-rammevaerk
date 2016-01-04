@@ -6,7 +6,7 @@
 // ========================================================================
 
 :root {
-    font-size: #{$base-font-size};
+    font-size: 62.5%;
 }
 
 // Reset the box-sizing
@@ -31,7 +31,9 @@ html {
 body {
     background: $body-background;
     color: $text-color;
-    font: unquote('1rem/#{$base-line-height}') $base-font-family;
+    font-family: $base-font-family;
+    font-size: rem-calc($base-font-size);
+    line-height: $base-line-height;
     text-rendering: optimizeLegibility;
     overflow-y: scroll;
     -webkit-font-smoothing: antialiased;
@@ -47,6 +49,7 @@ a {
 
     &:hover,
     &:active {
+        color: $link-color-hover;
         text-decoration: underline;
     }
 

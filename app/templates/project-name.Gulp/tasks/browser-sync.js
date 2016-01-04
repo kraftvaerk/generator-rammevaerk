@@ -6,6 +6,7 @@ const conf            = require('../config');
 
 gulp.task('server', false, ['default'], () => {
     browserSync({
+        logPrefix: conf.pkg.name,
         server: {
             baseDir: conf.baseDir
         },

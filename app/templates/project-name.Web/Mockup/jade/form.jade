@@ -11,7 +11,7 @@ block content
                 h1 Form elements
                 form.form(action="http://www.foo.com/" method="get")
 
-                    h2 Example of information alert
+                    h4 Example of information alert
                     div.alert
                         strong Information headline
                         p
@@ -22,7 +22,7 @@ block content
                             li Success 1
                             li Success 2
 
-                    h2 Example of success alert
+                    h4 Example of success alert
                     div.alert.alert--success
                         strong Success headline
                         p
@@ -38,7 +38,7 @@ block content
                             | erat adipiscing egestas.
 
 
-                    h2 Example of notice alert
+                    h4 Example of notice alert
                     div.alert.alert--warning
                         strong Warning headline
                         p
@@ -50,7 +50,7 @@ block content
                             li Success 2
 
 
-                    h2 Example of error alert:
+                    h4 Example of error alert:
                     div.alert.alert--danger
                         strong Danger headline
                         p
@@ -61,6 +61,16 @@ block content
                             li Error 4
                             li Error 5
                             li Error 6
+
+
+                    fieldset
+                        legend Buttons
+                        p Button styles are applied to a number of appropriate form elements, but can also be arbitrarily attached to anchors with a .btn class.
+                        br
+                        a.btn(href="#") Anchor button
+                        button.btn Button element
+                        input.btn(type="submit" value="submit input")
+                        input.btn(type="button" value="button input")
 
 
                     fieldset

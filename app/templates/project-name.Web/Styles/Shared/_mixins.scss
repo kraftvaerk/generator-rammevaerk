@@ -16,6 +16,38 @@
 }
 
 /**
+ * [strip unit - strip units from values]
+ * @param  {any} $val value to be stripped
+ * @return {number} stripped value
+ */
+@function strip-unit($val) {
+    @return $val / ($val * 0 + 1);
+}
+
+/**
+ * supported - feature Detection
+ * @param  {string} $feature feature-specific class, i.e. `cssgradients`.
+ * @return {selector}          [description]
+ */
+@mixin supported($feature) {
+  .#{$feature} & {
+    @content;
+  }
+}
+
+/**
+ * not-supported - feature Detection
+ * @param  {string} $feature feature-specific class, i.e. `cssgradients`.
+ * @return {selector}          [description]
+ */
+@mixin not-supported($feature) {
+  .no-js &,
+  .no-#{$feature} & {
+    @content;
+  }
+}
+
+/**
  * Grid - column
  * @param  {grid-span} $span column to span across
  * @return {column} lost grid colum fraction

@@ -5,61 +5,68 @@
 //
 // ========================================================================
 
-
-// Variables
-// ========================================================================
-
-$tile-gutter           :   $grid-gutter;
-$tile-coloumn-gutter       :   0;
-
-
 @media print {
-  :root {
-    font-size: 8pt;
-  }
+    :root {
+        font-size: 8pt;
+    }
 
-  @page { margin: 1cm;}
+    @page { margin: 1cm;}
 
-  body {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: none;
-    color: #000;
-    font-size: 8px;
-    letter-spacing: 0.2pt;
-    line-height: 1.4;
-  }
+    body {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: none;
+        color: #000; // Black prints faster: http://www.sanbeiji.com/archives/953
+        font-size: 8px;
+        letter-spacing: 0.2pt;
+        line-height: 1.4;
+    }
 
-  a,
-  a:visited { text-decoration: underline; }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
 
-  a:link[href^='http://']:after,
-  a[href^='http://']:visited:after {
-    content: ' (' attr(href) ') ';
-    font-size: 90%;
-  }
-  h1 { font-size: 20px; }
-  h2 { font-size: 16px; }
-  h3 { font-size: 14px; }
-  h4 { font-size: 12px; }
-  h5 { font-size: 10px; }
-  h6 { font-size: 9px; }
+    a:link[href^='http://']:after,
+    a[href^='http://']:visited:after {
+        content: ' (' attr(href) ') ';
+        font-size: 90%;
+    }
 
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
+    // Don't show links that are fragment identifiers,
+    // or use the `javascript:` pseudo protocol
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
 
-  h2,
-  h3 { page-break-after: avoid; }
+    h1 { font-size: 20px; }
+    h2 { font-size: 16px; }
+    h3 { font-size: 14px; }
+    h4 { font-size: 12px; }
+    h5 { font-size: 10px; }
+    h6 { font-size: 9px; }
 
-  img {
-    page-break-before: auto;
-    page-break-after: auto;
-    page-break-inside: avoid;
-  }
+    // Printing Tables:
+    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 { page-break-after: avoid; }
+
+    img {
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
 }

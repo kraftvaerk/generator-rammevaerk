@@ -2,11 +2,12 @@
 
 const gulp            = require('gulp-help')(require('gulp'));
 const browserSync     = require('browser-sync');
+const gutil           = require('gulp-util');
 const conf            = require('../config');
 
 gulp.task('server', false, ['default'], () => {
     browserSync({
-        logPrefix: conf.pkg.name,
+        logPrefix: gutil.colors.bold.white(conf.pkg.name.toUpperCase()),
         server: {
             baseDir: conf.baseDir
         },

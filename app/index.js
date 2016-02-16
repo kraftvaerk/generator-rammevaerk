@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _lodash = require('lodash');
 
@@ -47,7 +47,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function capitalizeKebabCase(name) {
     return _lodash2.default.reduce(name.split('-'), function (acc, str, index) {
         var separator = index === 0 ? '' : ' ';
-        return (acc + separator + _lodash2.default.capitalize(str)).split(' ').join('-');
+        return (acc + separator + _lodash2.default.upperFirst(str)).split(' ').join('-');
     }, '');
 }
 
@@ -68,7 +68,7 @@ function copyDirectory(source, destination, globPatternStr, bulk) {
     });
 }
 
-var Generator = (function (_Base) {
+var Generator = function (_Base) {
     _inherits(Generator, _Base);
 
     function Generator() {
@@ -89,6 +89,7 @@ var Generator = (function (_Base) {
 
         var _this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Generator)).call.apply(_Object$getPrototypeO, [this].concat(args)));
         // Call the parent constructor
+
 
         _this2.option('keep-silence', {
             desc: 'Test framework to be invoked',
@@ -625,7 +626,7 @@ var Generator = (function (_Base) {
     }]);
 
     return Generator;
-})(_yeomanGenerator.Base);
+}(_yeomanGenerator.Base);
 
 exports.default = Generator;
 module.exports = exports['default'];

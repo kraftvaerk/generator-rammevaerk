@@ -12,7 +12,7 @@ import { Base }     from 'yeoman-generator';
 function capitalizeKebabCase(name) {
     return _.reduce(name.split('-'), (acc, str, index) => {
         const separator = index === 0 ? '' : ' ';
-        return (acc + separator + _.capitalize(str)).split(' ').join('-');
+        return (acc + separator + _.upperFirst(str)).split(' ').join('-');
     }, '');
 }
 

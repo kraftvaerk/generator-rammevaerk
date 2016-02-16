@@ -56,7 +56,7 @@ test.serial('generates expected dependencies', async () => {
 });
 
 
-test.serial('generates kebabcase name', async () => {
+test.serial('generates capitalized kebabcase name', async () => {
 
     helpers.mockPrompt(generator, {
         projectName: 'a v a t e s t'

@@ -257,7 +257,7 @@ export default class Generator extends Base {
 
                     this.answers = answers;
                     this.answers.projectName = capitalizeKebabCase(this.answers.projectName);
-                    this.answers.projectDescription = this.answers.projectDescription === 'N/A' ? `I promise to add the description later on to this ${superb()} new project${gitName}`: this.answers.projectDescription;
+                    this.answers.projectDescription = this.answers.projectDescription === 'N/A' ? `I promise to add the description later on to this ${superb()} new project${gitName}` : this.answers.projectDescription;
 
                     done();
                 });

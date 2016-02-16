@@ -1,6 +1,6 @@
 {
   "name": "generator-rammevaerk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Scaffold out a web project in kraftvaerk style",
   "main": "app/index.js",
   "repository": {

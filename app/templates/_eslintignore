@@ -1,2 +1,2 @@
-./<%= answers.projectName %>.Web/Scripts/Vendor/**/*
-./<%= answers.projectName %>.Web/Scripts/system.config.js
+<%= answers.projectName %>.Web/Scripts/Vendor/**/*
+<%= answers.projectName %>.Web/Scripts/system.config.js

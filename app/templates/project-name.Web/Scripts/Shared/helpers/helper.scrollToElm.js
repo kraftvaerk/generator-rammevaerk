@@ -9,7 +9,7 @@ import $ from 'jquery';
  * @return {[undefined]}       [nothing returned]
  */
 export default function scrollToElm(selector, speed = 500, scrollNudge = 74) {
-    if(!selector){
+    if (!selector){
         return;
     }
 

@@ -28,7 +28,7 @@ export default function accordion(){
             const $relatedSlider = $el.parent().find('.' + SLIDER);
 
             //if you want to initially open some of the sliders
-            if(!$el.hasClass(TOGGLER + '--active')) {
+            if (!$el.hasClass(TOGGLER + '--active')) {
                 $relatedSlider.hide();
             }
 

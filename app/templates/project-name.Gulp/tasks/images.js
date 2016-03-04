@@ -10,9 +10,9 @@ const conf            = require('../config');
 const getBrand = () => {
     let brand = '';
 
-    if(global.isBrand && global.isBrand !== 'Shared'){
+    if (global.isBrand && global.isBrand !== 'Shared'){
         brand = '/' + global.isBrand;
-    }else {
+    } else {
         brand = '/**';
     }
 

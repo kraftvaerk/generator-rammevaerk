@@ -4,7 +4,7 @@ import $ from 'jquery';
 import 'cookieConsent';
 
 export function init(scope, settings){
-    if(!scope){
+    if (!scope){
         return;
     }
 

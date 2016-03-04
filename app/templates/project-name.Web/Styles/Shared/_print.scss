@@ -37,9 +37,9 @@
 
     // Don't show links that are fragment identifiers,
     // or use the `javascript:` pseudo protocol
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
 
     h1 { font-size: 20px; }

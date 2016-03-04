@@ -7,8 +7,8 @@
  * @return {[undefined]}            [nothing returned]
  */
 export default function autotab(original, destination){
-    if(!original){
-        return false;
+    if (!original){
+        return;
     }
 
     if (original.val().length === parseInt(original.attr('maxlength'), 10)){

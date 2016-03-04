@@ -68,9 +68,9 @@ const getCopyTask = function (brandFolder) {
 const getBrand = () => {
     let brand = false;
 
-    if(global.isBrand && global.isBrand !== 'Shared'){
+    if (global.isBrand && global.isBrand !== 'Shared'){
         brand = global.isBrand;
-    }else {
+    } else {
         brand = false;
     }
 

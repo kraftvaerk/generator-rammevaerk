@@ -41,11 +41,11 @@ gulp.task('scripts', 'Generate solution script', [<% if (linting.scripts){ %>'sc
 
 gulp.task('scripts:pathfix', false, () => {
     fs.readFile(`${conf.js.src}/system.config.js`, 'utf8', function (rErr, data) {
-        if(rErr){
+        if (rErr){
             throw rErr;
         }
         fs.writeFile(`${conf.js.src}/system.config.js`, data.replace(/<%= answers.projectName %>.Web\//g, ''), function(wErr) {
-            if(wErr){
+            if (wErr){
                 throw wErr;
             }
             console.log('Systemjs vendor pathfix');

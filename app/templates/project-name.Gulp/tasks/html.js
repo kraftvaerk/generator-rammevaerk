@@ -27,7 +27,7 @@ gulp.task('html', 'Convert jade into html for mockup', () => {
                 }))
                 .pipe(rename(function(path){
                     path.dirname = '.';
-                    if(path.basename !== 'index'){
+                    if (path.basename !== 'index'){
                         path.basename = 'tpl-' + path.basename;
                     }
                 }))

@@ -26,7 +26,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
     });
 
     watch([conf.css.src + '/**/*.{jpg,png,gif,svg}', '!' + conf.css.src + '/**/svg/*'], function(file){
-        global.isBrand = file.path.match(/Styles\\([^\\]*)/)[1];
+        global.isBrand = file.path.match(/Styles(\\|\/)([^\\\/]*)/)[2];
 
         browserSync.notify('Images updating!');
         gulp.start('images', 'svg', function(){
@@ -35,7 +35,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
     });
 
     watch([conf.css.src + '/**/*.scss', conf.css.shared + '/**/*.scss', '!**/sprite.scss'], function(file){
-        global.isBrand = file.path.match(/Styles\\([^\\]*)/)[1];
+        global.isBrand = file.path.match(/Styles(\\|\/)([^\\\/]*)/)[2];
 
         browserSync.notify('Styles updating!');
         gulp.start(['styles'], function(){
@@ -44,7 +44,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
     });
 
     watch(conf.js.src + '/**/*.js', function(file){
-        global.isBrand = file.path.match(/Scripts\\([^\\]*)/)[1];
+        global.isBrand = file.path.match(/Scripts(\\|\/)([^\\\/]*)/)[2];
 
         browserSync.notify('Site scripts updating!');
         gulp.start('scripts', function(){

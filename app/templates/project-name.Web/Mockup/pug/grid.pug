@@ -2,38 +2,7 @@ extends includes/layout
 
 block append vars
     - var pageTitle = 'tpl-grid'
-
-block grid
     - var gridColumns = 12
-
-    div.grid-row
-        div(class="grid-col-#{gridColumns}")
-            div.pad #{gridColumns}
-    // .grid-row
-
-    - for (var i=1; i<=gridColumns; i++)
-        - if(gridColumns-i != 0)
-            div.grid-row
-                div(class="grid-col-"+(gridColumns-i))
-                    =gridColumns-i
-                div(class="grid-col-"+i)
-                    =i
-            // .grid-row
-
-    div.grid-row
-        - var size2 = gridColumns / 2
-        - while(size2--)
-            div.grid-col-2
-                | 2
-    // .grid-row
-
-    div.grid-row
-        - var size1 = gridColumns
-        - while(size1--)
-            div.grid-col-1
-                | 1
-    // .grid-row
-
 
 block content
     section.debug.section
@@ -42,7 +11,33 @@ block content
                 span X
             p The grid is a a fluid grid with a max width, that shrinks with the browser/device at smaller sizes. The max width can be changed with one line of CSS and all columns will resize accordingly. The syntax is simple and it makes coding responsive much easier. Go ahead, resize the browser.
 
-            block grid
+            div.grid-row
+                div(class="grid-col-" + gridColumns)
+                    div.pad #{gridColumns}
+            // .grid-row
+
+            - for (var i=1; i<=gridColumns; i++)
+                - if(gridColumns-i != 0)
+                    div.grid-row
+                        div(class="grid-col-"+(gridColumns-i))
+                            =gridColumns-i
+                        div(class="grid-col-"+i)
+                            =i
+                    // .grid-row
+
+            div.grid-row
+                - var size2 = gridColumns / 2
+                - while(size2--)
+                    div.grid-col-2
+                        | 2
+            // .grid-row
+
+            div.grid-row
+                - var size1 = gridColumns
+                - while(size1--)
+                    div.grid-col-1
+                        | 1
+            // .grid-row
 
     section.debug.section
         div.container

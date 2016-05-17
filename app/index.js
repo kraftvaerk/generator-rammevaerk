@@ -374,7 +374,7 @@ var Generator = function (_Base) {
                 },
                 readme: function readme() {
                     var done = this.async();
-                    var readme = undefined;
+                    var readme = void 0;
 
                     if (!this.options['keep-silence']) {
                         this.log.ok('Setting up the readme file...');
@@ -540,13 +540,13 @@ var Generator = function (_Base) {
 
                     this.bulkDirectory('project-name.Web/Styles/Company/svg', this.answers.projectName + '.Web/Styles/' + this.answers.projectName + '/svg');
 
-                    // Jade
-                    var jadeGlob = ['**', '!images/**', '!**/{cookie,lightbox}.jade'];
+                    // Pug
+                    var pugGlob = ['**', '!images/**', '!**/{cookie,lightbox}.pug'];
 
-                    copyDirectory.call(this, 'project-name.Web/Mockup', this.answers.projectName + '.Web/Mockup', jadeGlob);
+                    copyDirectory.call(this, 'project-name.Web/Mockup', this.answers.projectName + '.Web/Mockup', pugGlob);
 
                     if (this.use.cookieConsent) {
-                        this.copy('project-name.Web/Mockup/jade/cookie.jade', this.answers.projectName + '.Web/Mockup/jade/cookie.jade');
+                        this.copy('project-name.Web/Mockup/pug/cookie.pug', this.answers.projectName + '.Web/Mockup/pug/cookie.pug');
 
                         this.copy('project-name.Web/Styles/Company/_cookie-consent.scss', this.answers.projectName + '.Web/Styles/' + this.answers.projectName + '/_cookie-consent.scss');
 
@@ -558,7 +558,7 @@ var Generator = function (_Base) {
                     if (this.use.lightbox) {
                         copyDirectory.call(this, 'project-name.Web/Styles/Company/img', this.answers.projectName + '.Web/Styles/' + this.answers.projectName, ['fancyBox-*.*'], true);
 
-                        this.copy('project-name.Web/Mockup/jade/lightbox.jade', this.answers.projectName + '.Web/Mockup/jade/lightbox.jade');
+                        this.copy('project-name.Web/Mockup/pug/lightbox.pug', this.answers.projectName + '.Web/Mockup/pug/lightbox.pug');
 
                         this.bulkDirectory('project-name.Web/Mockup/images/fancybox', this.answers.projectName + '.Web/Mockup/images/fancybox');
 

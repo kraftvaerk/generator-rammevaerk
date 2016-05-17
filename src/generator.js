@@ -55,7 +55,7 @@ export default class Generator extends Base {
                 this.projectYear = new Date().getFullYear();
                 this.answers = {};
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log(yosay(
                         chalk.yellow(`Initializing a ${superb()} new rammevaerk project`)
                     ));
@@ -70,7 +70,7 @@ export default class Generator extends Base {
                 const done = this.async();
                 let questions = [];
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log('-------------------------------------------------------');
                     this.log('Please answers the following questions.');
                     this.log('-------------------------------------------------------\n');
@@ -213,7 +213,7 @@ export default class Generator extends Base {
                     message: chalk.yellow('How many columns does the grid consists of?'),
                     default: 12,
                     validate: (val) => {
-                        if(!_.isNumber(Number(val))){
+                        if (!_.isNumber(Number(val))){
                             return 'Please enter a valid number';
                         }
 
@@ -231,7 +231,7 @@ export default class Generator extends Base {
                     message: chalk.yellow('What is the size of the grid gutter? (px)'),
                     default: 30,
                     validate: (val) => {
-                        if(_.isNumber(Number(val))){
+                        if (_.isNumber(Number(val))){
                             return true;
                         }
                         return 'Please enter a valid number';
@@ -245,7 +245,7 @@ export default class Generator extends Base {
                     message: chalk.yellow('What is the max grid width? (px)'),
                     default: 1140,
                     validate: (val) => {
-                        if(_.isNumber(Number(val))){
+                        if (_.isNumber(Number(val))){
                             return true;
                         }
                         return 'Please enter a valid number';
@@ -283,7 +283,7 @@ export default class Generator extends Base {
                     '.Web/Scripts/Shared'
                 ];
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log('\n');
                     this.log.ok('Setting up directories...');
                 }
@@ -295,12 +295,12 @@ export default class Generator extends Base {
             versionControl(){
                 const done = this.async();
 
-                if(this.answers.projectVersionControl.length){
-                    if(!this.options['keep-silence']){
+                if (this.answers.projectVersionControl.length){
+                    if (!this.options['keep-silence']){
                         this.log.ok('Setting up versioning...');
                     }
 
-                    if(_.includes(this.answers.projectVersionControl, 'git')){
+                    if (_.includes(this.answers.projectVersionControl, 'git')){
                         this.bulkCopy('_gitignore', '.gitignore');
                         this.bulkCopy('_gitattributes', '.gitattributes');
                     }
@@ -311,13 +311,13 @@ export default class Generator extends Base {
             IDE() {
                 const done = this.async();
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.ok('Setting up IDE...');
                 }
 
                 this.copy('_editorconfig', '.editorconfig');
 
-                if(_.includes(this.answers.projectIDE, 'sublimeText')){
+                if (_.includes(this.answers.projectIDE, 'sublimeText')){
                     this.template(
                         '_project-name.sublime-project',
                         `${this.answers.projectName}.sublime-project`
@@ -330,7 +330,7 @@ export default class Generator extends Base {
                 const done = this.async();
                 let readme;
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.ok('Setting up the readme file...');
                 }
 
@@ -338,11 +338,11 @@ export default class Generator extends Base {
 
                 readme += '\n';
 
-                if(_.includes(this.answers.projectIDE, 'visualStudio')){
+                if (_.includes(this.answers.projectIDE, 'visualStudio')){
                     readme += this.fs.read(this.templatePath('README/_IDE_visualStudio.md'));
                 }
 
-                if(_.includes(this.answers.projectIDE, 'sublimeText')){
+                if (_.includes(this.answers.projectIDE, 'sublimeText')){
                     readme += this.fs.read(this.templatePath('README/_IDE_sublimeText.md'));
                 }
 
@@ -357,18 +357,18 @@ export default class Generator extends Base {
             linting() {
                 const done = this.async();
 
-                if(this.answers.projectLinters.length){
-                    if(!this.options['keep-silence']){
+                if (this.answers.projectLinters.length){
+                    if (!this.options['keep-silence']){
                         this.log.ok('Setting up the linting...');
                     }
                 }
 
-                if(_.includes(this.answers.projectLinters, 'scripts')){
+                if (_.includes(this.answers.projectLinters, 'scripts')){
                     this.template('_eslintignore', '.eslintignore');
                     this.bulkCopy('_eslintrc', '.eslintrc');
                 }
 
-                if(_.includes(this.answers.projectLinters, 'styles')){
+                if (_.includes(this.answers.projectLinters, 'styles')){
                     this.bulkCopy('_sass-lint.yml', '.sass-lint.yml');
                 }
 
@@ -377,7 +377,7 @@ export default class Generator extends Base {
             gulp() {
                 const done = this.async();
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.ok('Setting up the Gulp...');
                 }
 
@@ -396,7 +396,7 @@ export default class Generator extends Base {
                 const done = this.async();
                 let pkg = {};
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.ok('Setting up the package.json...');
                 }
 
@@ -411,15 +411,15 @@ export default class Generator extends Base {
                 pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_CONTRIBUTORS.json'), {}));
 
                 let contributor = {};
-                if(this.user.git.name()){
+                if (this.user.git.name()){
                     contributor.name = this.user.git.name();
 
-                    if(this.user.git.email()){
+                    if (this.user.git.email()){
                         contributor.email = this.user.git.email();
                     }
 
                     contributor.url = 'http://github.com/';
-                }else {
+                } else {
                     contributor = {
                         name: 'Kraftvaerk',
                         url: 'http://github.com/kraftvaerk'
@@ -429,7 +429,7 @@ export default class Generator extends Base {
                 pkg.contributors.push(contributor);
 
                 // Version control
-                if(this.answers.projectVersionControl){
+                if (this.answers.projectVersionControl){
                     pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_REPOSITORY.json'), {}));
                     pkg.repository.type = this.answers.projectVersionControl.toLowerCase();
                     pkg.repository.url = this.answers.projectRepositoryUrl;
@@ -457,15 +457,15 @@ export default class Generator extends Base {
                 pkg.jspm.dependencies.jquery = 'github:components/jquery@^2.1.4';
                 pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@^2.0.1';
 
-                if(_.includes(this.answers.projectModules, 'cookieConsent')){
+                if (_.includes(this.answers.projectModules, 'cookieConsent')){
                     pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@^0.0.3';
                 }
 
-                if(_.includes(this.answers.projectModules, 'lightbox')){
+                if (_.includes(this.answers.projectModules, 'lightbox')){
                     pkg.jspm.dependencies.fancyBox = 'github:kraftvaerk/fancyBox@^2.1.5-beta.1';
                 }
 
-                if(_.includes(this.answers.projectModules, 'slider')){
+                if (_.includes(this.answers.projectModules, 'slider')){
                     pkg.jspm.dependencies.owlCarousel = 'github:smashingboxes/OwlCarousel2@^2.0.0-beta.3';
                 }
 
@@ -477,7 +477,7 @@ export default class Generator extends Base {
             projectfiles: function() {
                 const done = this.async();
 
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.ok('Setting up the project files...');
                 }
 
@@ -502,20 +502,20 @@ export default class Generator extends Base {
                     `${this.answers.projectName}.Web/Styles/${this.answers.projectName}/svg`
                 );
 
-                // Jade
-                const jadeGlob = ['**', '!images/**', '!**/{cookie,lightbox}.jade'];
+                // Pug
+                const pugGlob = ['**', '!images/**', '!**/{cookie,lightbox}.pug'];
 
                 copyDirectory.call(
                     this,
                     'project-name.Web/Mockup',
                     `${this.answers.projectName}.Web/Mockup`,
-                    jadeGlob
+                    pugGlob
                 );
 
-                if(this.use.cookieConsent){
+                if (this.use.cookieConsent){
                     this.copy(
-                        'project-name.Web/Mockup/jade/cookie.jade',
-                        `${this.answers.projectName}.Web/Mockup/jade/cookie.jade`
+                        'project-name.Web/Mockup/pug/cookie.pug',
+                        `${this.answers.projectName}.Web/Mockup/pug/cookie.pug`
                     );
 
                     this.copy(
@@ -534,7 +534,7 @@ export default class Generator extends Base {
                     );
                 }
 
-                if(this.use.lightbox){
+                if (this.use.lightbox){
                     copyDirectory.call(
                         this,
                         'project-name.Web/Styles/Company/img',
@@ -544,8 +544,8 @@ export default class Generator extends Base {
                     );
 
                     this.copy(
-                        'project-name.Web/Mockup/jade/lightbox.jade',
-                        `${this.answers.projectName}.Web/Mockup/jade/lightbox.jade`
+                        'project-name.Web/Mockup/pug/lightbox.pug',
+                        `${this.answers.projectName}.Web/Mockup/pug/lightbox.pug`
                     );
 
                     this.bulkDirectory(
@@ -564,7 +564,7 @@ export default class Generator extends Base {
                     );
                 }
 
-                if(this.use.slider){
+                if (this.use.slider){
                     this.copy(
                         'project-name.Web/Styles/Shared/Vendor/owlcarousel.scss',
                         `${this.answers.projectName}.Web/Styles/Shared/Vendor/owlcarousel.scss`
@@ -646,7 +646,7 @@ export default class Generator extends Base {
     get end() {
         return {
             vaerkEnd() {
-                if(!this.options['keep-silence']){
+                if (!this.options['keep-silence']){
                     this.log.writeln('\n-------------------------------------------------------');
                     this.log.writeln(`All done, you can ${chalk.green.bold('npm run watch')}, to start dev server.`);
                     this.log.writeln('-------------------------------------------------------\n');

@@ -12,7 +12,7 @@ module.exports = {
 
     html: {
         dest: baseDir + '/mockup',
-        src: baseDir + '/mockup/jade'
+        src: baseDir + '/mockup/pug'
     },
 
     js: {

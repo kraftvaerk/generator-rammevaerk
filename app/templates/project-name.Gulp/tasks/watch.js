@@ -53,7 +53,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
     });
 
 
-    watch(conf.html.src + '/**/*.jade', function(file){
+    watch(conf.html.src + '/**/*.pug', function(file){
         browserSync.notify('HTML updating!');
         global.isInclude = /includes/.test(file.relative);
         gulp.start('html', function(){

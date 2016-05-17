@@ -22,7 +22,9 @@
     h3,
     h4,
     h5,
-    h6 { color: inherit; }
+    h6 {
+        color: inherit;
+    }
 
     &--success {
         background: $success-background;

@@ -252,7 +252,7 @@ export default class Generator extends Base {
                     }
                 });
 
-                this.prompt(questions, (answers) => {
+                this.prompt(questions).then((answers) => {
                     let gitName = this.user.git.name() ? ` — ${this.user.git.name().split(' ')[0]}` : '.';
 
                     this.answers = answers;

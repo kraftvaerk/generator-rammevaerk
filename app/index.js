@@ -308,7 +308,7 @@ var Generator = function (_Base) {
                         }
                     });
 
-                    this.prompt(questions, function (answers) {
+                    this.prompt(questions).then(function (answers) {
                         var gitName = _this3.user.git.name() ? ' — ' + _this3.user.git.name().split(' ')[0] : '.';
 
                         _this3.answers = answers;

@@ -82,6 +82,10 @@
  * @return {media query} media query based on the given parameters
  */
 @mixin respond-to($breakpoint-start, $alternative-parameter: '', $breakpoint-end: '', $behavior: $responsive-behavior) {
+    // vars initialized
+    $bp-start: null;
+    $bp-end: null;
+
     // Retrieves the value from the key
     @if type-of($breakpoint-start) == 'string' and map-has-key($breakpoints, $breakpoint-start) {
         $bp-start: map-get($breakpoints, $breakpoint-start);

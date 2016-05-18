@@ -3,7 +3,7 @@
         "autoprefixer": "6.3.6",
         "browser-sync": "2.12.8",
         "cfonts": "0.0.13",
-        "cssnano": "3.5.2",
+        "cssnano": "3.6.0",
         "eslint": "2.10.2",
         "eslint-config-kraftvaerk": "0.0.4",
         "gulp": "3.9.1",

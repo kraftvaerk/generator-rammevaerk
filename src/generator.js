@@ -454,8 +454,8 @@ export default class Generator extends Base {
                 pkg.jspm.directories.packages = `${this.answers.projectName}.Web/Scripts/Vendor`;
                 pkg.jspm.configFile = `${this.answers.projectName}.Web/Scripts/system.config.js`;
 
-                pkg.jspm.dependencies.jquery = 'github:components/jquery@^2.1.4';
-                pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@^2.0.1';
+                pkg.jspm.dependencies.jquery = 'npm:jquery';
+                pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@^2.0.3';
 
                 if (_.includes(this.answers.projectModules, 'cookieConsent')){
                     pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@^0.0.3';

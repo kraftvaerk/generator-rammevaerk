@@ -23,11 +23,6 @@ System.config({
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "core-js": "npm:core-js@1.2.1",
-    "jquery": "github:components/jquery@2.1.4",
-<% if (use.cookieConsent){ %>    "cookieConsent": "github:kraftvaerk/cookie-consent@0.0.3",<% } %>
-<% if (use.lightbox){ %>    "fancyBox": "github:kraftvaerk/fancyBox@2.1.5-beta.1",<% } %>
-<% if (use.slider){ %>    "owlCarousel": "github:smashingboxes/OwlCarousel2@2.0.0-beta.3",<% } %>
-    "svg4everybody": "npm:svg4everybody@2.0.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

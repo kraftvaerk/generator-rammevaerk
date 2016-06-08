@@ -31,9 +31,9 @@ $serif-font-family  :   'Georgia', 'Times', 'Times New Roman', serif !default;
 $mono-font-family   :   'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace !default;
 
 $base-font-size     :   14px !default;
-$base-font-family   :   'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$base-font-family   :   'Source Sans Pro', 'Helvetica Neue', helvetica, arial, sans-serif !default;
 $base-line-height   :   1.4 !default;
-$alt-font-family    :   'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$alt-font-family    :   'Source Sans Pro', 'Helvetica Neue', helvetica, arial, sans-serif !default;
 
 // Brand colors
 $brand-black        :   rgb(0, 0, 0) !default;
@@ -58,7 +58,6 @@ $link-color-active  :   darken(#4f4f4f, 20%) !default;
 
 // Selection
 $selection-color    :   #ccf4ff !default;
-
 
 // Component Variables
 //------------------------------------------------------ */

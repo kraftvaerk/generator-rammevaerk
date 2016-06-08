@@ -40,7 +40,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
         });
     });
 
-    watch(conf.js.src + '/**/*.js', function(file){
+    watch(conf.js.src + '/**/*.js', function(){
         browserSync.notify('Site scripts updating!');
         gulp.start('scripts', function(){
             browserSync.reload();

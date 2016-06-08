@@ -7,9 +7,8 @@ const plumber         = require('gulp-plumber');
 const gutil           = require('gulp-util');
 const sass            = require('gulp-sass');
 const postcss         = require('gulp-postcss');
-const scss            = require("postcss-scss");
+const scss            = require('postcss-scss');
 const conf            = require('../config');
-
 
 <% if (linting.styles){ %>gulp.task('styles:lint', 'Lint all style files', () => {
     return gulp.src([conf.css.src + '/**/*.s+(a|c)ss', '!' + conf.css.src + '/Shared/Vendor/**/*'])

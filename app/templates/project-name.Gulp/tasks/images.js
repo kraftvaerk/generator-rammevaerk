@@ -28,7 +28,6 @@ gulp.task('images:clean', false, () => {
                 .on('error', gutil.log);
 });
 
-
 gulp.task('images', 'Copy and optimize images', ['images:clean'], () => {
     const brand = getBrand();
 

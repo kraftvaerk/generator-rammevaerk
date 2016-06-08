@@ -10,7 +10,6 @@ const rename          = require('gulp-rename');
 const fs              = require('fs');
 const conf            = require('../config');
 
-
 gulp.task('scripts', 'Generate solution script', [<% if (linting.scripts){ %>'scripts:lint'<% } %>], () => {
     return gulp.src([conf.js.src + '/**/index.js', '!**/Shared/**', '!**/Vendor/**'])
                 .pipe(plumber())
@@ -31,7 +30,6 @@ gulp.task('scripts', 'Generate solution script', [<% if (linting.scripts){ %>'sc
                 .pipe(eslint.format())
                 .on('error', gutil.log);
 });<% } %>
-
 
 gulp.task('scripts:pathfix', false, () => {
     fs.readFile(`${conf.js.src}/system.config.js`, 'utf8', function (rErr, data) {

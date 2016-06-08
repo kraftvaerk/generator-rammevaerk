@@ -6,7 +6,6 @@ const watch           = require('gulp-watch');
 const browserSync     = require('browser-sync');
 const conf            = require('../config');
 
-global.isBrand = 'Shared';
 gulp.task('watch:flag', false, () => {
     global.isWatching = true;
 });
@@ -34,9 +33,7 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
         });
     });
 
-    watch([conf.css.src + '/**/*.scss', conf.css.shared + '/**/*.scss', '!**/sprite.scss'], function(file){
-        global.isBrand = file.path.match(/Styles(\\|\/)([^\\\/]*)/)[2];
-
+    watch([conf.css.src + '/**/*.scss'], function(){
         browserSync.notify('Styles updating!');
         gulp.start(['styles'], function(){
             browserSync.reload('*.css');
@@ -44,8 +41,6 @@ gulp.task('watch', 'Watches for source changes to preform tasks with livereloadi
     });
 
     watch(conf.js.src + '/**/*.js', function(file){
-        global.isBrand = file.path.match(/Scripts(\\|\/)([^\\\/]*)/)[2];
-
         browserSync.notify('Site scripts updating!');
         gulp.start('scripts', function(){
             browserSync.reload();

@@ -23,7 +23,7 @@ test.serial('generates expected files', async () => {
         '.editorconfig',
         '.eslintignore',
         '.eslintrc',
-        '.sass-lint.yml',
+        '.stylelintrc',
         'gulpfile.js',
         'package.json',
         'README.md',

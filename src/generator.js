@@ -455,18 +455,36 @@ export default class Generator extends Base {
                 pkg.jspm.configFile = `${this.answers.projectName}.Web/Scripts/system.config.js`;
 
                 pkg.jspm.dependencies.jquery = 'npm:jquery';
-                pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@^2.0.3';
+                pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@2.0.3';
 
                 if (_.includes(this.answers.projectModules, 'cookieConsent')){
-                    pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@^0.0.3';
+                    pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@0.0.3';
                 }
 
                 if (_.includes(this.answers.projectModules, 'lightbox')){
-                    pkg.jspm.dependencies.fancyBox = 'github:kraftvaerk/fancyBox@^2.1.5-beta.1';
+                    let fancyboxOverrides = {
+                        'github:fancyapps/fancyBox@2.1.5': {
+                            'main': 'source/jquery.fancybox',
+                            'format': 'global',
+                            'dependencies': {
+                                'jquery': 'npm:jquery@*'
+                            },
+                            'shim': {
+                                'source/jquery.fancybox': {
+                                    'deps': [
+                                        'jquery'
+                                    ],
+                                    'exports': '$'
+                                }
+                            }
+                        }
+                    };
+                    pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, fancyboxOverrides);
+                    pkg.jspm.dependencies.fancyBox = 'github:fancyapps/fancyBox@2.1.5';
                 }
 
                 if (_.includes(this.answers.projectModules, 'slider')){
-                    pkg.jspm.dependencies.owlCarousel = 'github:smashingboxes/OwlCarousel2@^2.0.0-beta.3';
+                    pkg.jspm.dependencies.owlCarousel = 'github:smashingboxes/OwlCarousel2@2.1.4';
                 }
 
                 // Write package.json

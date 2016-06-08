@@ -5,7 +5,6 @@
 //
 // ========================================================================
 
-
 /**
  * rem-calc - px to rem coversion
  * @param  {px} $value pixel size
@@ -30,9 +29,9 @@
  * @return {selector}          [description]
  */
 @mixin supported($feature) {
-  .#{$feature} & {
-    @content;
-  }
+    .#{$feature} & {
+        @content;
+    }
 }
 
 /**
@@ -41,10 +40,10 @@
  * @return {selector}          [description]
  */
 @mixin not-supported($feature) {
-  .no-js &,
-  .no-#{$feature} & {
-    @content;
-  }
+    .no-js &,
+    .no-#{$feature} & {
+        @content;
+    }
 }
 
 /**
@@ -59,7 +58,9 @@
         }
 
         lost-column: unquote('#{$span} #{$cycle} #{$gutter}');
-    } @else {
+    }
+
+    @else {
         lost-column: unquote('#{$span}/#{$grid-columns}');
     }
 }
@@ -89,20 +90,30 @@
     // Retrieves the value from the key
     @if type-of($breakpoint-start) == 'string' and map-has-key($breakpoints, $breakpoint-start) {
         $bp-start: map-get($breakpoints, $breakpoint-start);
-    } @else if type-of($breakpoint-start) == number {
+    }
+
+    @else if type-of($breakpoint-start) == number {
         $bp-start: $breakpoint-start;
-    } @else {
+    }
+
+    @else {
         @warn 'The defined start breakpoint cannot be found in \'$breakpoints\''
             + ' and is not a number, try again.';
     }
 
     @if type-of($breakpoint-end) == 'string' and map-has-key($breakpoints, $breakpoint-end) {
         $bp-end: map-get($breakpoints, $breakpoint-end);
-    } @else if type-of($breakpoint-start) == number {
+    }
+
+    @else if type-of($breakpoint-start) == number {
         $bp-end: $breakpoint-end;
-    } @else if $responsive-behavior != 'only' {
+    }
+
+    @else if $responsive-behavior != 'only' {
         $bp-end: $breakpoint-end;
-    } @else {
+    }
+
+    @else {
         @warn 'The defined end breakpoint cannot be found in \'$breakpoints\''
             + ' and is not a number, try again.';
     }
@@ -116,7 +127,9 @@
         @media screen and #{$str} {
             @content;
         }
-    } @else {
+    }
+
+    @else {
         // If something goes wrong
         @warn 'Unfortunately, no value could be retrieved from \'#{$breakpoint}\'. '
             + 'Please make sure it is defined in \'$breakpoints\' map.';
@@ -124,16 +137,22 @@
 }
 
 @function get-media-query($bp-start, $bp-end, $alt-param, $behavior) {
-    $str : '';
+    $str: '';
 
     // Generates the media queries, based on the given parameters
     @if $behavior == 'only' and $bp-start != null and $bp-end != null {
         $str: $str + '(min-width: #{$bp-start})' + ' and (max-width: #{$bp-end})';
-    } @else if $behavior == 'up' and $bp-start != null {
+    }
+
+    @else if $behavior == 'up' and $bp-start != null {
         $str: $str + '(min-width: #{$bp-start + 1px})';
-    } @else if $behavior == 'down' and $bp-start != null {
+    }
+
+    @else if $behavior == 'down' and $bp-start != null {
         $str: $str + '(max-width: #{$bp-start})';
-    } @else {
+    }
+
+    @else {
         @warn 'Unfortunately, some errors occured. Remember that you need to specify two valid values when using the 'only'-direction.\A'
             + 'Please make sure all values is defined in \'$breakpoints\' map.\A';
     }

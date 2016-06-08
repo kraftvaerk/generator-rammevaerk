@@ -16,13 +16,13 @@
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 // Body
@@ -33,10 +33,10 @@ body {
     color: $text-color;
     font-family: $base-font-family;
     font-size: rem-calc($base-font-size);
+    -webkit-font-smoothing: antialiased;
     line-height: $base-line-height;
     text-rendering: optimizeLegibility;
     overflow-y: scroll;
-    -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -75,8 +75,10 @@ img {
     /* 1 */
     max-width: 100%;
     height: auto;
+
     /* 2 */
     border: 0;
+
     /* 3 */
     vertical-align: middle;
 }
@@ -91,7 +93,7 @@ svg:not(:root) { overflow: hidden; }
 // see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
 
 [role='button'] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 // Fieldset - Define consistent border, margin, and padding.

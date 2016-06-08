@@ -20,7 +20,7 @@
 .grid-col,
 [class*='grid-col-'] {
     float: left;
-    min-height: 1px; /*prevent empty columns from collapsing */
+    min-height: 1px; /* prevent empty columns from collapsing */
     clear: fix;
 }
 

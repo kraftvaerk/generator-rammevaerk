@@ -26,9 +26,9 @@ $breakpoints: (
 ) !default;
 
 // Typography
-$sans-font-family   :   Arial, 'Helvetica Neue', Helvetica, sans-serif !default;
-$serif-font-family  :   Georgia, Times, 'Times New Roman', serif !default;
-$mono-font-family   :   Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
+$sans-font-family   :   'Arial', 'Helvetica Neue', 'Helvetica', sans-serif !default;
+$serif-font-family  :   'Georgia', 'Times', 'Times New Roman', serif !default;
+$mono-font-family   :   'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace !default;
 
 $base-font-size     :   14px !default;
 $base-font-family   :   'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;

@@ -5,7 +5,6 @@
 //
 // ========================================================================
 
-
 // Variables
 // ========================================================================
 
@@ -16,7 +15,7 @@ $form-input-disabled        :   #f5f5f5;
 $form-input-focus-border    :   #99baca;
 $form-input-focus-background:   #f5fbfe;
 $form-input-placeholder-text:   #999;
-// scss-lint:disable one-declaration-per-line
+/* stylelint-disable */
 $form-supported-inputs      :  'select,
                                 textarea,
                                 input:not([type]),
@@ -32,129 +31,7 @@ $form-supported-inputs      :  'select,
                                 input[type="search"],
                                 input[type="tel"],
                                 input[type="color"]';
-// scss-lint:enable one-declaration-per-line
-
-// Form grid
-// ========================================================================
-
-.form {
-    &__row {
-        display: flex;
-        align-items: flex-end;
-        max-width: 600px;
-        clear: fix;
-        @include respond-to(mobile) {
-            flex-direction: column;
-            max-width: map-get($breakpoints, mobile);
-        }
-
-        & + & {
-            margin-top: 15px;
-
-            @include respond-to(mobile) {
-                margin-top: 0;
-            }
-        }
-
-        & + &--tight {
-            margin-top: 0;
-        }
-    }
-
-    /* Fulls */
-    &__unit-1-1  { width: 100%; }
-
-    /* Halves */
-    &__unit-1-2  { lost-column: 1/2 2 $form-gutter flex; }
-    &__unit-2-4  { lost-column: 2/4 4 $form-gutter flex; }
-
-    /* Thirds */
-    &__unit-1-3  { lost-column: 1/3 3 $form-gutter flex; }
-    &__unit-2-3  { lost-column: 2/3 3 $form-gutter flex; }
-
-    /* Quarters */
-    &__unit-1-4  { lost-column: 1/4 4 $form-gutter flex; }
-    &__unit-3-4  { lost-column: 3/4 4 $form-gutter flex; }
-
-    /* Five columns */
-    &__unit-1-5  { lost-column: 1/5 5 $form-gutter flex; }
-
-    &__unit-1-1,
-    &__unit-1-2,
-    &__unit-2-4,
-    &__unit-1-3,
-    &__unit-2-3,
-    &__unit-1-4,
-    &__unit-3-4,
-    &__unit-1-5 {
-        @include respond-to(mobile) {
-            width: 100%;
-            margin-right: 0 !important;
-            margin-bottom: 15px;
-        }
-    }
-}
-
-// Form unit with information
-// ========================================================================
-
-.form__unit--with-info {
-    position: relative;
-    padding-right: 40px;
-    box-sizing: border-box;
-}
-
-.form__info {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-
-    .form__info-button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 0 11px;
-        color: $brand-gray;
-        font-family: $serif-font-family;
-        font-size: 22px;
-    }
-
-    .form__info-content {
-        display: none;
-        position: absolute;
-        right: 0;
-        bottom: 25px;
-        left: 0;
-        padding: 15px;
-        border: 1px solid $brand-gray;
-        background: $brand-white;
-        font-family: $sans-font-family;
-        font-size: rem-calc(12px);
-        z-index: 1;
-
-        &:after {
-            content: '';
-            position: absolute;
-            right: 7px;
-            bottom: -11px;
-            width: 20px;
-            height: 20px;
-            border-bottom: 1px solid $brand-gray;
-            border-left: 1px solid $brand-gray;
-            background: $brand-white;
-            z-index: 1;
-            transform: rotate(-45deg) skew(-15deg, -15deg);
-            box-sizing: border-box;
-        }
-
-        &--active {
-            display: block;
-        }
-    }
-}
-
-
+/* stylelint-enable */
 
 // Form sanitization
 // ========================================================================
@@ -174,11 +51,14 @@ select,
 textarea {
     /* 1 */
     margin: 0;
+
     /* 2 */
     border-radius: 0;
     color: inherit;
+
     /* 3 */
     font: inherit;
+
     /* 4 */
     box-sizing: border-box;
 }
@@ -198,6 +78,7 @@ select {
 optgroup {
     /* 1 */
     font: inherit;
+
     /* 2 */
     font-weight: bold;
 }
@@ -267,6 +148,7 @@ input[type='number']::-webkit-outer-spin-button {
 textarea {
     /* 1 */
     overflow: auto;
+
     /* 2 */
     vertical-align: top;
 }
@@ -302,11 +184,67 @@ select[size] {
     height: auto;
 }
 
-
-// Form generics
+// Form generics + grid
 // ========================================================================
 
 .form {
+    &__row {
+        display: flex;
+        align-items: flex-end;
+        max-width: 600px;
+        clear: fix;
+
+        @include respond-to(mobile) {
+            flex-direction: column;
+            max-width: map-get($breakpoints, mobile);
+        }
+
+        & + & {
+            margin-top: 15px;
+
+            @include respond-to(mobile) {
+                margin-top: 0;
+            }
+        }
+
+        & + &--tight {
+            margin-top: 0;
+        }
+    }
+
+    /* Fulls */
+    &__unit-1-1 { width: 100%; }
+
+    /* Halves */
+    &__unit-1-2 { lost-column: 1/2 2 $form-gutter flex; }
+    &__unit-2-4 { lost-column: 2/4 4 $form-gutter flex; }
+
+    /* Thirds */
+    &__unit-1-3 { lost-column: 1/3 3 $form-gutter flex; }
+    &__unit-2-3 { lost-column: 2/3 3 $form-gutter flex; }
+
+    /* Quarters */
+    &__unit-1-4 { lost-column: 1/4 4 $form-gutter flex; }
+    &__unit-3-4 { lost-column: 3/4 4 $form-gutter flex; }
+
+    /* Five columns */
+    &__unit-1-5 { lost-column: 1/5 5 $form-gutter flex; }
+
+    &__unit-1-1,
+    &__unit-1-2,
+    &__unit-2-4,
+    &__unit-1-3,
+    &__unit-2-3,
+    &__unit-1-4,
+    &__unit-3-4,
+    &__unit-1-5 {
+        @include respond-to(mobile) {
+            width: 100%;
+            margin-right: 0 !important;
+            margin-bottom: 15px;
+        }
+    }
+
     &__control--full {
         width: 100%;
     }
@@ -339,7 +277,7 @@ select[size] {
         font-size: 18px;
         line-height: 40px;
 
-        &:after {
+        &::after {
             content: '';
             display: block;
             width: 100%;
@@ -361,7 +299,7 @@ select[size] {
         border: 1px solid $form-input-border;
         border-radius: $form-input-border-radius;
 
-        transition: all linear 0.2s;
+        transition: all linear .2s;
 
         // Focus state
         &:focus {
@@ -385,6 +323,64 @@ select[size] {
     :disabled::-webkit-input-placeholder { color: $form-input-placeholder-text; }
 }
 
+// Form unit with information
+// ========================================================================
+
+.form__unit--with-info {
+    position: relative;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.form__info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    .form__info-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0 11px;
+        color: $brand-gray;
+        font-family: $serif-font-family;
+        font-size: 22px;
+    }
+
+    .form__info-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 25px;
+        left: 0;
+        padding: 15px;
+        border: 1px solid $brand-gray;
+        background: $brand-white;
+        font-family: $sans-font-family;
+        font-size: rem-calc(12px);
+        z-index: 1;
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 7px;
+            bottom: -11px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 1px solid $brand-gray;
+            border-left: 1px solid $brand-gray;
+            background: $brand-white;
+            z-index: 1;
+            transform: rotate(-45deg) skew(-15deg, -15deg);
+            box-sizing: border-box;
+        }
+
+        &--active {
+            display: block;
+        }
+    }
+}
 
 // Form horizontal
 // ========================================================================
@@ -400,7 +396,6 @@ select[size] {
     }
 }
 
-
 // Form button row
 // ========================================================================
 
@@ -408,7 +403,6 @@ select[size] {
     margin: ($form-gutter * 2) 0 0 0;
     clear: fix;
 }
-
 
 // Form validation
 // ========================================================================

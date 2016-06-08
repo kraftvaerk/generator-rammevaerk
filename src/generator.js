@@ -369,7 +369,7 @@ export default class Generator extends Base {
                 }
 
                 if (_.includes(this.answers.projectLinters, 'styles')){
-                    this.bulkCopy('_sass-lint.yml', '.sass-lint.yml');
+                    this.bulkCopy('_stylelintrc', '.stylelintrc');
                 }
 
                 done();

@@ -10,7 +10,7 @@
         font-size: 8pt;
     }
 
-    @page { margin: 1cm;}
+    @page { margin: 1cm; }
 
     body {
         display: block !important;
@@ -20,7 +20,7 @@
         background: none;
         color: #000; // Black prints faster: http://www.sanbeiji.com/archives/953
         font-size: 8px;
-        letter-spacing: 0.2pt;
+        letter-spacing: .2pt;
         line-height: 1.4;
     }
 
@@ -29,16 +29,16 @@
         text-decoration: underline;
     }
 
-    a:link[href^='http://']:after,
-    a[href^='http://']:visited:after {
+    a:link[href^='http://']::after,
+    a[href^='http://']:visited::after {
         content: ' (' attr(href) ') ';
         font-size: 90%;
     }
 
     // Don't show links that are fragment identifiers,
     // or use the `javascript:` pseudo protocol
-    a[href^='#']:after,
-    a[href^='javascript:']:after {
+    a[href^='#']::after,
+    a[href^='javascript:']::after {
         content: '';
     }
 

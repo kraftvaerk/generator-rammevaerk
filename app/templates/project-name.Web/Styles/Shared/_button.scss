@@ -13,6 +13,7 @@
     border-radius: 4px;
     background-color: #fff;
     background-image: none;
+    background-origin: border-box;
     color: #666;
     font: inherit;
     font-weight: bold;
@@ -24,7 +25,6 @@
     white-space: nowrap;
     overflow: visible;
     vertical-align: middle;
-    background-origin: border-box;
 
     -webkit-appearance: none;
 
@@ -51,8 +51,8 @@
         color: #999;
     }
 
-    &--next { float: right;}
-    &--back { float: left;}
+    &--next { float: right; }
+    &--back { float: left; }
 
     &--inverted {
         border-color: $text-color;

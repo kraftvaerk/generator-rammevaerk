@@ -6,19 +6,16 @@
 //
 // ========================================================================
 
-
 // Clearfix
 // ========================================================================
 
-.clearfix { clear: fix;}
-
+.clearfix { clear: fix; }
 
 // Floats
 // ========================================================================
 
 .right { float: right; }
 .left { float: left; }
-
 
 // Center - Centers horizontally. Can be used inside or outside the grid.
 // ========================================================================
@@ -29,7 +26,6 @@
     margin-right: auto;
     margin-left: auto;
 }
-
 
 // Text
 // ========================================================================
@@ -48,6 +44,6 @@
 
 .hidden { display: none; }
 .shown { display: block; }
-.border-none   {   border: none; }
-.invisible  { visibility: hidden; }
-.visible-mobile { display: none;}
+.border-none { border: none; }
+.invisible { visibility: hidden; }
+.visible-mobile { display: none; }

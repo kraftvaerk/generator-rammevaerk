@@ -12,7 +12,15 @@ const conf            = require('../config');
 
 gulp.task('html', 'Convert pug into html for mockup', () => {
     return gulp.src(conf.html.src + '**/*.pug')
-                .pipe(plumber())
+		.pipe(plumber({
+                    errorHandler: function (err) {
+                        gutil.log('Filename: ', gutil.colors.bold.red(err.file));
+                        gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
+                        gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                        gutil.beep();
+                        this.emit('end');
+                    }
+                }))
                 .pipe(gulpif((global.isWatching && !global.isInclude), changed(conf.html.dest, {extension: '.html'})))
                 .pipe(gulpif((global.isWatching && !global.isInclude), cached('pug')))
                 .pipe(pug({

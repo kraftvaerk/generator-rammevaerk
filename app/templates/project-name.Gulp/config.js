@@ -1,7 +1,7 @@
 'use strict';
 
 const pkg         = require('../package.json');
-const baseDir     = './<%= answers.projectName %>.Web';
+const baseDir     = './<%= answers.projectName %>.Website';
 
 module.exports = {
     pkg: pkg,

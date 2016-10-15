@@ -6,7 +6,8 @@
 			"path": ".",
 			"folder_exclude_patterns":
 			[
-				".vs",
+                ".vs",
+                ".nuget",
 				"node_modules",
 			],
 		}

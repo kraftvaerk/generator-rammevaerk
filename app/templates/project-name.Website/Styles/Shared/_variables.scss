@@ -19,10 +19,10 @@ $responsive-behavior:   down;   // Responsive direction can be 'up', 'down' or '
 
 /// A list of named breakpoints. These are used in the 'respond-to()' mixin to quickly create media queries (@type Map).
 $breakpoints: (
-  small             :   0,
-  mobile            :   768px,
-  tablet            :   1024px,
-  desktop           :   <%= answers.projectGridWidth %>px,
+    small             :   0,
+    mobile            :   767px,
+    tablet            :   1024px,
+    desktop           :   1200px,
 ) !default;
 
 // Typography

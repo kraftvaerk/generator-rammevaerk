@@ -7,7 +7,6 @@
 			"folder_exclude_patterns":
 			[
                 ".vs",
-                ".nuget",
 				"node_modules",
 			],
 		}

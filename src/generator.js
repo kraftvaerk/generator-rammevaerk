@@ -120,16 +120,6 @@ export default class Generator extends Base {
                     default: `https://tfs.kraftvaerk.com/tfs/KvCollection/_git/${_.kebabCase(this.appname)}`
                 });
 
-                // Content Management System
-                questions.push({
-                    type: 'list',
-                    name: 'projectCMS',
-                    message: chalk.yellow('Which CMS will it be intergrated in?'),
-                    choices: ['Sitecore', 'Umbraco', 'Custom'],
-                    default: 'Sitecore',
-                    filter: (cms) => cms.toLowerCase()
-                });
-
                 // Integrated Development Environment
                 questions.push({
                     type: 'checkbox',
@@ -270,17 +260,17 @@ export default class Generator extends Base {
             directories() {
                 const done = this.async();
                 const folders = [
-                    '.Web',
-                    '.Web/Assets',
-                    '.Web/Content',
-                    '.Web/Fonts',
-                    '.Web/Styles',
-                    '.Web/Styles/' + this.answers.projectName,
-                    '.Web/Styles/Shared',
-                    '.Web/Styles/Shared/Vendor',
-                    '.Web/Scripts',
-                    '.Web/Scripts/' + this.answers.projectName,
-                    '.Web/Scripts/Shared'
+                    '.Website',
+                    '.Website/Assets',
+                    '.Website/Content',
+                    '.Website/Fonts',
+                    '.Website/Styles',
+                    '.Website/Styles/' + this.answers.projectName,
+                    '.Website/Styles/Shared',
+                    '.Website/Styles/Shared/Vendor',
+                    '.Website/Scripts',
+                    '.Website/Scripts/' + this.answers.projectName,
+                    '.Website/Scripts/Shared'
                 ];
 
                 if (!this.options['keep-silence']){
@@ -388,6 +378,7 @@ export default class Generator extends Base {
 
                 this.directory('project-name.Gulp', `${this.answers.projectName}.Gulp`);
 
+                this.bulkCopy('_babelrc', '.babelrc');
                 this.copy('_gulpfile.js', 'gulpfile.js');
 
                 done();

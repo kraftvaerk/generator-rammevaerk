@@ -72,7 +72,7 @@ var Generator = function (_Base) {
     _inherits(Generator, _Base);
 
     function Generator() {
-        var _Object$getPrototypeO;
+        var _ref;
 
         _classCallCheck(this, Generator);
 
@@ -87,7 +87,7 @@ var Generator = function (_Base) {
         //     required: false,
         // });
 
-        var _this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Generator)).call.apply(_Object$getPrototypeO, [this].concat(args)));
+        var _this2 = _possibleConstructorReturn(this, (_ref = Generator.__proto__ || Object.getPrototypeOf(Generator)).call.apply(_ref, [this].concat(args)));
         // Call the parent constructor
 
 
@@ -309,7 +309,7 @@ var Generator = function (_Base) {
                     });
 
                     this.prompt(questions).then(function (answers) {
-                        var gitName = _this3.user.git.name() ? ' — ' + _this3.user.git.name().split(' ')[0] : '.';
+                        var gitName = _this3.user.git.name() ? ' \u2014 ' + _this3.user.git.name().split(' ')[0] : '.';
 
                         _this3.answers = answers;
                         _this3.answers.projectName = capitalizeKebabCase(_this3.answers.projectName);

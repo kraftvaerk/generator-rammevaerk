@@ -1,17 +1,18 @@
 {
-  "jspm": {
-    "directories": {
-      "packages": "Kraftvaerk.Company.Web/Scripts/Vendor"
-    },
-    "configFile": "Kraftvaerk.Company.Web/Scripts/system.config.js",
-    "dependencies": {
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.25",
-      "babel-runtime": "npm:babel-runtime@^5.8.25",
-      "core-js": "npm:core-js@^1.1.4"
-    },
-    "overrides": {
+    "jspm": {
+        "directories": {
+            "baseURL": "Project.Website",
+            "packages": "Project.Website/Content/Vendor"
+        },
+        "configFile": "Project.Website/Scripts/system.config.js",
+        "dependencies": {
+        },
+        "devDependencies": {
+            "babel": "npm:babel-core@^5.8.25",
+            "babel-runtime": "npm:babel-runtime@^5.8.25",
+            "core-js": "npm:core-js@^1.1.4"
+        },
+        "overrides": {
+        }
     }
-  }
 }

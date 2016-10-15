@@ -16,9 +16,9 @@
     "node": ">=4.2.2"
   },
   "scripts": {
-    "compile": "babel src/generator.js --out-file app/index.js",
+    "build": "babel src/generator.js --out-file app/index.js",
     "watch": "babel src/generator.js --watch --out-file app/index.js",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run build",
     "lint": "eslint src/generator.js",
     "test": "ava test/test.js --fail-fast --verbose"
   },

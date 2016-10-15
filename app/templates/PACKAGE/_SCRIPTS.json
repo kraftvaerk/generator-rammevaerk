@@ -1,10 +1,10 @@
 {
     "scripts": {
-        "install": "jspm install && gulp scripts:pathfix",
-        "jspm": "jspm",
-        "gulp": "gulp",
+        "install": "jspm install --production",
         "lint": "gulp scripts:lint && gulp styles:lint",
         "watch": "gulp watch",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "jspm": "jspm",
+        "gulp": "gulp"
     }
 }

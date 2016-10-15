@@ -54,7 +54,7 @@ html.no-js(lang="en" dir="ltr")
         //- Stylesheet
         style.
             @import '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600';
-        link(rel="stylesheet" href="../Content/Styles/<%= answers.projectName %>/screen.min.css" type="text/css" media="all")
+        link(rel="stylesheet" href="/Content/Styles/<%= answers.projectName %>/screen.min.css" type="text/css" media="all")
 
         block scriptTop
 
@@ -74,9 +74,13 @@ html.no-js(lang="en" dir="ltr")
 
 
         // Scripts
-        //script(type="text/javascript" src="../Content/Scripts/<%= answers.projectName %>.bundle.js")
-        script(type="text/javascript" src="../scripts/vendor/system.js")
-        script(type="text/javascript" src="../scripts/system.config.js")
+        //script(type="text/javascript" src="/Content/Scripts/<%= answers.projectName %>.bundle.js")
+        script(type="text/javascript" src="/Content/Vendor/system.js")
+        script(type="text/javascript" src="/Content/Scripts/system.config.js")
         script.
-            var site = System.import('../Scripts/<%= answers.projectName %>/index');
+            System.settings = {
+                'cacheBust': '?v=' + Date.now()
+            };
+
+            var site = System.import('/Content/Scripts/<%= answers.projectName %>/index');
         block scriptBottom

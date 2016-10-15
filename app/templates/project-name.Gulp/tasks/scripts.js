@@ -20,7 +20,7 @@ gulp.task('scripts:config', () => {
                 .pipe(sourcemaps.init())
                 .pipe(babel())
                 .pipe(sourcemaps.write('.'))
-                .pipe(replace('Content/Scripts/', 'Scripts/'))
+                .pipe(replace('Content/Vendor/', 'Vendor/'))
                 .pipe(gulp.dest(conf.js.dest))
                 .on('error', gutil.log);
 });

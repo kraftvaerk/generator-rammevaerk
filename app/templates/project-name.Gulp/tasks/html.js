@@ -1,6 +1,6 @@
 'use strict';
 
-const gulp            = require('gulp-help')(require('gulp'));
+const gulp            = require('gulp');
 const pug             = require('gulp-pug');
 const rename          = require('gulp-rename');
 const plumber         = require('gulp-plumber');
@@ -10,9 +10,10 @@ const gulpif          = require('gulp-if');
 const gutil           = require('gulp-util');
 const conf            = require('../config');
 
-gulp.task('html', 'Convert pug into html for mockup', () => {
-    return gulp.src(conf.html.src + '**/*.pug')
-		.pipe(plumber({
+// Convert pug into html for mockup
+gulp.task('html', () => {
+    return gulp.src([conf.html.src + '/**/*.pug', '!**/includes/*.pug'])
+                .pipe(plumber({
                     errorHandler: function (err) {
                         gutil.log('Filename: ', gutil.colors.bold.red(err.file));
                         gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
@@ -21,7 +22,9 @@ gulp.task('html', 'Convert pug into html for mockup', () => {
                         this.emit('end');
                     }
                 }))
-                .pipe(gulpif((global.isWatching && !global.isInclude), changed(conf.html.dest, {extension: '.html'})))
+                .pipe(gulpif((true), changed((file) => {
+                    return file.path.replace('/pug', '');
+                }, {extension: '.html'})))
                 .pipe(gulpif((global.isWatching && !global.isInclude), cached('pug')))
                 .pipe(pug({
                     data: {
@@ -33,10 +36,15 @@ gulp.task('html', 'Convert pug into html for mockup', () => {
                     },
                     pretty: true
                 }))
-                .pipe(rename(function(path){
-                    path.dirname = '.';
-                    if (path.basename !== 'index'){
-                        path.basename = 'tpl-' + path.basename;
+                .pipe(rename((path) => {
+                    if (!(/includes/.test(path.dirname))){
+                        path.dirname = path.dirname.replace('pug', '');
+
+                        if (path.basename !== 'index'){
+                            path.basename = 'tpl-' + path.basename;
+                        }
+                    } else {
+                        return;
                     }
                 }))
                 .pipe(gulp.dest(conf.html.dest))

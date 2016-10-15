@@ -2,7 +2,7 @@
 
 const fs              = require('fs');
 const path            = require('path');
-const gulp            = require('gulp-help')(require('gulp'));
+const gulp            = require('gulp');
 const plumber         = require('gulp-plumber');
 const gulpFilter      = require('gulp-filter');
 const flatten         = require('gulp-flatten');
@@ -13,7 +13,7 @@ const conf            = require('../config');
 /** Plumber error function */
 const onError = function (err) {
     gutil.beep();
-    console.log(err);
+    console.log(err); // eslint-disable-line
     this.emit('end');
 };
 
@@ -78,7 +78,7 @@ const getBrand = () => {
 };
 
 /** Generates svg synbol mapping */
-gulp.task('svg:generate', 'Create SVG symbol mapping', () => {
+gulp.task('svg:generate', () => {
     const brand = getBrand();
 
     /** If a brand is not selected it means we are running the default task which should generate symbols for all brands */
@@ -100,7 +100,7 @@ gulp.task('svg:generate', 'Create SVG symbol mapping', () => {
 });
 
 /** Copies generated svg symbol mapping to dest folder */
-gulp.task('svg', 'Copy symnbol svg to dest folder', ['svg:generate'], () => {
+gulp.task('svg', ['svg:generate'], () => {
     const brand = getBrand();
 
     /** If a brand is not selected it means we are running the default task which should generate symbols for all brands */

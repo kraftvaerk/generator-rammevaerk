@@ -1,4 +1,3 @@
-/// <binding BeforeBuild='default' ProjectOpened='watch' />
 'use strict';
 
 /*
@@ -6,17 +5,36 @@
   ===========
   Rather than manage one giant configuration file responsible
   for creating multiple tasks, each task has been broken out into
-  its own file in gulp/tasks. Any files in that directory get
-  automatically required below.
-  To add a new task, simply add a new task file that directory.
-  gulp/tasks/default.js specifies the default set of tasks to run
-  when you run `gulp`.
+  its own file in gulp/tasks. To add a new task, simply add a
+  new task file that directory.
 */
 
-const gulp = require('gulp-help')(require('gulp'));
-const requireDir = require('require-dir');
+const gulp = require('gulp');
+const production = process.env.NODE_ENV === 'production' ? true : false;
+const taskPath = './<%= answers.projectName %>.Gulp';
+const tasks = [
+    'styles',
+    'scripts',
+    'images',
+    'svg'
+];
 
-// Require all tasks in gulp/tasks, including subfolders
-requireDir('./<%= answers.projectName %>.Gulp/tasks', { recurse: true });
+// Require tasks in gulp/tasks
+if (!production){
+    require(taskPath + '/tasks/browser-sync');
+    require(taskPath + '/tasks/html');
+    require(taskPath + '/tasks/watch');
+    require(taskPath + '/tasks/scripts-lint');
+    require(taskPath + '/tasks/styles-lint');
 
-gulp.task('default', false, ['styles', 'scripts', 'html', 'images', 'svg']);
+    tasks.push('html');
+    tasks.push('scripts:lint');
+    tasks.push('styles:lint');
+}
+
+require(taskPath + '/tasks/images');
+require(taskPath + '/tasks/scripts');
+require(taskPath + '/tasks/styles');
+require(taskPath + '/tasks/svg');
+
+gulp.task('default', tasks);

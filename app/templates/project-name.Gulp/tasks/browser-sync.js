@@ -1,17 +1,17 @@
 'use strict';
 
-const gulp            = require('gulp-help')(require('gulp'));
+const gulp            = require('gulp');
 const browserSync     = require('browser-sync');
 const gutil           = require('gulp-util');
 const conf            = require('../config');
 
-gulp.task('server', false, ['default'], () => {
+gulp.task('server', ['default'], () => {
     browserSync({
         logPrefix: gutil.colors.bold.white(conf.pkg.name.toUpperCase()),
         server: {
             baseDir: conf.baseDir
         },
-        startPath: './mockup/index.html',
+        startPath: './Mockup/<%= answers.projectName %>/index.html',
         index: 'index.html',
         open: true,
         directory: true,
@@ -19,6 +19,7 @@ gulp.task('server', false, ['default'], () => {
             click: true,
             forms: true,
             scroll: true
-        }
+        },
+        online: true
     });
 });

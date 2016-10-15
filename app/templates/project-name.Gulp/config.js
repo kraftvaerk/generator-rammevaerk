@@ -6,13 +6,11 @@ const baseDir     = './<%= answers.projectName %>.Web';
 module.exports = {
     pkg: pkg,
 
-    namespace: 'st',
-
     baseDir: baseDir,
 
     html: {
-        dest: baseDir + '/mockup',
-        src: baseDir + '/mockup/pug'
+        dest: baseDir + '/Mockup',
+        src: baseDir + '/Mockup'
     },
 
     js: {

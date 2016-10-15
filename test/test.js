@@ -47,9 +47,9 @@ test.serial('generates expected dependencies', async () => {
     assert.noFileContent('package.json', '"cookieConsent"');
 
     const unExpected = [
-        'AvaTest.web/Mockup/cookie.jade',
-        'AvaTest.web/Styles/Shared/Vendor/cookieconsent.scss',
-        'AvaTest.web/Scripts/Shared/cookieconsent/index.js'
+        'AvaTest.Website/Mockup/pug/cookie.jade',
+        'AvaTest.Website/Styles/Shared/Vendor/cookieconsent.scss',
+        'AvaTest.Website/Scripts/Shared/cookieconsent/index.js'
     ];
 
     assert.noFile(unExpected);

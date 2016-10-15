@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/",
+  baseURL: "/Content",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
@@ -9,8 +9,8 @@ System.config({
     ]
   },
   paths: {
-    "github:*": "Scripts/Vendor/github/*",
-    "npm:*": "Scripts/Vendor/npm/*"
+    "github:*": "Content/Vendor/github/*",
+    "npm:*": "Content/Vendor/npm/*"
   },
 
   meta: {

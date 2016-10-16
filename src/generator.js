@@ -542,7 +542,8 @@ export default class Generator extends Base {
                 this.use = {
                     slider: _.includes(this.answers.projectModules, 'slider'),
                     lightbox: _.includes(this.answers.projectModules, 'lightbox'),
-                    cookieConsent: _.includes(this.answers.projectModules, 'cookieConsent')
+                    cookieConsent: _.includes(this.answers.projectModules, 'cookieConsent'),
+                    svgSprites: _.includes(this.answers.projectModules, 'svgSprites')
                 };
 
                 this.bulkCopy(

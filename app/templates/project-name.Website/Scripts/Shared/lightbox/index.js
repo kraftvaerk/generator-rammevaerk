@@ -2,7 +2,6 @@
 
 import normal       from './lightbox.default';
 import elastic      from './lightbox.elastic';
-import flash        from './lightbox.flash';
 import gallery      from './lightbox.gallery';
 import iframe       from './lightbox.iframe';
 import inline       from './lightbox.inline';
@@ -17,7 +16,6 @@ import video        from './lightbox.video';
 export default {
     normal,
     elastic,
-    flash,
     gallery,
     iframe,
     inline,

@@ -31,7 +31,6 @@ window.App.common = {
     lightbox() {
         lightbox.normal('.lightbox');
         lightbox.elastic('.lightbox-elastic');
-        lightbox.flash('.lightbox-flash');
         lightbox.gallery('.lightbox-gallery');
         lightbox.iframe('.lightbox-iframe');
         lightbox.nooverlay('.lightbox-nooverlay');

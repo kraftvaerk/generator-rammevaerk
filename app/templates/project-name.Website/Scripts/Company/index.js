@@ -4,8 +4,9 @@ import '../Shared/legacy/features';
 import '../Shared/legacy/polyfills';
 
 import $                from 'jquery';
+import svg4everybody    from 'svg4everybody';
+
 import helpers          from '../Shared/helpers/index';
-import svg4everybody    from '../Shared/svg4everybody/index';
 <% if (use.cookieConsent){ %>import cookieConsent    from '../Shared/cookieconsent/index';<% } %>
 <% if (use.lightbox){ %>import lightbox         from '../Shared/lightbox/index';<% } %>
 
@@ -21,13 +22,12 @@ window.App.common = {
     init() {
         console.log('jquery:', $.fn.jquery);
 
-        this.svg();
-<% if (use.cookieConsent){ %>        this.cookieconsent();<% } %>
+<% if (use.svgSprites){ %>        svg4everybody();
+<% if (use.cookieConsent){ %>        cookieConsent.init('#cookieConsent');<% } %>
+
 <% if (use.lightbox){ %>        this.lightbox();<% } %>
     },
-    svg(){
-        svg4everybody.init();
-    },<% if (use.lightbox){ %>
+    <% if (use.lightbox){ %>
     lightbox() {
         lightbox.normal('.lightbox');
         lightbox.elastic('.lightbox-elastic');
@@ -36,9 +36,6 @@ window.App.common = {
         lightbox.iframe('.lightbox-iframe');
         lightbox.nooverlay('.lightbox-nooverlay');
         lightbox.video('.lightbox-video');
-    },<% } %>
-    <% if (use.cookieConsent){ %>cookieconsent() {
-        cookieConsent.init('#cookieConsent');
     }<% } %>
 };
 

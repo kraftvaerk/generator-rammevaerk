@@ -2,85 +2,85 @@ extends includes/layout
 
 block append vars
     - var pageTitle = 'tpl-grid'
-    - var gridColumns = 12
+    - var gridColumns = <%= answers.projectGridColumns %>
 
 block content
     section.debug.section
         div.container
-            h2 .grid-col-
+            h2 .grid__col--
                 span X
             p The grid is a a fluid grid with a max width, that shrinks with the browser/device at smaller sizes. The max width can be changed with one line of CSS and all columns will resize accordingly. The syntax is simple and it makes coding responsive much easier. Go ahead, resize the browser.
 
-            div.grid-row
-                div(class="grid-col-" + gridColumns)
+            div.grid__row
+                div(class="grid__col--" + gridColumns)
                     div.pad #{gridColumns}
-            // .grid-row
+            // .grid__row
 
             - for (var i=1; i<=gridColumns; i++)
                 - if(gridColumns-i != 0)
-                    div.grid-row
-                        div(class="grid-col-"+(gridColumns-i))
+                    div.grid__row
+                        div(class="grid__col--"+(gridColumns-i))
                             =gridColumns-i
-                        div(class="grid-col-"+i)
+                        div(class="grid__col--"+i)
                             =i
-                    // .grid-row
+                    // .grid__row
 
-            div.grid-row
+            div.grid__row
                 - var size2 = gridColumns / 2
                 - while(size2--)
-                    div.grid-col-2
+                    div.grid__col--2
                         | 2
-            // .grid-row
+            // .grid__row
 
-            div.grid-row
+            div.grid__row
                 - var size1 = gridColumns
                 - while(size1--)
-                    div.grid-col-1
+                    div.grid__col--1
                         | 1
-            // .grid-row
+            // .grid__row
 
     section.debug.section
         div.container
             h2 Nested rows
 
-            div.grid-row
-                div.grid-col-4
-                    div.grid-row
-                        div.grid-col-2
+            div.grid__row
+                div.grid__col--4
+                    div.grid__row
+                        div.grid__col--2
                             | Mod
-                        div.grid-col-2
+                        div.grid__col--2
                             | Mod
-                div.grid-col-8
+                div.grid__col--8
                     | Mod
 
-            // .grid-row
+            // .grid__row
 
-            div.grid-row
-                div.grid-col-6
-                    div.grid-row
-                        div.grid-col-4
-                            div.grid-row
-                                div.grid-col-2
+            div.grid__row
+                div.grid__col--6
+                    div.grid__row
+                        div.grid__col--4
+                            div.grid__row
+                                div.grid__col--2
                                     | Mod
-                                div.grid-col-2
+                                div.grid__col--2
                                     | Mod
-                        div.grid-col-2
+                        div.grid__col--2
                             | Mod
-                div.grid-col-3
+                div.grid__col--3
                     | Mod
-                div.grid-col-3
+                div.grid__col--3
                     | Mod
 
-            // .grid-row
+            // .grid__row
 
     section.debug.section
         div.container
             h2 .grid-push-
                 span X
 
-            div.grid-row
-                div.grid-col-8
+            div.grid__row
+                div.grid__col--8
                     | 8
-                div.grid-col-2.grid-push-2
+                div.grid__col--2.grid__col--push-2
                     | 2
-            // .grid-row
+            // .grid__row

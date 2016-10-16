@@ -11,16 +11,6 @@
 @import 'layout__header';
 @import 'layout__footer';
 
-// Container
-// ========================================================================
-
-.container {
-    width: 100%;
-    max-width: $site-width;
-    margin: 0 auto;
-    padding: 0 $grid-gutter/2;
-}
-
 // Layout + Sticky footer
 // ========================================================================
 body {
@@ -54,11 +44,6 @@ main {
 
     .is-popup & {
         padding: 0;
-    }
-
-    main > &:first-child .container:first-of-type,
-    main > &:first-child .grid-row:first-of-type {
-        margin-top: 12px;
     }
 }
 

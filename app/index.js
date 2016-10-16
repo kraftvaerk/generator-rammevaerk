@@ -176,18 +176,6 @@ var Generator = function (_Base) {
                         default: 'https://tfs.kraftvaerk.com/tfs/KvCollection/_git/' + _lodash2.default.kebabCase(this.appname)
                     });
 
-                    // Content Management System
-                    questions.push({
-                        type: 'list',
-                        name: 'projectCMS',
-                        message: _chalk2.default.yellow('Which CMS will it be intergrated in?'),
-                        choices: ['Sitecore', 'Umbraco', 'Custom'],
-                        default: 'Sitecore',
-                        filter: function filter(cms) {
-                            return cms.toLowerCase();
-                        }
-                    });
-
                     // Integrated Development Environment
                     questions.push({
                         type: 'checkbox',
@@ -230,12 +218,33 @@ var Generator = function (_Base) {
                         }
                     });
 
-                    // Project modles
+                    // Project libraries
+                    questions.push({
+                        type: 'list',
+                        name: 'projectLibraries',
+                        message: _chalk2.default.yellow('Which libraries will you be using?'),
+                        choices: ['jQuery', 'jQuery + Angular', 'React'],
+                        default: 'jQuery',
+                        filter: function filter(lib) {
+                            return lib.toLowerCase();
+                        }
+                    });
+
+                    // Project modules
                     questions.push({
                         type: 'checkbox',
                         name: 'projectModules',
                         message: _chalk2.default.yellow('Which frontend modules do you want to include?'),
                         choices: [{
+                            name: 'SVG Sprites',
+                            checked: true
+                        }, {
+                            name: 'Lazyload Images',
+                            checked: true
+                        }, {
+                            name: 'Animations On Scroll',
+                            checked: false
+                        }, {
                             name: 'Lightbox',
                             checked: true
                         }, {
@@ -248,13 +257,10 @@ var Generator = function (_Base) {
                             name: 'Datepicker',
                             disabled: true
                         }, {
-                            name: 'Alert',
-                            disabled: true
-                        }, {
                             name: 'GoogleMaps',
                             disabled: true
                         }],
-                        default: ['lightbox', 'slider', 'cookieConsent'],
+                        default: ['lightbox', 'slider', 'cookieConsent', 'svgSprites', 'lazyloadImages'],
                         filter: function filter(IDEs) {
                             return IDEs.map(function (IDE) {
                                 return _lodash2.default.camelCase(IDE);
@@ -328,7 +334,7 @@ var Generator = function (_Base) {
                     var _this4 = this;
 
                     var done = this.async();
-                    var folders = ['.Web', '.Web/Assets', '.Web/Content', '.Web/Fonts', '.Web/Styles', '.Web/Styles/' + this.answers.projectName, '.Web/Styles/Shared', '.Web/Styles/Shared/Vendor', '.Web/Scripts', '.Web/Scripts/' + this.answers.projectName, '.Web/Scripts/Shared'];
+                    var folders = ['.Website', '.Website/Assets', '.Website/Content', '.Website/Fonts', '.Website/Styles', '.Website/Styles/' + this.answers.projectName, '.Website/Styles/Shared', '.Website/Scripts', '.Website/Scripts/' + this.answers.projectName, '.Website/Scripts/Shared'];
 
                     if (!this.options['keep-silence']) {
                         this.log('\n');
@@ -434,6 +440,7 @@ var Generator = function (_Base) {
 
                     this.directory('project-name.Gulp', this.answers.projectName + '.Gulp');
 
+                    this.bulkCopy('_babelrc', '.babelrc');
                     this.copy('_gulpfile.js', 'gulpfile.js');
 
                     done();
@@ -491,24 +498,35 @@ var Generator = function (_Base) {
                     // Engines
                     pkg = _lodash2.default.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_ENGINES.json'), {}));
 
-                    // DevDependencies
-                    pkg = _lodash2.default.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_DEVDEPENDENCIES.json'), {}));
+                    // Dependencies
+                    pkg = _lodash2.default.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_DEPENDENCIES.json'), {}));
 
                     // JSPM
                     pkg = _lodash2.default.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_JSPM.json'), {}));
 
-                    pkg.jspm.directories.packages = this.answers.projectName + '.Web/Scripts/Vendor';
-                    pkg.jspm.configFile = this.answers.projectName + '.Web/Scripts/system.config.js';
+                    pkg.jspm.directories.baseURL = this.answers.projectName + '.Website';
+                    pkg.jspm.directories.packages = this.answers.projectName + '.Website/Content/Vendor';
+                    pkg.jspm.configFile = this.answers.projectName + '.Website/Scripts/system.config.js';
 
+                    // Dependencies
                     pkg.jspm.dependencies.jquery = 'npm:jquery';
-                    pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@2.0.3';
+
+                    if (_lodash2.default.includes(this.answers.projectModules, 'jquery + angular')) {
+                        var overrides = {
+                            'npm:angular@1.5.8': {
+                                'main': 'angular.min'
+                            }
+                        };
+                        pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, overrides);
+                        pkg.jspm.dependencies.angular = 'npm:angular@1.5.8';
+                    }
 
                     if (_lodash2.default.includes(this.answers.projectModules, 'cookieConsent')) {
                         pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@0.0.3';
                     }
 
                     if (_lodash2.default.includes(this.answers.projectModules, 'lightbox')) {
-                        var fancyboxOverrides = {
+                        var _overrides = {
                             'github:fancyapps/fancyBox@2.1.5': {
                                 'main': 'source/jquery.fancybox',
                                 'format': 'global',
@@ -523,12 +541,30 @@ var Generator = function (_Base) {
                                 }
                             }
                         };
-                        pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, fancyboxOverrides);
+                        pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, _overrides);
                         pkg.jspm.dependencies.fancyBox = 'github:fancyapps/fancyBox@2.1.5';
                     }
 
                     if (_lodash2.default.includes(this.answers.projectModules, 'slider')) {
-                        pkg.jspm.dependencies.owlCarousel = 'github:smashingboxes/OwlCarousel2@2.1.4';
+                        var _overrides2 = {
+                            'github:OwlCarousel2/OwlCarousel2@2.1.6': {
+                                'main': 'dist/owl.carousel.min'
+                            }
+                        };
+                        pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, _overrides2);
+                        pkg.jspm.dependencies.owlCarousel = 'github:OwlCarousel2/OwlCarousel2@2.1.6';
+                    }
+
+                    if (_lodash2.default.includes(this.answers.projectModules, 'svgSprites')) {
+                        pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@2.0.3';
+                    }
+
+                    if (_lodash2.default.includes(this.answers.projectModules, 'lazyloadImages')) {
+                        pkg.jspm.dependencies.lazysizes = 'github:aFarkas/lazysizes@2.0.0';
+                    }
+
+                    if (_lodash2.default.includes(this.answers.projectModules, 'animationsOnScroll')) {
+                        pkg.jspm.dependencies.aos = 'github:michalsnik/aos@2.0.4';
                     }
 
                     // Write package.json
@@ -550,64 +586,66 @@ var Generator = function (_Base) {
                         cookieConsent: _lodash2.default.includes(this.answers.projectModules, 'cookieConsent')
                     };
 
-                    this.bulkCopy('project-name.Web/favicon.ico', this.answers.projectName + '.Web/favicon.ico');
+                    this.bulkCopy('project-name.Website/favicon.ico', this.answers.projectName + '.Website/favicon.ico');
 
-                    this.bulkCopy('project-name.Web/Styles/Company/img/logo.svg', this.answers.projectName + '.Web/Styles/' + this.answers.projectName + '/img/logo.svg');
+                    this.bulkCopy('project-name.Website/Styles/Company/img/logo.svg', this.answers.projectName + '.Website/Styles/' + this.answers.projectName + '/img/logo.svg');
 
-                    this.bulkDirectory('project-name.Web/Styles/Company/svg', this.answers.projectName + '.Web/Styles/' + this.answers.projectName + '/svg');
+                    if (_lodash2.default.includes(this.answers.projectModules, 'svgSprites')) {
+                        this.bulkDirectory('project-name.Website/Styles/Company/svg', this.answers.projectName + '.Website/Styles/' + this.answers.projectName + '/svg');
+                    }
 
                     // Pug
                     var pugGlob = ['**', '!images/**', '!**/{cookie,lightbox}.pug'];
 
-                    copyDirectory.call(this, 'project-name.Web/Mockup', this.answers.projectName + '.Web/Mockup', pugGlob);
+                    copyDirectory.call(this, 'project-name.Website/Mockup/Company', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName, pugGlob);
 
                     if (this.use.cookieConsent) {
-                        this.copy('project-name.Web/Mockup/pug/cookie.pug', this.answers.projectName + '.Web/Mockup/pug/cookie.pug');
+                        this.copy('project-name.Website/Mockup/Company/pug/cookie.pug', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName + '/pug/cookie.pug');
 
-                        this.copy('project-name.Web/Styles/Company/_cookie-consent.scss', this.answers.projectName + '.Web/Styles/' + this.answers.projectName + '/_cookie-consent.scss');
+                        this.copy('project-name.Website/Styles/Company/_cookie-consent.scss', this.answers.projectName + '.Website/Styles/' + this.answers.projectName + '/_cookie-consent.scss');
 
-                        this.copy('project-name.Web/Styles/Shared/Vendor/cookieconsent.scss', this.answers.projectName + '.Web/Styles/Shared/Vendor/cookieconsent.scss');
+                        this.copy('project-name.Website/Styles/Shared/Vendor/cookieconsent.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/cookieconsent.scss');
 
-                        this.directory('project-name.Web/Scripts/Shared/cookieconsent', this.answers.projectName + '.Web/Scripts/Shared/cookieconsent');
+                        this.directory('project-name.Website/Scripts/Shared/cookieconsent', this.answers.projectName + '.Website/Scripts/Shared/cookieconsent');
                     }
 
                     if (this.use.lightbox) {
-                        copyDirectory.call(this, 'project-name.Web/Styles/Company/img', this.answers.projectName + '.Web/Styles/' + this.answers.projectName, ['fancyBox-*.*'], true);
+                        copyDirectory.call(this, 'project-name.Website/Styles/Company/img', this.answers.projectName + '.Website/Styles/' + this.answers.projectName, ['fancyBox-*.*'], true);
 
-                        this.copy('project-name.Web/Mockup/pug/lightbox.pug', this.answers.projectName + '.Web/Mockup/pug/lightbox.pug');
+                        this.copy('project-name.Website/Mockup/Company/pug/lightbox.pug', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName + '/pug/lightbox.pug');
 
-                        this.bulkDirectory('project-name.Web/Mockup/images/fancybox', this.answers.projectName + '.Web/Mockup/images/fancybox');
+                        this.bulkDirectory('project-name.Website/Mockup/images/fancybox', this.answers.projectName + '.Website/Mockup/images/fancybox');
 
-                        this.copy('project-name.Web/Styles/Shared/Vendor/fancybox.scss', this.answers.projectName + '.Web/Styles/Shared/Vendor/fancybox.scss');
+                        this.copy('project-name.Website/Styles/Shared/Vendor/fancybox.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/fancybox.scss');
 
-                        this.directory('project-name.Web/Scripts/Shared/lightbox', this.answers.projectName + '.Web/Scripts/Shared/lightbox');
+                        this.directory('project-name.Website/Scripts/Shared/lightbox', this.answers.projectName + '.Website/Scripts/Shared/lightbox');
                     }
 
                     if (this.use.slider) {
-                        this.copy('project-name.Web/Styles/Shared/Vendor/owlcarousel.scss', this.answers.projectName + '.Web/Styles/Shared/Vendor/owlcarousel.scss');
+                        this.copy('project-name.Website/Styles/Shared/Vendor/owlcarousel.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/owlcarousel.scss');
                     }
 
                     // Styles
                     var StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookie-consent,cookieconsent,owlcarousel,fancybox}.scss'];
 
-                    this.copy('project-name.Web/Styles/Shared/Vendor/normalize.scss', this.answers.projectName + '.Web/Styles/Shared/Vendor/normalize.scss');
+                    this.copy('project-name.Website/Styles/Shared/Vendor/normalize.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/normalize.scss');
 
-                    copyDirectory.call(this, 'project-name.Web/Styles/Company', this.answers.projectName + '.Web/Styles/' + this.answers.projectName, StylesGlob);
+                    copyDirectory.call(this, 'project-name.Website/Styles/Company', this.answers.projectName + '.Website/Styles/' + this.answers.projectName, StylesGlob);
 
-                    copyDirectory.call(this, 'project-name.Web/Styles/Shared', this.answers.projectName + '.Web/Styles/Shared', StylesGlob);
+                    copyDirectory.call(this, 'project-name.Website/Styles/Shared', this.answers.projectName + '.Website/Styles/Shared', StylesGlob);
 
                     // Scripts
-                    this.copy('project-name.Web/Scripts/Company/index.js', this.answers.projectName + '.Web/Scripts/' + this.answers.projectName + '/index.js');
+                    this.copy('project-name.Website/Scripts/Company/index.js', this.answers.projectName + '.Website/Scripts/' + this.answers.projectName + '/index.js');
 
-                    this.copy('project-name.Web/Scripts/system.config.js', this.answers.projectName + '.Web/Scripts/system.config.js');
+                    this.copy('project-name.Website/Scripts/system.config.js', this.answers.projectName + '.Website/Scripts/system.config.js');
 
-                    this.copy('project-name.Web/Scripts/Shared/index.js', this.answers.projectName + '.Web/Scripts/Shared/index.js');
+                    this.copy('project-name.Website/Scripts/Shared/index.js', this.answers.projectName + '.Website/Scripts/Shared/index.js');
 
-                    this.directory('project-name.Web/Scripts/Shared/helpers', this.answers.projectName + '.Web/Scripts/Shared/helpers');
+                    this.directory('project-name.Website/Scripts/Shared/helpers', this.answers.projectName + '.Website/Scripts/Shared/helpers');
 
-                    this.directory('project-name.Web/Scripts/Shared/legacy', this.answers.projectName + '.Web/Scripts/Shared/legacy');
+                    this.directory('project-name.Website/Scripts/Shared/legacy', this.answers.projectName + '.Website/Scripts/Shared/legacy');
 
-                    this.directory('project-name.Web/Scripts/Shared/svg4everybody', this.answers.projectName + '.Web/Scripts/Shared/svg4everybody');
+                    this.directory('project-name.Website/Scripts/Shared/svg4everybody', this.answers.projectName + '.Website/Scripts/Shared/svg4everybody');
 
                     done();
                 }

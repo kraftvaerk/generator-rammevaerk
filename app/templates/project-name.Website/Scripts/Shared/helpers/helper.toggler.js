@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+
 /**
  * Simply toggles parameter show/hide
  * @return {[undefined]}       [nothing returned]

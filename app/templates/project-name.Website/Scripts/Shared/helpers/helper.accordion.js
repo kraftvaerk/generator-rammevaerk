@@ -1,6 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
+
 /**
  * Small plugin for accordion
  * @return {[undefined]}       [nothing returned]

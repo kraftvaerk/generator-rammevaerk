@@ -19,14 +19,13 @@ window.App.helpers = helpers;
 window.App.common = {
     // App.common.init runs on all pages
     init() {
-        console.log('jquery:', $.fn.jquery);
+        console.log('jQuery:', $.fn.jquery);
 
 <% if (use.svgSprites){ %>        svg4everybody();<% } %>
 <% if (use.cookieConsent){ %>        cookieConsent.init('#cookieConsent');<% } %>
 
 <% if (use.lightbox){ %>        this.lightbox();<% } %>
-    },
-    <% if (use.lightbox){ %>
+    },<% if (use.lightbox){ %>
     lightbox() {
         lightbox.normal('.lightbox');
         lightbox.elastic('.lightbox-elastic');

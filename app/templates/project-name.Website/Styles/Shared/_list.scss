@@ -5,12 +5,6 @@
 //
 // ========================================================================
 
-ul {
-    margin: 0;
-    padding: 0;
-    list-style-position: inside;
-}
-
 ol ol,
 ul ol {
     list-style-type: lower-roman;
@@ -35,10 +29,20 @@ dd { margin-left: 0; }
 .list {
     margin: 0;
     padding: 0;
+    list-style-position: inside;
 
     li {
         margin: 0;
         padding: 0;
         list-style: none;
+    }
+
+    &--vertical {
+        width: 100%;
+        clear: fix;
+
+        li {
+            float: left;
+        }
     }
 }

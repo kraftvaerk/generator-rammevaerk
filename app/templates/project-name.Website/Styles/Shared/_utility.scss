@@ -9,18 +9,18 @@
 // Clearfix
 // ========================================================================
 
-.clearfix { clear: fix; }
+.u-clearfix { clear: fix; }
 
 // Floats
 // ========================================================================
 
-.right { float: right; }
-.left { float: left; }
+.u-right { float: right; }
+.u-left { float: left; }
 
 // Center - Centers horizontally. Can be used inside or outside the grid.
 // ========================================================================
 
-.centered {
+.u-center {
     display: block;
     float: none;
     margin-right: auto;
@@ -31,19 +31,48 @@
 // ========================================================================
 
 // Text alignment
-.text-right { text-align: right; }
-.text-left { text-align: left; }
-.text-center { text-align: center; }
+.u-text-right { text-align: right; }
+.u-text-left { text-align: left; }
+.u-text-center { text-align: center; }
 
 // Text states
-.danger { color: #c00; }
-.mute { color: #000; }
+.u-color-danger { color: #c00; }
+.u-color-mute { color: #000; }
 
 // Visibility
 // ========================================================================
 
-.hidden { display: none; }
-.shown { display: block; }
-.border-none { border: none; }
-.invisible { visibility: hidden; }
-.visible-mobile { display: none; }
+.u-border-none { border: none; }
+.u-invisible { visibility: hidden; }
+
+.u-show {
+    display: block;
+
+    @include respond-to(tablet) {
+        &-tablet {
+            display: block;
+        }
+    }
+
+    @include respond-to(mobile) {
+        &-mobile {
+            display: block;
+        }
+    }
+}
+
+.u-hide {
+    display: none;
+
+    @include respond-to(tablet) {
+        &-tablet {
+            display: none;
+        }
+    }
+
+    @include respond-to(mobile) {
+        &-mobile {
+            display: none;
+        }
+    }
+}

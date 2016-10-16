@@ -580,11 +580,6 @@ export default class Generator extends Base {
                     );
 
                     this.copy(
-                        'project-name.Website/Styles/Company/_cookie-consent.scss',
-                        `${this.answers.projectName}.Website/Styles/${this.answers.projectName}/_cookie-consent.scss`
-                    );
-
-                    this.copy(
                         'project-name.Website/Styles/Shared/Vendor/cookieconsent.scss',
                         `${this.answers.projectName}.Website/Styles/Shared/Vendor/cookieconsent.scss`
                     );
@@ -634,7 +629,7 @@ export default class Generator extends Base {
 
 
                 // Styles
-                const StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookie-consent,cookieconsent,owlcarousel,fancybox}.scss'];
+                const StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookieconsent,owlcarousel,fancybox}.scss'];
 
                 this.copy(
                     'project-name.Website/Styles/Shared/Vendor/normalize.scss',
@@ -658,6 +653,11 @@ export default class Generator extends Base {
 
                 // Scripts
                 this.copy(
+                    'project-name.Website/Scripts/Company/core.js',
+                    `${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/core.js`
+                );
+
+                this.copy(
                     'project-name.Website/Scripts/Company/index.js',
                     `${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`
                 );
@@ -680,11 +680,6 @@ export default class Generator extends Base {
                 this.directory(
                     'project-name.Website/Scripts/Shared/legacy',
                     `${this.answers.projectName}.Website/Scripts/Shared/legacy`
-                );
-
-                this.directory(
-                    'project-name.Website/Scripts/Shared/svg4everybody',
-                    `${this.answers.projectName}.Website/Scripts/Shared/svg4everybody`
                 );
 
                 done();

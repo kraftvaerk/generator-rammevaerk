@@ -5,16 +5,46 @@
 //
 // ========================================================================
 
-// Sticky footer
+// Imports
+// ========================================================================
+
+@import 'layout__header';
+@import 'layout__footer';
+
+// Container
+// ========================================================================
+
+.container {
+    width: 100%;
+    max-width: $site-width;
+    margin: 0 auto;
+    padding: 0 $grid-gutter/2;
+}
+
+// Layout + Sticky footer
 // ========================================================================
 body {
     display: flex;
     flex-direction: column;
+    max-width: 1920px;
     min-height: 100vh;
+    margin: 0 auto;
+    box-shadow: 0 0 76px 4px rgba(0, 0, 0, .1);
+
+    // Sticky footer for IE hack
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        height: 100vh;
+    }
+
+    @include respond-to(mobile) {
+        display: block;
+    }
 }
 
 main {
     flex: 1 0 auto;
+    min-width: 100%;
+    overflow: hidden;
 }
 
 // Sections

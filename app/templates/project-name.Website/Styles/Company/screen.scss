@@ -14,18 +14,14 @@
 <% if (use.lightbox){ %>@import '../Shared/Vendor/fancybox';<% } %>
 
 // Basecoat extension
-@import 'layout';
-@import 'typography';
-@import 'form';
-@import 'list';
-@import 'nav';
+@import 'layout/layout';
+@import 'typography/typography';
+@import 'form/form';
+@import 'list/list';
+@import 'nav/nav';
+@import 'button/button';
 
-// Styles
-@import 'layout__header';
-@import 'layout__footer';
-@import 'button';
-@import 'nav__mobile';
-<% if (use.cookieConsent){ %>@import 'cookie-consent';<% } %>
+// Modules
 
 // Print extension
-@import 'print';
+@import 'print/print';

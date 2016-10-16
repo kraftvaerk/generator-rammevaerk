@@ -16,7 +16,6 @@ window.App = window.App || {};
 <% if (use.lightbox){ %>window.App.lightbox = lightbox;<% } %>
 window.App.helpers = helpers;
 
-
 window.App.common = {
     // App.common.init runs on all pages
     init() {

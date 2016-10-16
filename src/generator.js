@@ -605,8 +605,8 @@ export default class Generator extends Base {
                     );
 
                     this.bulkDirectory(
-                        'project-name.Website/Mockup/images/fancybox',
-                        `${this.answers.projectName}.Website/Mockup/images/fancybox`
+                        'project-name.Website/Mockup/Company/images/fancybox',
+                        `${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/images/fancybox`
                     );
 
                     this.copy(

@@ -583,7 +583,8 @@ var Generator = function (_Base) {
                     this.use = {
                         slider: _lodash2.default.includes(this.answers.projectModules, 'slider'),
                         lightbox: _lodash2.default.includes(this.answers.projectModules, 'lightbox'),
-                        cookieConsent: _lodash2.default.includes(this.answers.projectModules, 'cookieConsent')
+                        cookieConsent: _lodash2.default.includes(this.answers.projectModules, 'cookieConsent'),
+                        svgSprites: _lodash2.default.includes(this.answers.projectModules, 'svgSprites')
                     };
 
                     this.bulkCopy('project-name.Website/favicon.ico', this.answers.projectName + '.Website/favicon.ico');
@@ -602,8 +603,6 @@ var Generator = function (_Base) {
                     if (this.use.cookieConsent) {
                         this.copy('project-name.Website/Mockup/Company/pug/cookie.pug', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName + '/pug/cookie.pug');
 
-                        this.copy('project-name.Website/Styles/Company/_cookie-consent.scss', this.answers.projectName + '.Website/Styles/' + this.answers.projectName + '/_cookie-consent.scss');
-
                         this.copy('project-name.Website/Styles/Shared/Vendor/cookieconsent.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/cookieconsent.scss');
 
                         this.directory('project-name.Website/Scripts/Shared/cookieconsent', this.answers.projectName + '.Website/Scripts/Shared/cookieconsent');
@@ -614,7 +613,7 @@ var Generator = function (_Base) {
 
                         this.copy('project-name.Website/Mockup/Company/pug/lightbox.pug', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName + '/pug/lightbox.pug');
 
-                        this.bulkDirectory('project-name.Website/Mockup/images/fancybox', this.answers.projectName + '.Website/Mockup/images/fancybox');
+                        this.bulkDirectory('project-name.Website/Mockup/Company/images/fancybox', this.answers.projectName + '.Website/Mockup/' + this.answers.projectName + '/images/fancybox');
 
                         this.copy('project-name.Website/Styles/Shared/Vendor/fancybox.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/fancybox.scss');
 
@@ -626,7 +625,7 @@ var Generator = function (_Base) {
                     }
 
                     // Styles
-                    var StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookie-consent,cookieconsent,owlcarousel,fancybox}.scss'];
+                    var StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookieconsent,owlcarousel,fancybox}.scss'];
 
                     this.copy('project-name.Website/Styles/Shared/Vendor/normalize.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/normalize.scss');
 
@@ -635,6 +634,8 @@ var Generator = function (_Base) {
                     copyDirectory.call(this, 'project-name.Website/Styles/Shared', this.answers.projectName + '.Website/Styles/Shared', StylesGlob);
 
                     // Scripts
+                    this.copy('project-name.Website/Scripts/Company/core.js', this.answers.projectName + '.Website/Scripts/' + this.answers.projectName + '/core.js');
+
                     this.copy('project-name.Website/Scripts/Company/index.js', this.answers.projectName + '.Website/Scripts/' + this.answers.projectName + '/index.js');
 
                     this.copy('project-name.Website/Scripts/system.config.js', this.answers.projectName + '.Website/Scripts/system.config.js');
@@ -644,8 +645,6 @@ var Generator = function (_Base) {
                     this.directory('project-name.Website/Scripts/Shared/helpers', this.answers.projectName + '.Website/Scripts/Shared/helpers');
 
                     this.directory('project-name.Website/Scripts/Shared/legacy', this.answers.projectName + '.Website/Scripts/Shared/legacy');
-
-                    this.directory('project-name.Website/Scripts/Shared/svg4everybody', this.answers.projectName + '.Website/Scripts/Shared/svg4everybody');
 
                     done();
                 }

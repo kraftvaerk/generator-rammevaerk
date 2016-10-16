@@ -4,7 +4,7 @@ import '../Shared/legacy/features';
 import '../Shared/legacy/polyfills';
 
 import $                from 'jquery';
-import svg4everybody    from 'svg4everybody';
+<% if (use.svgSprites){ %>import svg4everybody    from 'svg4everybody';<% } %>
 
 import helpers          from '../Shared/helpers/index';
 <% if (use.cookieConsent){ %>import cookieConsent    from '../Shared/cookieconsent/index';<% } %>
@@ -21,7 +21,7 @@ window.App.common = {
     init() {
         console.log('jquery:', $.fn.jquery);
 
-<% if (use.svgSprites){ %>        svg4everybody();
+<% if (use.svgSprites){ %>        svg4everybody();<% } %>
 <% if (use.cookieConsent){ %>        cookieConsent.init('#cookieConsent');<% } %>
 
 <% if (use.lightbox){ %>        this.lightbox();<% } %>

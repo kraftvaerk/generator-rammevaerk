@@ -1,0 +1,78 @@
+//
+// Loader
+// Description:     Defines generic styles for loading indicator
+//
+//
+// ========================================================================
+
+header,
+footer {
+    transition: filter .4s;
+}
+
+.loader {
+    &__overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, .5);
+        opacity: 0;
+        z-index: 1000;
+        user-select: none;
+        transition: opacity .3s;
+    }
+
+    &__container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 110px;
+        height: 110px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: #fff;
+        color: #666;
+        text-align: center;
+        box-shadow: 0 13px 38px -13px rgba(0, 0, 0, .75);
+        transform: scale(0);
+        transition: transform .5s cubic-bezier(.5, -.5, .5, 1.5);
+
+        &::after {
+            content: attr(data-loader-label);
+            display: block;
+            margin: 5px 0;
+            font-size: 1.4rem;
+        }
+
+        .spinner {
+            width: 4.5rem;
+            height: 4.5rem;
+            border: 2px solid #ddd;
+            border-left-color: #333;
+        }
+    }
+}
+
+.is-loading {
+    main,
+    header,
+    footer {
+        filter: blur(5px);
+    }
+
+    .loader__overlay {
+        pointer-events: none;
+        cursor: wait;
+        opacity: 1;
+    }
+
+    .loader__container {
+        transform: scale(1);
+    }
+}

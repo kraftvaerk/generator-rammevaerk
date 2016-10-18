@@ -9,6 +9,7 @@ import tableOverflow             from './helper.tableOverflow';
 import tableRowClick             from './helper.tableRowClick';
 import isTouchDevice             from './helper.isTouchDevice';
 import toggler                   from './helper.toggler';
+import loader                    from './helper.loader';
 
 export default {
     accordion,
@@ -19,5 +20,6 @@ export default {
     tableOverflow,
     tableRowClick,
     toggler,
+    loader,
     isTouchDevice
 };

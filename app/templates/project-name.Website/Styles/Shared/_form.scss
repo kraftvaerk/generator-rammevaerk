@@ -154,6 +154,13 @@ textarea {
 }
 
 /*
+ * Removes clear field 'X' in IE.
+ */
+::-ms-clear {
+    display: none;
+}
+
+/*
  * Removes placeholder transparency in Firefox.
  */
 ::-moz-placeholder {

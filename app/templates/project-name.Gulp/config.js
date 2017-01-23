@@ -31,5 +31,18 @@ module.exports = {
         'Safari >= 8',
         'iOS >= 8',
         'Android >= 4.4'
-    ]
+    ],
+
+    systemjsHooks: '});' +
+        'var systemLocate = System.locate;' +
+        'if(systemLocate){' +
+            'System.locate = function(load) {' +
+              'return Promise.resolve(systemLocate.call(this, load)).then(function(address) {' +
+                'if(System.settings && System.settings.cacheBust){' +
+                    'return address + System.settings.cacheBust;' +
+                '}' +
+                'return address;' +
+              '});' +
+            '};' +
+        '};'
 };

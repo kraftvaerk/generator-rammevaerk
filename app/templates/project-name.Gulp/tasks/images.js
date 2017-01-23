@@ -1,9 +1,9 @@
 'use strict';
 
+const production      = process.env.NODE_ENV === 'production' ? true : false;
 const gulp            = require('gulp');
 const imagemin        = require('gulp-imagemin');
 const plumber         = require('gulp-plumber');
-const gulpif          = require('gulp-if');
 const clean           = require('gulp-rimraf');
 const gutil           = require('gulp-util');
 const conf            = require('../config');
@@ -19,9 +19,9 @@ gulp.task('images:clean', () => {
 gulp.task('images', ['images:clean'], () => {
     return gulp.src(conf.css.src + '/**/img/**/*.{jpg,png,gif,svg}')
                 .pipe(plumber())
-                .pipe(gulpif(process.env.NODE_ENV === 'production', imagemin({
+                .pipe(production ? imagemin({
                     progressive: true
-                })))
+                }) : gutil.noop())
                 .pipe(gulp.dest(conf.css.dest))
                 .on('error', gutil.log);
 });

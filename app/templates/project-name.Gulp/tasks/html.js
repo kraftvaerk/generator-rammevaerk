@@ -6,7 +6,6 @@ const rename          = require('gulp-rename');
 const plumber         = require('gulp-plumber');
 const changed         = require('gulp-changed');
 const cached          = require('gulp-cached');
-const gulpif          = require('gulp-if');
 const gutil           = require('gulp-util');
 const conf            = require('../config');
 
@@ -22,10 +21,10 @@ gulp.task('html', () => {
                         this.emit('end');
                     }
                 }))
-                .pipe(gulpif((true), changed((file) => {
+                .pipe(changed((file) => {
                     return file.path.replace('/pug', '');
-                }, {extension: '.html'})))
-                .pipe(gulpif((global.isWatching && !global.isInclude), cached('pug')))
+                }, {extension: '.html'}))
+                .pipe((global.isWatching && !global.isInclude) ? cached('pug') : gutil.noop())
                 .pipe(pug({
                     data: {
                         site: {

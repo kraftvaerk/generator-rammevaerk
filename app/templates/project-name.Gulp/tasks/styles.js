@@ -1,5 +1,6 @@
 'use strict';
 
+const production      = process.env.NODE_ENV === 'production' ? true : false;
 const gulp            = require('gulp');
 const sourcemaps      = require('gulp-sourcemaps');
 const rename          = require('gulp-rename');
@@ -38,13 +39,13 @@ gulp.task('styles', () => {
                         this.emit('end');
                     }
                 }))
-                .pipe(sourcemaps.init())
+                .pipe(production ? gutil.noop() : sourcemaps.init())
                 .pipe(sass())
                 .pipe(postcss(processors))
                 .pipe(rename(function(path){
                     path.basename = path.basename + '.min';
                 }))
-                .pipe(sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
+                .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
                 .pipe(gulp.dest(conf.css.dest))
                 .on('error', gutil.log);
 });

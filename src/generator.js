@@ -631,11 +631,6 @@ export default class Generator extends Base {
                 // Styles
                 const StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookieconsent,owlcarousel,fancybox}.scss'];
 
-                this.copy(
-                    'project-name.Website/Styles/Shared/Vendor/normalize.scss',
-                    `${this.answers.projectName}.Website/Styles/Shared/Vendor/normalize.scss`
-                );
-
                 copyDirectory.call(
                     this,
                     'project-name.Website/Styles/Company',

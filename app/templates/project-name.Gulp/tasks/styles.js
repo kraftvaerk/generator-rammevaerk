@@ -40,7 +40,7 @@ gulp.task('styles', () => {
                     }
                 }))
                 .pipe(production ? gutil.noop() : sourcemaps.init())
-                .pipe(sass())
+                .pipe(sass({includePaths: ['node_modules']}))
                 .pipe(postcss(processors))
                 .pipe(rename(function(path){
                     path.basename = path.basename + '.min';

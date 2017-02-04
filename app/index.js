@@ -627,8 +627,6 @@ var Generator = function (_Base) {
                     // Styles
                     var StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookieconsent,owlcarousel,fancybox}.scss'];
 
-                    this.copy('project-name.Website/Styles/Shared/Vendor/normalize.scss', this.answers.projectName + '.Website/Styles/Shared/Vendor/normalize.scss');
-
                     copyDirectory.call(this, 'project-name.Website/Styles/Company', this.answers.projectName + '.Website/Styles/' + this.answers.projectName, StylesGlob);
 
                     copyDirectory.call(this, 'project-name.Website/Styles/Shared', this.answers.projectName + '.Website/Styles/Shared', StylesGlob);

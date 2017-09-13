@@ -8,19 +8,6 @@
 //Shared imports
 @import '../Shared/index';
 
-// Vendor
-<% if (use.slider){ %>@import '../Shared/Vendor/owlcarousel';<% } %>
-<% if (use.cookieConsent){ %>@import '../Shared/Vendor/cookieconsent';<% } %>
-<% if (use.lightbox){ %>@import '../Shared/Vendor/fancybox';<% } %>
-
-// Basecoat extension
-@import 'layout/layout';
-@import 'typography/typography';
-@import 'form/form';
-@import 'list/list';
-@import 'nav/nav';
-@import 'button/button';
-
 // Modules
 
 // Print extension

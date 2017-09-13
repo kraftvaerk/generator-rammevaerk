@@ -7,28 +7,11 @@
 // Index file imports all styles files in their intended order for easy mass-inclusion.
 // Should you need specific files, you can easily use separate `@import`s.
 
-// Global requirements
-@import 'variables';
-@import 'mixins';
-
 // Vendor
-@import 'normalize.css/normalize';
-
-// Basecoat
-@import 'base';
-@import 'layout';
-@import 'typography';
-@import 'form';
+@import 'bootstrap/scss/bootstrap';
+@import '@fancyapps/fancybox/dist/jquery.fancybox';
 
 // Components
-@import 'alert';
+@import 'cookieconsent';
 @import 'loader';
-@import 'list';
-@import 'table';
-@import 'button';
-@import 'nav';
-@import 'section';
 @import 'print';
-
-// Utilities
-@import 'utility';

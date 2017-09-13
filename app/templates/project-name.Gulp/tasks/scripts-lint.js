@@ -10,9 +10,9 @@ const conf            = require('../config');
 // Lint all javascript files
 gulp.task('scripts:lint', () => {
     return gulp.src([conf.js.src + '/**/*.js', './*Gulp/**/*.js'])
-                .pipe(global.isWatching ? cached('scripts') : gutil.noop())
-                .pipe(plumber())
-                .pipe(eslint())
-                .pipe(eslint.format())
-                .on('error', gutil.log);
+        .pipe(global.isWatching ? cached('scripts') : gutil.noop())
+        .pipe(plumber())
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .on('error', gutil.log);
 });

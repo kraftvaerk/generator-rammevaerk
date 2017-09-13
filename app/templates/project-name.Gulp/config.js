@@ -25,24 +25,10 @@ module.exports = {
 
     browserSupport: [
         'IE >= 10',
-        'IE_mob >= 10',
-        'Firefox >= 40',
-        'Chrome >= 44',
-        'Safari >= 8',
-        'iOS >= 8',
-        'Android >= 4.4'
-    ],
-
-    systemjsHooks: '});' +
-        'var systemLocate = System.locate;' +
-        'if(systemLocate){' +
-            'System.locate = function(load) {' +
-              'return Promise.resolve(systemLocate.call(this, load)).then(function(address) {' +
-                'if(System.settings && System.settings.cacheBust){' +
-                    'return address + System.settings.cacheBust;' +
-                '}' +
-                'return address;' +
-              '});' +
-            '};' +
-        '};'
+        'Firefox >= 54',
+        'Chrome >= 60',
+        'Safari >= 10',
+        'iOS >= 10.2',
+        'Android >= 4.4.4'
+    ]
 };

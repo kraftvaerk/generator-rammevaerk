@@ -13,9 +13,7 @@ const conf            = require('../config');
 // Generate solution styles
 gulp.task('styles', () => {
     const processors = [
-        require('lost'),
         require('autoprefixer')({browsers: conf.browserSupport}),
-        require('pixrem'),
         require('postcss-responsive-type'),
         require('postcss-clearfix')
     ];
@@ -30,22 +28,22 @@ gulp.task('styles', () => {
     }
 
     return gulp.src([conf.css.src + '/**/' + 'screen.scss'])
-                .pipe(plumber({
-                    errorHandler: function (err) {
-                        gutil.log('Filename: ', gutil.colors.bold.red(err.file));
-                        gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
-                        gutil.log('Extract: ', gutil.colors.bold.red(err.message));
-                        gutil.beep();
-                        this.emit('end');
-                    }
-                }))
-                .pipe(production ? gutil.noop() : sourcemaps.init())
-                .pipe(sass({includePaths: ['node_modules']}))
-                .pipe(postcss(processors))
-                .pipe(rename(function(path){
-                    path.basename = path.basename + '.min';
-                }))
-                .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
-                .pipe(gulp.dest(conf.css.dest))
-                .on('error', gutil.log);
+        .pipe(plumber({
+            errorHandler: function (err) {
+                gutil.log('Filename: ', gutil.colors.bold.red(err.file));
+                gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
+                gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                gutil.beep();
+                this.emit('end');
+            }
+        }))
+        .pipe(production ? gutil.noop() : sourcemaps.init())
+        .pipe(sass({includePaths: ['node_modules']}))
+        .pipe(postcss(processors))
+        .pipe(rename(function(path){
+            path.basename = path.basename + '.min';
+        }))
+        .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
+        .pipe(gulp.dest(conf.css.dest))
+        .on('error', gutil.log);
 });

@@ -14,9 +14,7 @@ const production = process.env.NODE_ENV === 'production' ? true : false;
 const taskPath = './<%= answers.projectName %>.Gulp';
 const tasks = [
     'styles',
-    'scripts',
-    'images',
-    'svg'
+    'scripts'
 ];
 
 // Require tasks in gulp/tasks
@@ -32,9 +30,7 @@ if (!production){
     tasks.push('styles:lint');
 }
 
-require(taskPath + '/tasks/images');
 require(taskPath + '/tasks/scripts');
 require(taskPath + '/tasks/styles');
-require(taskPath + '/tasks/svg');
 
 gulp.task('default', tasks);

@@ -13,41 +13,24 @@ gulp.task('watch:flag', false, () => {
 gulp.task('watch', ['watch:flag', 'server'], function(){
     const FONTS = require('cfonts');
 
-    /* eslint no-new: 0*/
-    new FONTS({
-        'text': conf.pkg.name, // text to be converted
+    FONTS.say( conf.pkg.name, {
         'font': 'simple', // define the font face
         'letterSpacing': 0, // define letter spacing
         'space': false, // define if the output text should have empty lines on top and on the bottom
         'maxLength': '20' // define how many character can be on one line
     });
 
-    watch([conf.css.src + '/**/*.{jpg,png,gif,svg}', '!' + conf.css.src + '/**/svg/*'], function(){
-        browserSync.notify('Images updating!');
-        gulp.start('images', 'svg', function(){
-            browserSync.reload();
-        });
-    });
-
     watch([conf.css.src + '/**/*.scss'], function(){
         browserSync.notify('Styles updating!');
 
-        gulp.start([<% if (linting.styles){ %>'styles:lint',<% } %> 'styles'], function(){
+        gulp.start(['styles:lint', 'styles'], function(){
             browserSync.reload('*.css');
         });
     });
 
-    watch(conf.js.src + '/**/*.js', function(file){
-        let scriptTask = 'module';
-
-        if (file.path.match('core.js')){
-            scriptTask = 'bundle';
-        } else if (file.path.match('system.config.js')){
-            scriptTask = 'config';
-        }
-
+    watch(conf.js.src + '/**/*.js', function(){
         browserSync.notify('Scripts updating!');
-        gulp.start([<% if (linting.scripts){ %>'scripts:lint',<% } %> 'scripts:' + scriptTask], function(){
+        gulp.start(['scripts'], function(){
             browserSync.reload('*.js');
         });
     });

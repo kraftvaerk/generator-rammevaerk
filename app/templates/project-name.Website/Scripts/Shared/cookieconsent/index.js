@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import 'cookieConsent';
+import 'kv.cookieconsent';
 
 export function init(scope, settings){
     if (!scope){

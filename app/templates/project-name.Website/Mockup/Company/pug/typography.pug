@@ -6,9 +6,8 @@ block append vars
 block content
     section(role="region").section
         div.container
-            article(role="article").mod
+            article(role="article")
                 h1 Typography
-
 
                 p.lead
                     | Type is all set with the rems, so font-sizes and spacial relationships can be responsively sized based on a
@@ -26,19 +25,6 @@ block content
 
                 hr
 
-                h1 Headline h1:
-                    span text inside span ÅÄÖ åäö ÅÆØ åæø
-
-                p
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    | et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    | aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    | dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                    | officia deserunt mollit anim id est laborum.
-
-                h2 Headline h2:
-                    span text inside span
-
                 p
                     a(href="#") Link
                     | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -54,9 +40,6 @@ block content
                     li et dolore magna aliqua
                     li Ut enim ad minim veniam, quis nostrud
 
-                h3 Headline h3:
-                    span text inside span
-
 
                 | <del>Lorem ipsum dolor sit amet</del>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                 | et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -64,24 +47,12 @@ block content
                 | dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                 | officia deserunt mollit anim id est laborum.
 
-                hr
-
-                p
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-                blockquote
+                blockquote.blockquote
                     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
 
                 p
                     | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    | <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -92,21 +63,20 @@ block content
                     li et dolore magna aliqua
                     li Ut enim ad minim veniam, quis nostrud
 
-                div.hr.dooted
-                    hr
+                hr
 
                 h4 This is a H4 headline
 
                 p
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    | <mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                     | aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                     | occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     | <a href="#" title="This is a link">This is a link</a>
 
 
-                table.table.table-data
-                    thead
+                table.table.table-striped.table-sm
+                    thead.thead-inverse
                         tr
                             th Lorem ipsum
                             th consectetur

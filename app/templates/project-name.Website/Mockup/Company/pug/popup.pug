@@ -9,27 +9,24 @@ block append vars
 
 block content
     section(role="region").section
-        div.mod
+        div.container
             h1 Popup
-            h1 Headline h1:
-                span text inside span ÅÄÖ åäö ÅÆØ åæø
 
             p.lead
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                | et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                | aliquip ex ea commodo consequat.
+                | Type is all set with the rems, so font-sizes and spacial relationships can be responsively sized based on a
+                | single :root font-size property. Out of the box, we never changes the :root font-size, but it's there in case
+                | you need it. All measurements are still base 10 though so, 5.0rem font-size just means 50px.
 
             hr
 
-            p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                | et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                | aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                | dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                | officia deserunt mollit anim id est laborum.
+            h1 Heading
+            h2 Heading
+            h3 Heading
+            h4 Heading
+            h5 Heading
+            h6 Heading
 
-            h2 Headline h2:
-                span text inside span
+            hr
 
             p
                 a(href="#") Link
@@ -46,9 +43,6 @@ block content
                 li et dolore magna aliqua
                 li Ut enim ad minim veniam, quis nostrud
 
-            h3 Headline h3:
-                span text inside span
-
 
             | <del>Lorem ipsum dolor sit amet</del>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
             | et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -56,19 +50,12 @@ block content
             | dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
             | officia deserunt mollit anim id est laborum.
 
-            hr
+            blockquote.blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
 
             p
                 | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                | magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                | <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                 | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -79,20 +66,20 @@ block content
                 li et dolore magna aliqua
                 li Ut enim ad minim veniam, quis nostrud
 
-            div.hr.dooted
-                hr
+            hr
 
             h4 This is a H4 headline
 
             p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                | <mark>Lorem ipsum dolor sit amet</mark>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                 | aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                 | occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 | <a href="#" title="This is a link">This is a link</a>
 
-            table
-                thead
+
+            table.table.table-striped.table-sm
+                thead.thead-inverse
                     tr
                         th Lorem ipsum
                         th consectetur
@@ -121,21 +108,22 @@ block content
                         td 15.06.2011
 
             p
-                em Emphasized text
-                br
-                strong Strong text
-                br
-                dfn Definition term
-                br
-                code Computer code text
-                br
-                samp Sample computer code text
-                br
-                kbd Keyboard text
-                br
-                var Variable
-                br
-                cite Citation
+                | <em>Emphasized text</em>
+                | <br/>
+                | <strong>Strong text</strong>
+                | <br/>
+                | <dfn>Definition term</dfn>
+                | <br/>
+                | <code>Computer code text</code>
+                | <br/>
+                | <samp>Sample computer code text</samp>
+                | <br/>
+                | <kbd>Keyboard text</kbd>
+                | <br/>
+                | <var>Variable</var>
+                | <br/>
+                | <cite>Citation</cite>
+
 
             h5 This is a H5 headline
 
@@ -143,15 +131,6 @@ block content
                 | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                 | aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-            ul.link-list
-                li
-                    a(href="#") Class aptent taciti sociosqu.
-                li
-                    a(href="#") Class aptent taciti sociosqu ad litora.
-                li
-                    a(href="#") Class aptent taciti ad litora torquent.
-
             hr
 
-            div.btn-row
-                a.btn.u-right(href="#") Close
+            button(type="button").btn.btn-primary.btn-block Close

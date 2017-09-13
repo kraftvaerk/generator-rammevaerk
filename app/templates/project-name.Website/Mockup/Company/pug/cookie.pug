@@ -4,34 +4,33 @@ block append vars
     - var pageTitle = 'tpl-cookieconsent'
 
 block content
-
     div#testCookieContent(role="alert").cookie-consent
         div.container
-            strong Hjemmesiden bruger cookies
-            p
-                | Vi bruger cookies til at måle trafik, så vi kan gøre hjemmesiden mere brugervenlig.
-                | Du skal klikke på ‘Accepter cookies’ for at komme videre. <a class="more" href="#">Læs mere om Cookies</a>
-
-            ul.list
-                li
-                    a.btn.btn--inverted.accept(href="#") Accepter Cookies
+            div.row
+                div.col-md-10
+                    strong Hjemmesiden bruger cookies
+                    p
+                        | Vi bruger cookies til at måle trafik, så vi kan gøre hjemmesiden mere brugervenlig.
+                        | Du skal klikke på ‘Accepter cookies’ for at komme videre. <a class="more" href="#">Læs mere om Cookies</a>
+                div.col-md-2
+                    a.btn.btn-secondary.accept(href="#") Accepter Cookies
 
 
 
     section(role="region").section
         div.container
-            article(role="article").mod
-                h1 Cookie consent
-                p This is a demonstration of the cookie consent plugin
+            article(role="article")
+                h1.display-4 Cookie consent
+                p.lead This is a demonstration of the cookie consent plugin
 
                 br
 
-                fieldset.form
-                    div.form__row
-                        div.form__unit-1-1
-                            label.form__label Cookie Status:
-                            input(type="text" id="cookieStatus" value="undecided")
-                            a(href="#" id="clearCookie" class="btn") Clear Cookie
+                form.form-inline
+                    div.form-group
+                        label.form__label Cookie Status:
+                    div.form-group.mx-sm-3
+                        input(type="text" id="cookieStatus" value="undecided").form-control
+                    a(href="#" id="clearCookie").btn.btn-primary Clear Cookie
 
                 hr
 
@@ -42,79 +41,82 @@ block content
                     | To use the cookie consent plgin you will need to have markup included on your page.
                     | The markup could be as folowing but depends on your consent type.
 
-                pre.code
-                    | &lt;div class="cookie-consent"&gt;
-                    |   &lt;div class="content-inner"&gt;&lt;a class="close" title="luk" href="#"&gt;&lt;/a&gt;
-                    |       &lt;h1&gt;NB!&lt;/h1&gt;
-                    |       &lt;p&gt;
-                    |         Rammevaerk bruger cookies for at udarbejde statistik over anvendelse af sitet.
-                    |         Du kan altid slette cookies fra Rammevaerk igen.
-                    |       &lt;/p&gt;
-                    |       &lt;ul class="list"&gt;
-                    |           &lt;li&gt;&lt;a class="btn accept" href="#"&gt;Accepter Cookies&lt;/a&gt;&lt;/li&gt;
-                    |           &lt;li&gt;&lt;a class="btn decline" href="#"&gt;Accepter ikke Cookies&lt;/a&gt;&lt;/li&gt;
-                    |           &lt;li&gt; &lt;a class="more" href="#"&gt;Læs mere om Cookies&lt;/a&gt;&lt;/li&gt;
-                    |       &lt;/ul&gt;
-                    |   &lt;/div&gt;
-                    | &lt;/div&gt;
+                pre
+                    code
+                        | &lt;div class="cookie-consent"&gt;
+                        |   &lt;div class="content-inner"&gt;&lt;a class="close" title="luk" href="#"&gt;&lt;/a&gt;
+                        |       &lt;h1&gt;NB!&lt;/h1&gt;
+                        |       &lt;p&gt;
+                        |         Rammevaerk bruger cookies for at udarbejde statistik over anvendelse af sitet.
+                        |         Du kan altid slette cookies fra Rammevaerk igen.
+                        |       &lt;/p&gt;
+                        |       &lt;ul class="list"&gt;
+                        |           &lt;li&gt;&lt;a class="btn accept" href="#"&gt;Accepter Cookies&lt;/a&gt;&lt;/li&gt;
+                        |           &lt;li&gt;&lt;a class="btn decline" href="#"&gt;Accepter ikke Cookies&lt;/a&gt;&lt;/li&gt;
+                        |           &lt;li&gt; &lt;a class="more" href="#"&gt;Læs mere om Cookies&lt;/a&gt;&lt;/li&gt;
+                        |       &lt;/ul&gt;
+                        |   &lt;/div&gt;
+                        | &lt;/div&gt;
 
                 h4 Style
                 p Here are some basic styles to get you started.
 
-                pre.code
-                    | .cookie-consent { display:none; background-color: #ffdc86;}
-                    | .cookie-consent .content-inner { position:relative; padding:10px 15px; }
-                    | .cookie-consent h1 { font-size: 24px; text-transform: uppercase; }
-                    | .cookie-consent .list { margin:10px 0;}
-                    | .cookie-consent .list:after { content: "."; clear: both; display: block; height: 0; visibility: hidden; line-height: 0; }
-                    | .cookie-consent .list li { float:left; margin-right:10px;}
-                    | .cookie-consent a.close:after { position:absolute; right:15px; top:10px; display: block; height:13px; width:13px; content:"x"; background:rgba(0,0,0,0.2); border-radius:2px; cursor: pointer; font-size:8px; color:#555; line-height:12px; text-align:center; font-family:verdana; font-style:normal;}
-                    | .cookie-consent a.close:hover:after { background:rgba(0,0,0,0.4); color:#fff}
-                    | .cookie-consent a.decline { background:#999;}
+                pre
+                    code
+                        | .cookie-consent { display:none; background-color: #ffdc86;}
+                        | .cookie-consent .content-inner { position:relative; padding:10px 15px; }
+                        | .cookie-consent h1 { font-size: 24px; text-transform: uppercase; }
+                        | .cookie-consent .list { margin:10px 0;}
+                        | .cookie-consent .list:after { content: "."; clear: both; display: block; height: 0; visibility: hidden; line-height: 0; }
+                        | .cookie-consent .list li { float:left; margin-right:10px;}
+                        | .cookie-consent a.close:after { position:absolute; right:15px; top:10px; display: block; height:13px; width:13px; content:"x"; background:rgba(0,0,0,0.2); border-radius:2px; cursor: pointer; font-size:8px; color:#555; line-height:12px; text-align:center; font-family:verdana; font-style:normal;}
+                        | .cookie-consent a.close:hover:after { background:rgba(0,0,0,0.4); color:#fff}
+                        | .cookie-consent a.decline { background:#999;}
 
 
                 h4 Javascript
                 p
                     | Here is how to initialize the cookie consent plugin. The javascript file can be found under the plugins folder.
 
-                pre.code
-                    | // BASIC
-                    | $(".cookie-consent").cookieConsent();
-                    |.
-                    | // ADVANCED
-                    | $(".cookie-consent").cookieConsent({
-                    |   cookieName: 'cookieConsent',
-                    |   btn: {
-                    |       accept: '.accept',
-                    |       decline: '.decline',
-                    |       close: '.close'
-                    |   },
-                    |   transition: {
-                    |       show: {
-                    |           type: 'fadeIn',
-                    |           duration: 800
-                    |       },
-                    |       hide: {
-                    |           type: 'fadeOut',
-                    |           duration: 800
-                    |       }
-                    |   },
-                    |   consentType: 'explicit', // implied
-                    |   onAccepted: function(elm){
-                    |       alert('accepted')
-                    |   },
-                    |   onDeclined: function(elm){
-                    |       alert('declined')
-                    |   }
-                    | });
+                pre
+                    code
+                        | // BASIC
+                        | $(".cookie-consent").cookieConsent();
+                        |.
+                        | // ADVANCED
+                        | $(".cookie-consent").cookieConsent({
+                        |   cookieName: 'cookieConsent',
+                        |   btn: {
+                        |       accept: '.accept',
+                        |       decline: '.decline',
+                        |       close: '.close'
+                        |   },
+                        |   transition: {
+                        |       show: {
+                        |           type: 'fadeIn',
+                        |           duration: 800
+                        |       },
+                        |       hide: {
+                        |           type: 'fadeOut',
+                        |           duration: 800
+                        |       }
+                        |   },
+                        |   consentType: 'explicit', // implied
+                        |   onAccepted: function(elm){
+                        |       alert('accepted')
+                        |   },
+                        |   onDeclined: function(elm){
+                        |       alert('declined')
+                        |   }
+                        | });
 
 
                 h2 Options
                 p If you're interested in customizing the plugin you can use the following options to help you along.
 
 
-                table
-                    thead
+                table.table.table-striped.table-sm
+                    thead.thead-inverse
                         tr
                             th Option Name
                             th Type
@@ -155,41 +157,39 @@ block content
 block append scriptBottom
     script.
 
-        site.then(function(){
-            $('#clearCookie').click(function(){
-                $('#cookieStatus').val('undecided');
-                var cookieName = $(".cookie-consent").data('plugin_cookieConsent').options.cookieName;
-                var date = new Date();
-                date.setTime(date.getTime()-1);
-                document.cookie = cookieName+"=; expires="+date.toGMTString()+"; path=/";
-                return false;
-            });
+        $('#clearCookie').click(function(){
+            $('#cookieStatus').val('undecided');
+            var cookieName = $(".cookie-consent").data('plugin_cookieConsent').options.cookieName;
+            var date = new Date();
+            date.setTime(date.getTime()-1);
+            document.cookie = cookieName+"=; expires="+date.toGMTString()+"; path=/";
+            return false;
+        });
 
-            $('#testCookieContent').cookieConsent({
-                cookieName: 'cookieConsent',
-                btn: {
-                    accept: '.accept'
+        $('#testCookieContent').cookieConsent({
+            cookieName: 'cookieConsent',
+            btn: {
+                accept: '.accept'
+            },
+            transition: {
+                show: {
+                    type: 'fadeIn',
+                    duration: 500
                 },
-                transition: {
-                    show: {
-                        type: 'fadeIn',
-                        duration: 500
-                    },
-                    hide: {
-                        type: 'fadeOut',
-                        duration: 500
-                    }
-                },
-                consentType: 'explicit', // implied
-                onAccepted: function(elm){
-                    $('#cookieStatus').val('allowed');
-                },
-                onDeclined: function(elm){
-                    $('#cookieStatus').val('disallowed');
-                },
-                onCheck: function(status){
-                    if(status != null)
-                        $('#cookieStatus').val(status)
+                hide: {
+                    type: 'fadeOut',
+                    duration: 500
                 }
-            });
+            },
+            consentType: 'explicit', // implied
+            onAccepted: function(elm){
+                $('#cookieStatus').val('allowed');
+            },
+            onDeclined: function(elm){
+                $('#cookieStatus').val('disallowed');
+            },
+            onCheck: function(status){
+                if(status != null)
+                    $('#cookieStatus').val(status)
+            }
         });

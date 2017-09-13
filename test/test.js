@@ -21,13 +21,12 @@ test.serial('generates expected files', async () => {
 
     const expected = [
         '.editorconfig',
-        '.eslintignore',
         '.eslintrc',
         '.stylelintrc',
+        'webpack.config.js',
         'gulpfile.js',
         'package.json',
-        'README.md',
-        'AvaTest.sublime-project',
+        'README.md'
     ];
 
     assert.file(expected);
@@ -36,23 +35,12 @@ test.serial('generates expected files', async () => {
 test.serial('generates expected dependencies', async () => {
 
     helpers.mockPrompt(generator, {
-        projectName: 'avaTest',
-        projectModules: ['lightbox']
+        projectName: 'avaTest'
     });
 
     await pify(generator.run.bind(generator))();
 
     assert.JSONFileContent('package.json', {"name": "AvaTest"});
-    assert.fileContent('package.json', '"fancyBox"');
-    assert.noFileContent('package.json', '"cookieConsent"');
-
-    const unExpected = [
-        'AvaTest.Website/Mockup/pug/cookie.jade',
-        'AvaTest.Website/Styles/Shared/Vendor/cookieconsent.scss',
-        'AvaTest.Website/Scripts/Shared/cookieconsent/index.js'
-    ];
-
-    assert.noFile(unExpected);
 });
 
 
@@ -64,6 +52,6 @@ test.serial('generates capitalized kebabcase name', async () => {
 
     await pify(generator.run.bind(generator))();
 
-    assert.file('A-v-a-t-e-s-t.sublime-project');
+    assert.file('A-v-a-t-e-s-t.Website');
 
 });

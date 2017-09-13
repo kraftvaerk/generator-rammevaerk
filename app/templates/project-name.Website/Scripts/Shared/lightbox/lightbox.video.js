@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import 'fancyBox';
+import '@fancyapps/fancybox';
 
 /**
  * [videoLightbox description]

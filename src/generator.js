@@ -102,162 +102,12 @@ export default class Generator extends Base {
                     default: 'N/A'
                 });
 
-                // Version control
-                questions.push({
-                    type: 'list',
-                    name: 'projectVersionControl',
-                    message: chalk.yellow('Which version control system will you be using?'),
-                    choices: ['GIT', 'SVN'],
-                    default: 'GIT',
-                    filter: (vcs) => vcs.toLowerCase()
-                });
-
                 // Repository URL
                 questions.push({
                     type: 'input',
                     name: 'projectRepositoryUrl',
                     message: chalk.yellow('What is the repository URL?'),
                     default: `https://tfs.kraftvaerk.com/tfs/KvCollection/_git/${_.kebabCase(this.appname)}`
-                });
-
-                // Integrated Development Environment
-                questions.push({
-                    type: 'checkbox',
-                    name: 'projectIDE',
-                    message: chalk.yellow('Which IDE(s) will you be using?'),
-                    choices: [
-                        {
-                            name: 'SublimeText',
-                            checked: true
-                        },
-                        {
-                            name: 'Visual Studio',
-                            checked: true
-                        },
-                        {
-                            name: 'Atom'
-                        }
-                    ],
-                    default: ['sublimeText', 'visualStudio'],
-                    filter: (IDEs) => IDEs.map(IDE => _.camelCase(IDE))
-                });
-
-                // Linting
-                questions.push({
-                    type: 'checkbox',
-                    name: 'projectLinters',
-                    message: chalk.yellow('Do you want code linting for the folowing?'),
-                    choices: [
-                        {
-                            name: 'Scripts',
-                            checked: true
-                        },
-                        {
-                            name: 'Styles',
-                            checked: true
-                        }
-                    ],
-                    default: ['scripts', 'styles'],
-                    filter: (linters) => linters.map(linter => linter.toLowerCase())
-                });
-
-                // Project libraries
-                questions.push({
-                    type: 'list',
-                    name: 'projectLibraries',
-                    message: chalk.yellow('Which libraries will you be using?'),
-                    choices: ['jQuery', 'jQuery + Angular', 'React'],
-                    default: 'jQuery',
-                    filter: (lib) => lib.toLowerCase()
-                });
-
-                // Project modules
-                questions.push({
-                    type: 'checkbox',
-                    name: 'projectModules',
-                    message: chalk.yellow('Which frontend modules do you want to include?'),
-                    choices: [
-                        {
-                            name: 'SVG Sprites',
-                            checked: true
-                        },
-                        {
-                            name: 'Lazyload Images',
-                            checked: true
-                        },
-                        {
-                            name: 'Animations On Scroll',
-                            checked: false
-                        },
-                        {
-                            name: 'Lightbox',
-                            checked: true
-                        },
-                        {
-                            name: 'Slider',
-                            checked: true
-                        },
-                        {
-                            name: 'Cookie consent',
-                            checked: true
-                        },
-                        {
-                            name: 'Datepicker',
-                            disabled: true
-                        },
-                        {
-                            name: 'GoogleMaps',
-                            disabled: true
-                        }
-                    ],
-                    default: ['lightbox', 'slider', 'cookieConsent', 'svgSprites', 'lazyloadImages'],
-                    filter: (IDEs) => IDEs.map(IDE => _.camelCase(IDE))
-                });
-
-                // Project grid
-                questions.push({
-                    type: 'input',
-                    name: 'projectGridColumns',
-                    message: chalk.yellow('How many columns does the grid consists of?'),
-                    default: 12,
-                    validate: (val) => {
-                        if (!_.isNumber(Number(val))){
-                            return 'Please enter a valid number';
-                        }
-
-                        if (_.inRange(val, 1, 50)) {
-                            return true;
-                        }
-                        return 'Please enter a valid number between 1 and 50';
-                    }
-                });
-
-                // Project grid gutter
-                questions.push({
-                    type: 'input',
-                    name: 'projectGridGutter',
-                    message: chalk.yellow('What is the size of the grid gutter? (px)'),
-                    default: 30,
-                    validate: (val) => {
-                        if (_.isNumber(Number(val))){
-                            return true;
-                        }
-                        return 'Please enter a valid number';
-                    }
-                });
-
-                // Project grid width
-                questions.push({
-                    type: 'input',
-                    name: 'projectGridWidth',
-                    message: chalk.yellow('What is the max grid width? (px)'),
-                    default: 1140,
-                    validate: (val) => {
-                        if (_.isNumber(Number(val))){
-                            return true;
-                        }
-                        return 'Please enter a valid number';
-                    }
                 });
 
                 this.prompt(questions).then((answers) => {
@@ -302,16 +152,12 @@ export default class Generator extends Base {
             versionControl(){
                 const done = this.async();
 
-                if (this.answers.projectVersionControl.length){
-                    if (!this.options['keep-silence']){
-                        this.log.ok('Setting up versioning...');
-                    }
-
-                    if (_.includes(this.answers.projectVersionControl, 'git')){
-                        this.bulkCopy('_gitignore', '.gitignore');
-                        this.bulkCopy('_gitattributes', '.gitattributes');
-                    }
+                if (!this.options['keep-silence']){
+                    this.log.ok('Setting up versioning...');
                 }
+
+                this.bulkCopy('_gitignore', '.gitignore');
+                this.bulkCopy('_gitattributes', '.gitattributes');
 
                 done();
             },
@@ -323,13 +169,6 @@ export default class Generator extends Base {
                 }
 
                 this.copy('_editorconfig', '.editorconfig');
-
-                if (_.includes(this.answers.projectIDE, 'sublimeText')){
-                    this.template(
-                        '_project-name.sublime-project',
-                        `${this.answers.projectName}.sublime-project`
-                    );
-                }
 
                 done();
             },
@@ -345,13 +184,7 @@ export default class Generator extends Base {
 
                 readme += '\n';
 
-                if (_.includes(this.answers.projectIDE, 'visualStudio')){
-                    readme += this.fs.read(this.templatePath('README/_IDE_visualStudio.md'));
-                }
-
-                if (_.includes(this.answers.projectIDE, 'sublimeText')){
-                    readme += this.fs.read(this.templatePath('README/_IDE_sublimeText.md'));
-                }
+                readme += this.fs.read(this.templatePath('README/_IDE_visualStudio.md'));
 
                 readme += this.fs.read(this.templatePath('README/_USAGE.md'));
 
@@ -364,20 +197,12 @@ export default class Generator extends Base {
             linting() {
                 const done = this.async();
 
-                if (this.answers.projectLinters.length){
-                    if (!this.options['keep-silence']){
-                        this.log.ok('Setting up the linting...');
-                    }
+                if (!this.options['keep-silence']){
+                    this.log.ok('Setting up the linting...');
                 }
 
-                if (_.includes(this.answers.projectLinters, 'scripts')){
-                    this.template('_eslintignore', '.eslintignore');
-                    this.bulkCopy('_eslintrc', '.eslintrc');
-                }
-
-                if (_.includes(this.answers.projectLinters, 'styles')){
-                    this.bulkCopy('_stylelintrc', '.stylelintrc');
-                }
+                this.bulkCopy('_eslintrc', '.eslintrc');
+                this.bulkCopy('_stylelintrc', '.stylelintrc');
 
                 done();
             },
@@ -388,15 +213,10 @@ export default class Generator extends Base {
                     this.log.ok('Setting up the Gulp...');
                 }
 
-                this.linting = {
-                    scripts: _.includes(this.answers.projectLinters, 'scripts'),
-                    styles: _.includes(this.answers.projectLinters, 'styles')
-                };
-
                 this.directory('project-name.Gulp', `${this.answers.projectName}.Gulp`);
 
-                this.bulkCopy('_babelrc', '.babelrc');
                 this.copy('_gulpfile.js', 'gulpfile.js');
+                this.copy('_webpack.config.js', 'webpack.config.js');
 
                 done();
             },
@@ -437,11 +257,9 @@ export default class Generator extends Base {
                 pkg.contributors.push(contributor);
 
                 // Version control
-                if (this.answers.projectVersionControl){
-                    pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_REPOSITORY.json'), {}));
-                    pkg.repository.type = this.answers.projectVersionControl.toLowerCase();
-                    pkg.repository.url = this.answers.projectRepositoryUrl;
-                }
+                pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_REPOSITORY.json'), {}));
+                pkg.repository.type = 'git';
+                pkg.repository.url = this.answers.projectRepositoryUrl;
 
                 // Node scripts
                 pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_SCRIPTS.json'), {}));
@@ -456,77 +274,6 @@ export default class Generator extends Base {
                 // Dependencies
                 pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_DEPENDENCIES.json'), {}));
 
-                // JSPM
-                pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_JSPM.json'), {}));
-
-
-
-                pkg.jspm.directories.baseURL = `${this.answers.projectName}.Website`;
-                pkg.jspm.directories.packages = `${this.answers.projectName}.Website/Content/Vendor`;
-                pkg.jspm.configFile = `${this.answers.projectName}.Website/Scripts/system.config.js`;
-
-                // Dependencies
-                pkg.jspm.dependencies.jquery = 'npm:jquery';
-
-
-                if (_.includes(this.answers.projectModules, 'jquery + angular')){
-                    let overrides = {
-                        'npm:angular@1.5.8': {
-                            'main': 'angular.min'
-                        }
-                    };
-                    pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, overrides);
-                    pkg.jspm.dependencies.angular = 'npm:angular@1.5.8';
-                }
-
-                if (_.includes(this.answers.projectModules, 'cookieConsent')){
-                    pkg.jspm.dependencies.cookieConsent = 'github:kraftvaerk/cookie-consent@0.0.3';
-                }
-
-                if (_.includes(this.answers.projectModules, 'lightbox')){
-                    let overrides = {
-                        'github:fancyapps/fancyBox@2.1.5': {
-                            'main': 'source/jquery.fancybox',
-                            'format': 'global',
-                            'dependencies': {
-                                'jquery': 'npm:jquery@*'
-                            },
-                            'shim': {
-                                'source/jquery.fancybox': {
-                                    'deps': [
-                                        'jquery'
-                                    ],
-                                    'exports': '$'
-                                }
-                            }
-                        }
-                    };
-                    pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, overrides);
-                    pkg.jspm.dependencies.fancyBox = 'github:fancyapps/fancyBox@2.1.5';
-                }
-
-                if (_.includes(this.answers.projectModules, 'slider')){
-                    let overrides = {
-                        'github:OwlCarousel2/OwlCarousel2@2.1.6': {
-                            'main': 'dist/owl.carousel.min'
-                        }
-                    };
-                    pkg.jspm.overrides = Object.assign(pkg.jspm.overrides, overrides);
-                    pkg.jspm.dependencies.owlCarousel = 'github:OwlCarousel2/OwlCarousel2@2.1.6';
-                }
-
-                if (_.includes(this.answers.projectModules, 'svgSprites')){
-                    pkg.jspm.dependencies.svg4everybody = 'npm:svg4everybody@2.0.3';
-                }
-
-                if (_.includes(this.answers.projectModules, 'lazyloadImages')){
-                    pkg.jspm.dependencies.lazysizes = 'github:aFarkas/lazysizes@2.0.0';
-                }
-
-                if (_.includes(this.answers.projectModules, 'animationsOnScroll')){
-                    pkg.jspm.dependencies.aos = 'github:michalsnik/aos@2.0.4';
-                }
-
                 // Write package.json
                 this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
@@ -539,32 +286,13 @@ export default class Generator extends Base {
                     this.log.ok('Setting up the project files...');
                 }
 
-                this.use = {
-                    slider: _.includes(this.answers.projectModules, 'slider'),
-                    lightbox: _.includes(this.answers.projectModules, 'lightbox'),
-                    cookieConsent: _.includes(this.answers.projectModules, 'cookieConsent'),
-                    svgSprites: _.includes(this.answers.projectModules, 'svgSprites')
-                };
-
                 this.bulkCopy(
                     'project-name.Website/favicon.ico',
                     `${this.answers.projectName}.Website/favicon.ico`
                 );
 
-                this.bulkCopy(
-                    'project-name.Website/Styles/Company/img/logo.svg',
-                    `${this.answers.projectName}.Website/Styles/${this.answers.projectName}/img/logo.svg`
-                );
-
-                if (_.includes(this.answers.projectModules, 'svgSprites')){
-                    this.bulkDirectory(
-                        'project-name.Website/Styles/Company/svg',
-                        `${this.answers.projectName}.Website/Styles/${this.answers.projectName}/svg`
-                    );
-                }
-
                 // Pug
-                const pugGlob = ['**', '!images/**', '!**/{cookie,lightbox}.pug'];
+                const pugGlob = ['**', '!images/**'];
 
                 copyDirectory.call(
                     this,
@@ -573,63 +301,8 @@ export default class Generator extends Base {
                     pugGlob
                 );
 
-                if (this.use.cookieConsent){
-                    this.copy(
-                        'project-name.Website/Mockup/Company/pug/cookie.pug',
-                        `${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/pug/cookie.pug`
-                    );
-
-                    this.copy(
-                        'project-name.Website/Styles/Shared/Vendor/cookieconsent.scss',
-                        `${this.answers.projectName}.Website/Styles/Shared/Vendor/cookieconsent.scss`
-                    );
-
-                    this.directory(
-                        'project-name.Website/Scripts/Shared/cookieconsent',
-                        `${this.answers.projectName}.Website/Scripts/Shared/cookieconsent`
-                    );
-                }
-
-                if (this.use.lightbox){
-                    copyDirectory.call(
-                        this,
-                        'project-name.Website/Styles/Company/img',
-                        `${this.answers.projectName}.Website/Styles/${this.answers.projectName}`,
-                        ['fancyBox-*.*'],
-                        true
-                    );
-
-                    this.copy(
-                        'project-name.Website/Mockup/Company/pug/lightbox.pug',
-                        `${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/pug/lightbox.pug`
-                    );
-
-                    this.bulkDirectory(
-                        'project-name.Website/Mockup/Company/images/fancybox',
-                        `${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/images/fancybox`
-                    );
-
-                    this.copy(
-                        'project-name.Website/Styles/Shared/Vendor/fancybox.scss',
-                        `${this.answers.projectName}.Website/Styles/Shared/Vendor/fancybox.scss`
-                    );
-
-                    this.directory(
-                        'project-name.Website/Scripts/Shared/lightbox',
-                        `${this.answers.projectName}.Website/Scripts/Shared/lightbox`
-                    );
-                }
-
-                if (this.use.slider){
-                    this.copy(
-                        'project-name.Website/Styles/Shared/Vendor/owlcarousel.scss',
-                        `${this.answers.projectName}.Website/Styles/Shared/Vendor/owlcarousel.scss`
-                    );
-                }
-
-
                 // Styles
-                const StylesGlob = ['**', '!**/{img,svg}/**', '!**/{cookieconsent,owlcarousel,fancybox}.scss'];
+                const StylesGlob = ['**', '!**/{img,svg}/**'];
 
                 copyDirectory.call(
                     this,
@@ -645,36 +318,15 @@ export default class Generator extends Base {
                     StylesGlob
                 );
 
-
                 // Scripts
-                this.copy(
-                    'project-name.Website/Scripts/Company/core.js',
-                    `${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/core.js`
-                );
-
                 this.copy(
                     'project-name.Website/Scripts/Company/index.js',
                     `${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`
                 );
 
-                this.copy(
-                    'project-name.Website/Scripts/system.config.js',
-                    `${this.answers.projectName}.Website/Scripts/system.config.js`
-                );
-
-                this.copy(
-                    'project-name.Website/Scripts/Shared/index.js',
-                    `${this.answers.projectName}.Website/Scripts/Shared/index.js`
-                );
-
                 this.directory(
-                    'project-name.Website/Scripts/Shared/helpers',
-                    `${this.answers.projectName}.Website/Scripts/Shared/helpers`
-                );
-
-                this.directory(
-                    'project-name.Website/Scripts/Shared/legacy',
-                    `${this.answers.projectName}.Website/Scripts/Shared/legacy`
+                    'project-name.Website/Scripts/Shared',
+                    `${this.answers.projectName}.Website/Scripts/Shared`
                 );
 
                 done();

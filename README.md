@@ -10,7 +10,7 @@
 
 ## Install
 
-Generators can be installed through npm.
+Generators can be installed through npm. But needs [Yeoman](https://github.com/yeoman/yo).
 
 ```
 $ npm install -g generator-rammevaerk

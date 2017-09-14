@@ -1,6 +1,6 @@
 # Prerequisites #
 
-- [Node.js](http://nodejs.org/) ( 4.2.1 - LTS )
+- [Node.js](http://nodejs.org/) ( 6.x - LTS )
 - [Python](http://python.org/downloads/) ( 2.x )
 - [Git](https://git-for-windows.github.io/) ( 2.6.x )
 

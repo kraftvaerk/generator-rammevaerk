@@ -1,9 +1,5 @@
 {
     "dependencies": {
-        "@fancyapps/fancybox": "latest",
-        "bootstrap": "4.0.0-beta",
-        "jquery": "latest",
-        "kv.cookieconsent": "github:kraftvaerk/cookie-consent"
     },
     "devDependencies": {
         "autoprefixer": "7.1.2",

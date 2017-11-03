@@ -47,7 +47,8 @@ module.exports = {
             compress: {
                 warnings: false
             },
-            sourceMap: true
+            sourceMap: true,
+            extractComments: true
         })
     ]
 };

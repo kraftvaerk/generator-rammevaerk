@@ -7,35 +7,13 @@ module.exports = {
         '<%= answers.projectName %>': [conf.js.src + '/<%= answers.projectName %>/index.js']
     },
     output: {
-        'path': path.resolve(__dirname, conf.js.dest + '/'),
-        'filename': '[name].bundle.js'
+        path: path.resolve(__dirname, conf.js.dest + '/'),
+        filename: '[name].bundle.js'
     },
     devtool: 'source-maps',
-    resolve: {
-        modules: ['node_modules'],
-        descriptionFiles: ['package.json'],
-        alias: {
-        }
-    },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015', ['env', {
-                            targets: {
-                                browsers: conf.browserSupport
-                            }
-                        }]],
-                        minified: true,
-                        compact: true,
-                        comments: true
-                    }
-                }
-            }
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
         ]
     },
     plugins: [

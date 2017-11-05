@@ -197,26 +197,20 @@ var Generator = function (_Base) {
 
                     done();
                 },
-                versionControl: function versionControl() {
+                dotfiles: function dotfiles() {
                     var done = this.async();
 
                     if (!this.options['keep-silence']) {
-                        this.log.ok('Setting up versioning...');
+                        this.log.ok('Setting up the dotfiles...');
                     }
 
-                    this.bulkCopy('_gitignore', '.gitignore');
+                    this.bulkCopy('_babelrc', '.babelrc');
+                    this.bulkCopy('_browserslistrc', '.browserslistrc');
+                    this.bulkCopy('_editorconfig', '.editorconfig');
+                    this.bulkCopy('_eslintrc', '.eslintrc');
                     this.bulkCopy('_gitattributes', '.gitattributes');
-
-                    done();
-                },
-                IDE: function IDE() {
-                    var done = this.async();
-
-                    if (!this.options['keep-silence']) {
-                        this.log.ok('Setting up IDE...');
-                    }
-
-                    this.copy('_editorconfig', '.editorconfig');
+                    this.bulkCopy('_gitignore', '.gitignore');
+                    this.bulkCopy('_stylelintrc', '.stylelintrc');
 
                     done();
                 },
@@ -239,18 +233,6 @@ var Generator = function (_Base) {
                     readme = _lodash2.default.template(readme)(this);
 
                     this.fs.write(this.destinationPath('README.md'), readme);
-
-                    done();
-                },
-                linting: function linting() {
-                    var done = this.async();
-
-                    if (!this.options['keep-silence']) {
-                        this.log.ok('Setting up the linting...');
-                    }
-
-                    this.bulkCopy('_eslintrc', '.eslintrc');
-                    this.bulkCopy('_stylelintrc', '.stylelintrc');
 
                     done();
                 },
@@ -327,7 +309,6 @@ var Generator = function (_Base) {
 
                     done();
                 },
-
                 projectfiles: function projectfiles() {
                     var done = this.async();
 

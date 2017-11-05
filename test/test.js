@@ -20,13 +20,17 @@ test.serial('generates expected files', async () => {
     await pify(generator.run.bind(generator))();
 
     const expected = [
+        '.babelrc',
+        '.browserslistrc',
         '.editorconfig',
         '.eslintrc',
+        '.gitattributes',
+        '.gitignore',
         '.stylelintrc',
-        'webpack.config.js',
         'gulpfile.js',
         'package.json',
-        'README.md'
+        'README.md',
+        'webpack.config.js'
     ];
 
     assert.file(expected);

@@ -365,6 +365,7 @@ var Generator = function (_Base) {
                 vaerkInstall: function vaerkInstall() {
                     var done = this.async();
 
+                    this.spawnCommand('npm', ['update', '-S']);
                     this.installDependencies({ bower: false });
 
                     done();

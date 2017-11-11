@@ -21,14 +21,5 @@ module.exports = {
     css: {
         dest: baseDir + '/Content/Styles',
         src: baseDir + '/Styles'
-    },
-
-    browserSupport: [
-        'IE >= 10',
-        'Firefox >= 54',
-        'Chrome >= 60',
-        'Safari >= 10',
-        'iOS >= 10.2',
-        'Android >= 4.4.4'
-    ]
+    }
 };

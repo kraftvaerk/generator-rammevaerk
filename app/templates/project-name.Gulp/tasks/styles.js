@@ -13,7 +13,7 @@ const conf            = require('../config');
 // Generate solution styles
 gulp.task('styles', () => {
     const processors = [
-        require('autoprefixer')({browsers: conf.browserSupport}),
+        require('autoprefixer'),
         require('postcss-responsive-type'),
         require('postcss-clearfix')
     ];

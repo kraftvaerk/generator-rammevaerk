@@ -149,26 +149,20 @@ export default class Generator extends Base {
 
                 done();
             },
-            versionControl(){
+            dotfiles() {
                 const done = this.async();
 
-                if (!this.options['keep-silence']){
-                    this.log.ok('Setting up versioning...');
+                if (!this.options['keep-silence']) {
+                    this.log.ok('Setting up the dotfiles...');
                 }
 
-                this.bulkCopy('_gitignore', '.gitignore');
+                this.bulkCopy('_babelrc', '.babelrc');
+                this.bulkCopy('_browserslistrc', '.browserslistrc');
+                this.bulkCopy('_editorconfig', '.editorconfig');
+                this.bulkCopy('_eslintrc', '.eslintrc');
                 this.bulkCopy('_gitattributes', '.gitattributes');
-
-                done();
-            },
-            IDE() {
-                const done = this.async();
-
-                if (!this.options['keep-silence']){
-                    this.log.ok('Setting up IDE...');
-                }
-
-                this.copy('_editorconfig', '.editorconfig');
+                this.bulkCopy('_gitignore', '.gitignore');
+                this.bulkCopy('_stylelintrc', '.stylelintrc');
 
                 done();
             },
@@ -191,18 +185,6 @@ export default class Generator extends Base {
                 readme = _.template(readme)(this);
 
                 this.fs.write(this.destinationPath('README.md'), readme);
-
-                done();
-            },
-            linting() {
-                const done = this.async();
-
-                if (!this.options['keep-silence']){
-                    this.log.ok('Setting up the linting...');
-                }
-
-                this.bulkCopy('_eslintrc', '.eslintrc');
-                this.bulkCopy('_stylelintrc', '.stylelintrc');
 
                 done();
             },
@@ -279,7 +261,7 @@ export default class Generator extends Base {
 
                 done();
             },
-            projectfiles: function() {
+            projectfiles() {
                 const done = this.async();
 
                 if (!this.options['keep-silence']){

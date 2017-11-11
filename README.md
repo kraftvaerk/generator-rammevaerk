@@ -1,46 +1,42 @@
 # generator-rammevaerk
 
-
-[![GitHub release](https://img.shields.io/github/release/kraftvaerk/generator-rammevaerk.svg?style=flat-square)]() [![Build Status](https://img.shields.io/travis/kraftvaerk/generator-rammevaerk/master.svg?style=flat-square)](https://travis-ci.org/kraftvaerk/generator-rammevaerk) [![David](https://img.shields.io/david/dev/kraftvaerk/generator-rammevaerk.svg?style=flat-square)]()
-
-[![npm](https://nodei.co/npm/generator-rammevaerk.svg?downloads=true)](https://nodei.co/npm/generator-rammevaerk/)
-
+[![Build Status](https://img.shields.io/travis/kraftvaerk/generator-rammevaerk/master.svg?style=flat-square)](https://travis-ci.org/kraftvaerk/generator-rammevaerk) [![npm Version](https://img.shields.io/npm/v/generator-rammevaerk.svg?style=flat-square)](https://www.npmjs.com/package/generator-rammevaerk) [![npm Downloads](https://img.shields.io/npm/dm/generator-rammevaerk.svg?style=flat-square)](https://www.npmjs.com/package/generator-rammevaerk) [![Dependency Status](https://img.shields.io/david/kraftvaerk/generator-rammevaerk.svg?style=flat-square)](https://david-dm.org/kraftvaerk/generator-rammevaerk) [![devDependency Status](https://img.shields.io/david/dev/kraftvaerk/generator-rammevaerk.svg?style=flat-square)](https://david-dm.org/kraftvaerk/generator-rammevaerk/?type=dev)
 
 > Scaffold out a web project in Kraftvaek style
 
-## Install
+## Installation
 
 Generators can be installed through npm. But needs [Yeoman](https://github.com/yeoman/yo).
 
 ```
-$ npm install -g generator-rammevaerk
+npm install -g yo generator-rammevaerk
 ```
 
 ## Usage
 
-With [yo](https://github.com/yeoman/yo):
+To scaffold a new project run:
 
 ```
-$ yo rammevaerk
+yo rammevaerk
 ```
-Then lint with `$ npm run lint`.
 
-## Troubleshooting:
+## Troubleshooting
 
-  For any issues, try running
+For any issues, try running:
 
-  $ yo doctor
+```
+yo doctor
+```
 
-Full Documentation: http://yeoman.io
-
+Additionally you can have a look at the [Yeoman's documentation](http://yeoman.io/).
 
 ## What's inside
 
-* [AVA](https://github.com/sotojuan/ava) Futuristic test runner
-* [Babel](https://github.com/babel/babel) Babel is a compiler for writing next generation JavaScript.
-* [Globby](https://github.com/sindresorhus/globby) Glob functionality for node.js.
-* [Eslint](https://github.com/eslint/eslint) A fully pluggable tool for identifying and reporting on patterns in JavaScript.
+* [AVA](https://github.com/avajs/ava) Futuristic JavaScript test runner.
+* [Babel](https://babeljs.io/) Babel is a compiler for writing next generation JavaScript.
+* [globby](https://github.com/sindresorhus/globby) User-friendly glob matching.
+* [ESLint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript.
 
 ## License
 
-MIT © [Mithun Dhiman](http://mi2oon.com)
+MIT © [Mithun Dhiman](http://mi2oon.com/)

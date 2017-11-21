@@ -321,7 +321,8 @@ export default class Generator extends Base {
             vaerkInstall() {
                 const done = this.async();
 
-                this.installDependencies({bower: false});
+                this.spawnCommand('npm', ['update', '--save', '--save-exact']);
+                this.installDependencies({ bower: false });
 
                 done();
             }

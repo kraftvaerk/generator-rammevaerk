@@ -8,4 +8,4 @@ branches:
     - master
 node_js:
   - "node"
-  - "4"
+  - "6"

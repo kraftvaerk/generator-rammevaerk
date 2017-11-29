@@ -11,7 +11,7 @@ test.beforeEach(async () => {
     generator = helpers.createGenerator('rammevaerk:app', ['../../app'], null, { 'skipInstall': true, 'keep-silence': true });
 });
 
-test.serial('generates expected files', async () => {
+test.serial('generates expected files', async t => {
 
     helpers.mockPrompt(generator, {
         projectName: 'avaTest'
@@ -34,9 +34,11 @@ test.serial('generates expected files', async () => {
     ];
 
     assert.file(expected);
+
+    t.pass();
 });
 
-test.serial('generates expected dependencies', async () => {
+test.serial('generates expected dependencies', async t => {
 
     helpers.mockPrompt(generator, {
         projectName: 'avaTest'
@@ -45,10 +47,11 @@ test.serial('generates expected dependencies', async () => {
     await pify(generator.run.bind(generator))();
 
     assert.JSONFileContent('package.json', {"name": "AvaTest"});
+
+    t.pass();
 });
 
-
-test.serial('generates capitalized kebabcase name', async () => {
+test.serial('generates capitalized kebabcase name', async t => {
 
     helpers.mockPrompt(generator, {
         projectName: 'a v a t e s t'
@@ -58,4 +61,5 @@ test.serial('generates capitalized kebabcase name', async () => {
 
     assert.file('A-v-a-t-e-s-t.Website');
 
+    t.pass();
 });

@@ -293,6 +293,7 @@ module.exports = class extends Generator {
     }
 
     install() {
+        this.spawnCommand('npm', ['update', '--save', '--save-exact']);
         this.installDependencies({bower: false});
     }
 

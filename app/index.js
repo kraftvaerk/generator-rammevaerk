@@ -172,10 +172,10 @@ module.exports = class extends Generator {
             this.log.ok('Setting up the Gulp...');
         }
 
-        this.fs.copy(this.templatePath('project-name.Gulp'), this.destinationPath(`${this.answers.projectName}.Gulp`));
+        this.fs.copyTpl(this.templatePath('project-name.Gulp'), this.destinationPath(`${this.answers.projectName}.Gulp`), this);
 
-        this.fs.copy(this.templatePath('_gulpfile.js'), this.destinationPath('gulpfile.js'));
-        this.fs.copy(this.templatePath('_webpack.config.js'), this.destinationPath('webpack.config.js'));
+        this.fs.copyTpl(this.templatePath('_gulpfile.js'), this.destinationPath('gulpfile.js'), this);
+        this.fs.copyTpl(this.templatePath('_webpack.config.js'), this.destinationPath('webpack.config.js'), this);
         done();
     }
     _packageJSON() {
@@ -263,21 +263,24 @@ module.exports = class extends Generator {
         );
 
         // Pug
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('project-name.Website/Mockup/Company'),
-            this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}`)
+            this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}`),
+            this
         );
 
 
         // Styles
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('project-name.Website/Styles/Company'),
-            this.destinationPath(`${this.answers.projectName}.Website/Styles/${this.answers.projectName}`)
+            this.destinationPath(`${this.answers.projectName}.Website/Styles/${this.answers.projectName}`),
+            this
         );
 
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('project-name.Website/Styles/Shared'),
-            this.destinationPath(`${this.answers.projectName}.Website/Styles/Shared`)
+            this.destinationPath(`${this.answers.projectName}.Website/Styles/Shared`),
+            this
         );
 
         done();
@@ -293,7 +296,11 @@ module.exports = class extends Generator {
     }
 
     install() {
-        this.spawnCommand('npm', ['update', '--save', '--save-exact']);
+        if (!this.options['skipInstall']){
+            this.spawnCommandSync('npm', ['update', '--save', '--save-exact']);
+            this.spawnCommandSync('npm', ['update', '--save-dev', '--save-exact']);
+        }
+
         this.installDependencies({bower: false});
     }
 

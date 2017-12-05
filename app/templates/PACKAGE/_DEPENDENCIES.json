@@ -6,9 +6,9 @@
         "kv.cookieconsent": "github:kraftvaerk/cookie-consent"
     },
     "devDependencies": {
-        "@babel/core": "next",
-        "@babel/polyfill": "next",
-        "@babel/preset-env": "next",
+        "@babel/core": "latest",
+        "@babel/polyfill": "latest",
+        "@babel/preset-env": "latest",
         "autoprefixer": "7.1.6",
         "babel-loader": "next",
         "browser-sync": "2.18.13",

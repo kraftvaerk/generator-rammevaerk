@@ -1,65 +1,34 @@
-import path     from 'path';
-import test     from 'ava';
-import helpers  from 'yeoman-test';
-import assert   from 'yeoman-assert';
-import pify     from 'pify';
+const path =     require('path');
+const helpers =  require('yeoman-test');
+const assert =   require('yeoman-assert');
 
-let generator;
-
-test.beforeEach(async () => {
-    await pify(helpers.testDirectory)(path.join(__dirname, 'temp'));
-    generator = helpers.createGenerator('rammevaerk:app', ['../../app'], null, { 'skipInstall': true, 'keep-silence': true });
-});
-
-test.serial('generates expected files', async t => {
-
-    helpers.mockPrompt(generator, {
-        projectName: 'avaTest'
+describe('rammevaerk:app', () => {
+    beforeAll(() => {
+        return helpers.run(path.join(__dirname, '../app'))
+            .withPrompts({projectName: 't e s t', 'skipInstall': true, 'keep-silence': true });
     });
 
-    await pify(generator.run.bind(generator))();
-
-    const expected = [
-        '.babelrc',
-        '.browserslistrc',
-        '.editorconfig',
-        '.eslintrc',
-        '.gitattributes',
-        '.gitignore',
-        '.stylelintrc',
-        'gulpfile.js',
-        'package.json',
-        'README.md',
-        'webpack.config.js'
-    ];
-
-    assert.file(expected);
-
-    t.pass();
-});
-
-test.serial('generates expected dependencies', async t => {
-
-    helpers.mockPrompt(generator, {
-        projectName: 'avaTest'
+    it('generates expected files', () => {
+        assert.file([
+            '.babelrc',
+            '.browserslistrc',
+            '.editorconfig',
+            '.eslintrc',
+            '.gitattributes',
+            '.gitignore',
+            '.stylelintrc',
+            'gulpfile.js',
+            'package.json',
+            'README.md',
+            'webpack.config.js'
+        ]);
     });
 
-    await pify(generator.run.bind(generator))();
-
-    assert.JSONFileContent('package.json', {"name": "AvaTest"});
-
-    t.pass();
-});
-
-test.serial('generates capitalized kebabcase name', async t => {
-
-    helpers.mockPrompt(generator, {
-        projectName: 'a v a t e s t'
+    it('generates capitalized kebabcase name', () => {
+        assert.JSONFileContent('package.json', {'name': 'T-e-s-t' });
     });
 
-    await pify(generator.run.bind(generator))();
-
-    assert.file('A-v-a-t-e-s-t.Website');
-
-    t.pass();
+    it('generates expected dependencies', () => {
+        assert.JSONFileContent('package.json', {'dependencies': { 'jquery': 'latest' }});
+    });
 });

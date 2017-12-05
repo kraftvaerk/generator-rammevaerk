@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "eslint app/index.js",
-    "test": "ava test/test.js --fail-fast --verbose"
+    "test": "jest test/*.js --verbose"
   },
   "files": [
     "app"
@@ -42,10 +42,9 @@
     "yosay": "^2.0.1"
   },
   "devDependencies": {
-    "ava": "^0.23.0",
-    "eslint": "^4.11.0",
+    "eslint": "^4.12.1",
     "eslint-config-kraftvaerk": "0.0.5",
-    "pify": "^3.0.0",
+    "jest": "^21.2.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.5.1"
   }

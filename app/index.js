@@ -240,6 +240,7 @@ module.exports = class extends Generator {
     _projectFiles() {
         const done = this.async();
 
+
         if (!this.options['keep-silence']){
             this.log.ok('Setting up the project files...');
         }
@@ -248,7 +249,6 @@ module.exports = class extends Generator {
             this.templatePath('project-name.Website/favicon.ico'),
             this.destinationPath(`${this.answers.projectName}.Website/favicon.ico`)
         );
-
 
 
         // Scripts
@@ -263,24 +263,27 @@ module.exports = class extends Generator {
         );
 
         // Pug
+        this.fs.copy(
+            this.templatePath('project-name.Website/Mockup/Company/images'),
+            this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/images`)
+        );
+
         this.fs.copyTpl(
-            this.templatePath('project-name.Website/Mockup/Company'),
+            this.templatePath('project-name.Website/Mockup/Company/**/*.pug'),
             this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}`),
             this
         );
 
-
         // Styles
         this.fs.copyTpl(
-            this.templatePath('project-name.Website/Styles/Company'),
+            this.templatePath('project-name.Website/Styles/Company/**'),
             this.destinationPath(`${this.answers.projectName}.Website/Styles/${this.answers.projectName}`),
             this
         );
 
-        this.fs.copyTpl(
+        this.fs.copy(
             this.templatePath('project-name.Website/Styles/Shared'),
-            this.destinationPath(`${this.answers.projectName}.Website/Styles/Shared`),
-            this
+            this.destinationPath(`${this.answers.projectName}.Website/Styles/Shared`)
         );
 
         done();

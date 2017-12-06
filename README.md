@@ -33,12 +33,12 @@ Additionally you can have a look at the [Yeoman's documentation](http://yeoman.i
 ## What's inside
 
 * [Webpack](https://webpack.js.org/) A bundler for javascript and friends.
-* [Gulp](http://gulpjs.com/) The streaming build system.
-* [Babel](https://babeljs.io/) Babel is a compiler for writing next generation JavaScript.
-* [PostCSS](http://postcss.org/) Transforming styles with JS plugins.
-* [Browsersync](http://browsersync.io/) Keep multiple browsers & devices in sync when building websites.
-* [Sass](http://sass-lang.com/) Syntactically Awesome Style Sheets.
-* [jQuery](https://jquery.com/) jQuery JavaScript Library.
+* [Gulp](http://gulpjs.com/) A streaming build system.
+* [Babel](https://babeljs.io/) A compiler for writing next generation JavaScript.
+* [PostCSS](http://postcss.org/) A tool for transforming CSS with JavaScript
+* [Browsersync](http://browsersync.io/) A tool for Keeping multiple browsers & devices in sync.
+* [Sass](http://sass-lang.com/) A Syntactically Awesome preprocessor style sheet language.
+* [jQuery](https://jquery.com/) A javaScript Library.
 * [Bootstrap](http://getbootstrap.com/) A popular HTML, CSS, and JavaScript framework.
 * [Stylelint](http://stylelint.io/) A mighty, modern CSS linter.
 * [ESLint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript.

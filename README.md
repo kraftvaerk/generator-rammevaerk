@@ -35,7 +35,7 @@ Additionally you can have a look at the [Yeoman's documentation](http://yeoman.i
 * [Webpack](https://webpack.js.org/) a bundler for javascript and friends.
 * [Gulp](http://gulpjs.com/) a streaming build system.
 * [Babel](https://babeljs.io/) a compiler for writing next generation JavaScript.
-* [PostCSS](http://postcss.org/) a tool for transforming CSS with JavaScript
+* [PostCSS](http://postcss.org/) a tool for transforming CSS with JavaScript.
 * [Browsersync](http://browsersync.io/) a tool for Keeping multiple browsers & devices in sync.
 * [Sass](http://sass-lang.com/) a Syntactically Awesome preprocessor style sheet language.
 * [jQuery](https://jquery.com/) a javaScript Library.

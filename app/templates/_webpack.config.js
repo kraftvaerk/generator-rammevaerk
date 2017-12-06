@@ -8,12 +8,18 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, conf.js.dest + '/'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].[chunkhash].js',
+        publicPath: '/Content/Scripts/'
     },
     devtool: 'source-maps',
     module: {
         rules: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            }
         ]
     },
     plugins: [

@@ -32,7 +32,6 @@ Additionally you can have a look at the [Yeoman's documentation](http://yeoman.i
 
 ## What's inside
 
-* [AVA](https://github.com/avajs/ava) Futuristic JavaScript test runner.
 * [ESLint](https://eslint.org/) A fully pluggable tool for identifying and reporting on patterns in JavaScript.
 
 ## License

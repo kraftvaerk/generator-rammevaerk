@@ -1,12 +1,10 @@
-'use strict';
-
 import $ from 'jquery';
 import '@fancyapps/fancybox';
 
 /**
- * [defaultLightbox]
- * @param  {[string]}   scope   [css selector]
- * @return {[undefined]}        [nothing returned]
+ * Init default Lightbox
+ *
+ * @param {string} scope CSS selector
  */
 export default function defaultLightbox(scope){
     $(scope).each(function () {

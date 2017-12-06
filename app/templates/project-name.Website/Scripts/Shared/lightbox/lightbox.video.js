@@ -1,12 +1,10 @@
-'use strict';
-
 import $ from 'jquery';
 import '@fancyapps/fancybox';
 
 /**
- * [videoLightbox description]
- * @param  {[type]} scope [description]
- * @return {[type]}       [description]
+ * Init video Lightbox
+ *
+ * @param {string} scope CSS selector
  */
 export default function videoLightbox(scope){
     $(scope).each(function () {

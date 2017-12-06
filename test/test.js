@@ -31,4 +31,8 @@ describe('rammevaerk:app', () => {
     it('generates expected dependencies', () => {
         assert.JSONFileContent('package.json', {'dependencies': { 'jquery': 'latest' }});
     });
+
+    it('generates template interpolated files', () => {
+        assert.fileContent('T-e-s-t.website/Mockup/T-e-s-t/pug/includes/layout.pug', /T-e-s-t/g);
+    });
 });

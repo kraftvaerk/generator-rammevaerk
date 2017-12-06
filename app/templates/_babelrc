@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/preset-stage-3",
     ["@babel/env", {
       "modules": false,
       "useBuiltIns": "usage"

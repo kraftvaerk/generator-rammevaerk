@@ -1,5 +1,3 @@
-'use strict';
-
 import printPage                 from './helper.print';
 import windowOpen                from './helper.windowOpen';
 import scrollToElement           from './helper.scrollToElm';

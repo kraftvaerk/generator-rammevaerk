@@ -243,10 +243,10 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-# Node.js/NPM
+# Node.js/npm
+.node_history
 node_modules
 npm-debug.log
-.node_history
 
 # Frontend
 *.sublime-workspace

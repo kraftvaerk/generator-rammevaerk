@@ -1,7 +1,7 @@
 {
   "name": "generator-rammevaerk",
   "version": "2.0.0",
-  "description": "Scaffold out a web project in kraftvaerk style",
+  "description": "Scaffold out a web project in Kraftvaerk style",
   "main": "app/index.js",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/kraftvaerk/generator-rammevaerk/issues"
   },
-  "author": "kraftvaerk",
+  "author": "Kraftvaerk",
   "engines": {
     "node": ">=6.9.0",
     "npm": ">=3.10.8"
@@ -42,8 +42,8 @@
     "yosay": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.12.1",
     "eslint-config-kraftvaerk": "0.0.5",
+    "eslint": "^4.12.1",
     "jest": "^21.2.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.5.1"

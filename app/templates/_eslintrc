@@ -1,4 +1,4 @@
 {
-    "extends": "kraftvaerk",
-    "parser": "babel-eslint"
+  "extends": "kraftvaerk",
+  "parser": "babel-eslint"
 }

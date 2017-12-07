@@ -14,10 +14,5 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{config,xml}]
-indent_style = space
-indent_size = 2
-
-[*.cshtml]
-indent_style = space
+[*.{config,cshtml,json,xml,yml}]
 indent_size = 2

@@ -1,16 +1,25 @@
-## Run using any other IDE ##
+## Run using any other IDE
 
-#### Install needed node.js modules ####
-*In a terminal (as admin)*
+#### Install needed Node.js modules
 
-    npm install
+Install dependencies:
 
-#### Mockup watcher ####
-*Watch for file changes and run the task accordingly*
+```
+npm install
+```
 
-    npm run watch
+#### Mockup watcher
 
-#### Build ####
-*Build scripts and styles*
+Watch for file changes and run the task accordingly:
 
-    npm run gulp
+```
+npm run watch
+```
+
+#### Build
+
+Build scripts, styles, and images:
+
+```
+npm run gulp
+```

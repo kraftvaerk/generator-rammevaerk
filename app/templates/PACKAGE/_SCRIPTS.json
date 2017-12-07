@@ -1,8 +1,8 @@
 {
-    "scripts": {
-        "gulp": "gulp",
-        "lint": "gulp scripts:lint && gulp styles:lint",
-        "watch": "gulp watch",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    }
+  "scripts": {
+    "gulp": "gulp",
+    "lint": "gulp scripts:lint && gulp styles:lint",
+    "watch": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

@@ -18,7 +18,7 @@ npm run watch
 
 #### Build
 
-Build scripts, styles and images:
+Build scripts, styles, and images:
 
 ```
 npm run gulp

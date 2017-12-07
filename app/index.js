@@ -155,7 +155,9 @@ module.exports = class extends Generator {
 
         readme += '\n';
 
-        readme += this.fs.read(this.templatePath('README/_IDE_visualStudio.md'));
+        readme += this.fs.read(this.templatePath('README/_IDE_VISUAL_STUDIO.md'));
+
+        readme += '\n';
 
         readme += this.fs.read(this.templatePath('README/_USAGE.md'));
 
@@ -204,11 +206,11 @@ module.exports = class extends Generator {
                 contributor.email = this.user.git.email();
             }
 
-            contributor.url = 'http://github.com/';
+            contributor.url = 'https://github.com/';
         } else {
             contributor = {
                 name: 'Kraftvaerk',
-                url: 'http://github.com/kraftvaerk'
+                url: 'https://github.com/kraftvaerk'
             };
         }
 
@@ -219,7 +221,7 @@ module.exports = class extends Generator {
         pkg.repository.type = 'git';
         pkg.repository.url = this.answers.projectRepositoryUrl;
 
-        // Node scripts
+        // npm scripts
         pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_SCRIPTS.json'), {}));
 
         // Keywords
@@ -299,7 +301,7 @@ module.exports = class extends Generator {
     }
 
     install() {
-        if (!this.options['skipInstall']){
+        if (!this.options['skip-install']){
             this.spawnCommandSync('npm', ['update', '--save', '--save-exact']);
             this.spawnCommandSync('npm', ['update', '--save-dev', '--save-exact']);
         }

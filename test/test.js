@@ -5,7 +5,7 @@ const assert =   require('yeoman-assert');
 describe('rammevaerk:app', () => {
     beforeAll(() => {
         return helpers.run(path.join(__dirname, '../app'))
-            .withPrompts({projectName: 't e s t', 'skipInstall': true, 'keep-silence': true });
+            .withPrompts({projectName: 't e s t', 'skip-install': true, 'keep-silence': true });
     });
 
     it('generates expected files', () => {

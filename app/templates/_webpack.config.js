@@ -1,18 +1,19 @@
 const webpack      = require('webpack');
 const conf         = require('./<%= answers.projectName %>.Gulp/config');
 const path         = require('path');
+const production   = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
         '<%= answers.projectName %>': [conf.js.src + '/<%= answers.projectName %>/index.js']
     },
     output: {
-        path: path.resolve(__dirname, conf.js.dest + '/'),
+        path: path.resolve(__dirname, conf.js.dest),
+        publicPath: conf.js.dest.replace(conf.baseDir, '') + '/',
         filename: '[name].bundle.js',
-        chunkFilename: '[name].[chunkhash].js',
-        publicPath: '/Content/Scripts/'
+        chunkFilename: '[name].[chunkhash].chunk.js'
     },
-    devtool: 'source-maps',
+    devtool: production ? 'source-maps' : 'cheap-module-eval-source-map',
     module: {
         rules: [
             {
@@ -23,16 +24,16 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': production ? '"production"' : '"development"'
+        }),
         new webpack.ProvidePlugin({
             'window.jQuery': 'jquery',
             'window.$': 'jquery'
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
+        ...production ? [new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             extractComments: true
-        })
+        })] : []
     ]
 };

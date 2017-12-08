@@ -10,7 +10,7 @@
 */
 
 const gulp = require('gulp');
-const production = process.env.NODE_ENV === 'production' ? true : false;
+const production = process.env.NODE_ENV === 'production';
 const taskPath = './<%= answers.projectName %>.Gulp';
 const tasks = [
     'scripts',

@@ -1,6 +1,5 @@
 'use strict';
 
-const production      = process.env.NODE_ENV === 'production' ? true : false;
 const gulp            = require('gulp');
 const sourcemaps      = require('gulp-sourcemaps');
 const rename          = require('gulp-rename');
@@ -9,6 +8,7 @@ const gutil           = require('gulp-util');
 const sass            = require('gulp-sass');
 const postcss         = require('gulp-postcss');
 const conf            = require('../config');
+const production      = process.env.NODE_ENV === 'production';
 
 // Generate solution styles
 gulp.task('styles', () => {

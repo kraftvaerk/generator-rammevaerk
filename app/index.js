@@ -32,7 +32,7 @@ module.exports = class extends Generator {
         });
 
         this.option(OPTIONS.KEEP_SILENCE, {
-            desc: 'Do not log output into console',
+            desc: 'Do not log output into the console',
             type: Boolean
         });
     }

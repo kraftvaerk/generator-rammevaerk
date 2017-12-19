@@ -152,7 +152,7 @@ module.exports = class extends Generator {
         let readme;
 
         if (!this.options[OPTIONS.KEEP_SILENCE]){
-            this.log.ok('Setting up the README.md...');
+            this.log.ok('Setting up the README...');
         }
 
         readme = this.fs.read(this.templatePath('README/_BODY.md'));

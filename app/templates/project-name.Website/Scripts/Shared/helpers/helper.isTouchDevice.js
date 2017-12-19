@@ -1,5 +1,5 @@
 /**
- * Determines whether the current device supports touch events
+ * Determine whether the current device supports touch events
  *
  * @return {boolean}
  */

@@ -35,17 +35,17 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.0",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "superb": "^2.0.0",
-    "yeoman-generator": "^2.0.1",
+    "yeoman-generator": "^2.0.2",
     "yosay": "^2.0.1"
   },
   "devDependencies": {
     "eslint-config-kraftvaerk": "0.0.5",
-    "eslint": "^4.12.1",
-    "jest": "^21.2.1",
+    "eslint": "^4.14.0",
+    "jest": "^22.0.4",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.5.1"
+    "yeoman-test": "^1.7.0"
   }
 }

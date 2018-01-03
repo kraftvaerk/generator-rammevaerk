@@ -1,22 +1,18 @@
 'use strict';
 
+const del             = require('del');
 const gulp            = require('gulp');
-const plumber         = require('gulp-plumber');
-const clean           = require('gulp-rimraf');
-const webpack         = require('webpack');
 const gutil           = require('gulp-util');
+const webpack         = require('webpack');
 const conf            = require('../config');
 const webpackConfig   = require('../../webpack.config');
 
 gulp.task('scripts:clean', () => {
-    return gulp.src(conf.js.dest + '/*.{js,map,LICENSE}', { read: false })
-        .pipe(plumber())
-        .pipe(clean({force: true}))
-        .on('error', gutil.log);
+    return del([conf.js.dest + '/*.{js,map,LICENSE}']);
 });
 
-gulp.task('scripts', ['scripts:clean'], function(callback) {
-    webpack(webpackConfig, function(err, stats) {
+gulp.task('scripts', ['scripts:clean'], (callback) => {
+    webpack(webpackConfig, (err, stats) => {
         if (err){
             throw new gutil.PluginError('webpack', err);
         }

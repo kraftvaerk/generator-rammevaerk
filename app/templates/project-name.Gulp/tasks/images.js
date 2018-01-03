@@ -1,16 +1,13 @@
 'use strict';
 
+const del             = require('del');
 const gulp            = require('gulp');
-const plumber         = require('gulp-plumber');
-const clean           = require('gulp-rimraf');
 const gutil           = require('gulp-util');
+const plumber         = require('gulp-plumber');
 const conf            = require('../config');
 
 gulp.task('images:clean', () => {
-    return gulp.src(conf.css.dest + '/**/img/**/*.{jpg,png,gif,svg}', { read: false })
-        .pipe(plumber())
-        .pipe(clean({force: true}))
-        .on('error', gutil.log);
+    return del([conf.css.dest + '/**/img/**/*.{jpg,png,gif,svg}']);
 });
 
 // Copy and optimize images

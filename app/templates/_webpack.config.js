@@ -4,11 +4,11 @@ import config  from './<%= answers.projectName %>.Gulp/config';
 
 export default {
     entry: {
-        '<%= answers.projectName %>': [conf.js.src + '/<%= answers.projectName %>/index.js']
+        '<%= answers.projectName %>': [config.js.src + '/<%= answers.projectName %>/index.js']
     },
     output: {
-        path: path.resolve(__dirname, conf.js.dest),
-        publicPath: conf.js.dest.replace(conf.baseDir, '') + '/',
+        path: path.resolve(__dirname, config.js.dest),
+        publicPath: config.js.dest.replace(config.baseDir, '') + '/',
         filename: '[name].bundle.js',
         chunkFilename: '[name].[chunkhash].chunk.js'
     },

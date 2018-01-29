@@ -37,13 +37,13 @@ function processStyles() {
                 this.emit('end');
             }
         }))
-        .pipe(production ? gutil.noop() : sourcemaps.init())
+        .pipe(global.production ? gutil.noop() : sourcemaps.init())
         .pipe(sass({includePaths: ['node_modules']}))
         .pipe(postcss(processors))
         .pipe(rename(function(path){
             path.basename = path.basename + '.min';
         }))
-        .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: config.css.src}))
+        .pipe(global.production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: config.css.src}))
         .pipe(gulp.dest(config.css.dest))
         .on('error', gutil.log);
 }

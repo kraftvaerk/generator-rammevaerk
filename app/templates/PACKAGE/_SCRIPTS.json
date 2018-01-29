@@ -1,7 +1,8 @@
 {
   "scripts": {
     "gulp": "gulp --require @babel/register",
-    "lint": "npm run gulp scripts:lint && npm run gulp styles:lint",
+    "build": "cross-env NODE_ENV=production npm run gulp",
+    "lint": "npm run gulp scripts:lint styles:lint",
     "watch": "npm run gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   }

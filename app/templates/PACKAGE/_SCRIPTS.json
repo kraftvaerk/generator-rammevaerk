@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "gulp": "gulp",
-    "lint": "gulp scripts:lint && gulp styles:lint",
-    "watch": "gulp watch",
+    "gulp": "gulp --require @babel/register",
+    "lint": "npm run gulp scripts:lint && npm run gulp styles:lint",
+    "watch": "npm run gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

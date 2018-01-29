@@ -35,7 +35,7 @@
     "gulp-pug": "3.3.0",
     "gulp-rename": "1.2.2",
     "gulp-sass": "3.1.0",
-    "gulp-sourcemaps": "2.6.3",
+    "gulp-sourcemaps": "2.6.4",
     "gulp-util": "3.0.8",
     "gulp": "next",
     "pixrem": "4.0.1",

@@ -1,11 +1,8 @@
-'use strict';
+import browserSync from 'browser-sync';
+import gutil from 'gulp-util';
+import conf from '../config';
 
-const gulp            = require('gulp');
-const browserSync     = require('browser-sync');
-const gutil           = require('gulp-util');
-const conf            = require('../config');
-
-gulp.task('server', ['default'], () => {
+function startServer(done) {
     browserSync({
         logPrefix: gutil.colors.bold.white(conf.pkg.name.toUpperCase()),
         server: {
@@ -22,4 +19,10 @@ gulp.task('server', ['default'], () => {
         },
         online: true
     });
-});
+
+    done();
+}
+
+export default {
+    startServer
+};

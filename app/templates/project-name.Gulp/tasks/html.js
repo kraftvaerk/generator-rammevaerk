@@ -1,16 +1,13 @@
-'use strict';
+import gulp from 'gulp';
+import pug from 'gulp-pug';
+import rename from 'gulp-rename';
+import plumber from 'gulp-plumber';
+import changed from 'gulp-changed';
+import cached from 'gulp-cached';
+import gutil from 'gulp-util';
+import conf from '../config';
 
-const gulp            = require('gulp');
-const pug             = require('gulp-pug');
-const rename          = require('gulp-rename');
-const plumber         = require('gulp-plumber');
-const changed         = require('gulp-changed');
-const cached          = require('gulp-cached');
-const gutil           = require('gulp-util');
-const conf            = require('../config');
-
-// Convert pug into html for mockup
-gulp.task('html', () => {
+function processHTML(){
     return gulp.src([conf.html.src + '/**/*.pug', '!**/includes/*.pug'])
         .pipe(plumber({
             errorHandler: function (err) {
@@ -48,4 +45,8 @@ gulp.task('html', () => {
         }))
         .pipe(gulp.dest(conf.html.dest))
         .on('error', gutil.log);
-});
+}
+
+export default {
+    processHTML
+};

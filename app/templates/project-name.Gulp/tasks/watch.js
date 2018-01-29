@@ -1,18 +1,9 @@
-'use strict';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import conf from '../config';
+import FONTS from 'cfonts';
 
-const gulp            = require('gulp');
-const watch           = require('gulp-watch');
-const browserSync     = require('browser-sync');
-const conf            = require('../config');
-
-gulp.task('watch:flag', false, () => {
-    global.isWatching = true;
-});
-
-// Watches for source changes to preform tasks with livereloading browser
-gulp.task('watch', ['watch:flag', 'server'], function(){
-    const FONTS = require('cfonts');
-
+function startWatchers() {
     FONTS.say( conf.pkg.name, {
         'font': 'simple', // define the font face
         'letterSpacing': 0, // define letter spacing
@@ -20,26 +11,31 @@ gulp.task('watch', ['watch:flag', 'server'], function(){
         'maxLength': '20' // define how many character can be on one line
     });
 
-    watch([conf.css.src + '/**/*.scss'], function(){
+    gulp.watch(conf.css.src + '/**/*.scss').on('change', function() {
         browserSync.notify('Styles updating!');
 
-        gulp.start(['styles:lint', 'styles'], function(){
+        gulp.series('styles:lint', 'styles')(function(){
             browserSync.reload('*.css');
         });
     });
 
-    watch(conf.js.src + '/**/*.js', function(){
+    gulp.watch(conf.js.src + '/**/*.js').on('change', function() {
         browserSync.notify('Scripts updating!');
-        gulp.start(['scripts'], function(){
+
+        gulp.series('scripts')(function(){
             browserSync.reload('*.js');
         });
     });
 
-    watch(conf.html.src + '/**/*.pug', function(file){
+    gulp.watch(conf.html.src + '/**/*.pug').on('change', function(path) {
         browserSync.notify('HTML updating!');
-        global.isInclude = /includes/.test(file.relative);
-        gulp.start('html', function(){
+        global.isInclude = /includes/.test(path);
+        gulp.series('html')(function(){
             browserSync.reload();
         });
     });
-});
+}
+
+export default {
+    startWatchers
+};

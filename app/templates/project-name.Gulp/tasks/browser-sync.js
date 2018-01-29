@@ -1,14 +1,14 @@
 import browserSync from 'browser-sync';
 import gutil from 'gulp-util';
-import conf from '../config';
+import config from '../config';
 
-function startServer(done) {
+function serve(done) {
     browserSync({
-        logPrefix: gutil.colors.bold.white(conf.pkg.name.toUpperCase()),
+        logPrefix: gutil.colors.bold.white(config.pkg.name.toUpperCase()),
         server: {
-            baseDir: conf.baseDir
+            baseDir: config.baseDir
         },
-        startPath: './Mockup/<%= answers.projectName %>/index.html',
+        startPath: `./Mockup/${config.pkg.name}/index.html`,
         index: 'index.html',
         open: true,
         directory: true,
@@ -24,5 +24,5 @@ function startServer(done) {
 }
 
 export default {
-    startServer
+    serve
 };

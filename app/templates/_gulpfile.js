@@ -8,7 +8,7 @@ import scriptsLint from './<%= answers.projectName %>.Gulp/tasks/scripts-lint.js
 import watch from './<%= answers.projectName %>.Gulp/tasks/watch.js';
 import server from './<%= answers.projectName %>.Gulp/tasks/browser-sync.js';
 
-const production = process.env.NODE_ENV === 'production';
+global.production = process.env.NODE_ENV === 'production';
 
 const tasks = [
     'scripts',

@@ -5,10 +5,10 @@ import plumber from 'gulp-plumber';
 import changed from 'gulp-changed';
 import cached from 'gulp-cached';
 import gutil from 'gulp-util';
-import conf from '../config';
+import config from '../config';
 
 function processHTML(){
-    return gulp.src([conf.html.src + '/**/*.pug', '!**/includes/*.pug'])
+    return gulp.src([config.html.src + '/**/*.pug', '!**/includes/*.pug'])
         .pipe(plumber({
             errorHandler: function (err) {
                 gutil.log('Filename: ', gutil.colors.bold.red(err.file));
@@ -25,9 +25,9 @@ function processHTML(){
         .pipe(pug({
             data: {
                 site: {
-                    name: conf.pkg.name,
-                    namespace: conf.namespace,
-                    description: conf.pkg.description
+                    name: config.pkg.name,
+                    namespace: config.namespace,
+                    description: config.pkg.description
                 }
             },
             pretty: true
@@ -43,10 +43,8 @@ function processHTML(){
                 return;
             }
         }))
-        .pipe(gulp.dest(conf.html.dest))
+        .pipe(gulp.dest(config.html.dest))
         .on('error', gutil.log);
 }
 
-export default {
-    processHTML
-};
+gulp.task('html', processHTML);

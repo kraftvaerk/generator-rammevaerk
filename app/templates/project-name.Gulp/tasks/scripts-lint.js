@@ -3,10 +3,10 @@ import eslint from 'gulp-eslint';
 import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 import cached from 'gulp-cached';
-import conf from '../config';
+import config from '../config';
 
-function processScriptsLint() {
-    return gulp.src([conf.js.src + '/**/*.js', './*Gulp/**/*.js'])
+function scriptsLint() {
+    return gulp.src([config.js.src + '/**/*.js', './*Gulp/**/*.js'])
         .pipe(global.isWatching ? cached('scripts') : gutil.noop())
         .pipe(plumber())
         .pipe(eslint())
@@ -14,6 +14,4 @@ function processScriptsLint() {
         .on('error', gutil.log);
 }
 
-export default {
-    processScriptsLint
-};
+gulp.task('scripts:lint', scriptsLint);

@@ -1,11 +1,12 @@
+import gulp from 'gulp';
 import del from 'del';
 import gutil from 'gulp-util';
 import webpack from 'webpack';
-import conf from '../config';
+import config from '../config';
 import webpackConfig from '../../webpack.config';
 
 function cleanScripts(done) {
-    return del([conf.js.dest + '/*.{js,map,LICENSE}'], done);
+    return del([config.js.dest + '/*.{js,map,LICENSE}'], done);
 }
 
 function processScripts(done) {
@@ -26,7 +27,4 @@ function processScripts(done) {
     });
 }
 
-export default {
-    cleanScripts,
-    processScripts
-};
+gulp.task('scripts', gulp.series(cleanScripts, processScripts));

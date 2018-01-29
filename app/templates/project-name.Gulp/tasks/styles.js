@@ -5,7 +5,7 @@ import plumber from 'gulp-plumber';
 import gutil from 'gulp-util';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
-import conf from '../config';
+import config from '../config';
 import autoprefixer from 'autoprefixer';
 import postcsstype from 'postcss-responsive-type';
 import postcssclear from 'postcss-clearfix';
@@ -27,7 +27,7 @@ function processStyles() {
         }));
     }
 
-    return gulp.src([conf.css.src + '/**/' + 'screen.scss'])
+    return gulp.src([config.css.src + '/**/' + 'screen.scss'])
         .pipe(plumber({
             errorHandler: function (err) {
                 gutil.log('Filename: ', gutil.colors.bold.red(err.file));
@@ -43,11 +43,9 @@ function processStyles() {
         .pipe(rename(function(path){
             path.basename = path.basename + '.min';
         }))
-        .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
-        .pipe(gulp.dest(conf.css.dest))
+        .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: config.css.src}))
+        .pipe(gulp.dest(config.css.dest))
         .on('error', gutil.log);
 }
 
-export default {
-    processStyles
-};
+gulp.task('styles', processStyles);

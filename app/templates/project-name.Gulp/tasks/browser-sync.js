@@ -8,16 +8,7 @@ function serve(done) {
         server: {
             baseDir: config.baseDir
         },
-        startPath: `./Mockup/${config.pkg.name}/index.html`,
-        index: 'index.html',
-        open: true,
-        directory: true,
-        ghostMode: {
-            click: true,
-            forms: true,
-            scroll: true
-        },
-        online: true
+        startPath: `./Mockup/${config.pkg.name}/index.html`
     });
 
     done();

@@ -8,12 +8,12 @@ import gutil from 'gulp-util';
 import config from '../config';
 
 function processHTML(){
-    return gulp.src([config.html.src + '/**/*.pug', '!**/includes/*.pug'])
+    return gulp.src([`${config.html.src}/**/*.pug`, '!**/includes/*.pug'])
         .pipe(plumber({
             errorHandler: function (err) {
-                gutil.log('Filename: ', gutil.colors.bold.red(err.file));
+                gutil.log('Filename: ', gutil.colors.bold.red(err.filename));
                 gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
-                gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                gutil.log('Extract: ', gutil.colors.bold.red(err.msg));
                 gutil.beep();
                 this.emit('end');
             }

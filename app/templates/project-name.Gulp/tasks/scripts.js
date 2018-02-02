@@ -6,7 +6,7 @@ import config from '../config';
 import webpackConfig from '../../webpack.config';
 
 function cleanScripts(done) {
-    return del([config.js.dest + '/*.{js,map,LICENSE}'], done);
+    return del(`${config.js.dest}/*.{js,map,LICENSE}`, done);
 }
 
 function processScripts(done) {

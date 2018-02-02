@@ -6,7 +6,7 @@ import cached from 'gulp-cached';
 import config from '../config';
 
 function scriptsLint() {
-    return gulp.src([config.js.src + '/**/*.js', './*Gulp/**/*.js'])
+    return gulp.src([`${config.js.src}/**/*.js`, './*Gulp/**/*.js'])
         .pipe(global.isWatching ? cached('scripts') : gutil.noop())
         .pipe(plumber())
         .pipe(eslint())

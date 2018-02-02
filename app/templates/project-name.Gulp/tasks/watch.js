@@ -4,14 +4,14 @@ import cfonts from 'cfonts';
 import config from '../config';
 
 function watch() {
-    cfonts.say( config.pkg.name, {
+    cfonts.say(config.pkg.name, {
         'font': 'simple',
         'letterSpacing': 0,
         'space': false,
         'maxLength': '20'
     });
 
-    gulp.watch(config.css.src + '/**/*.scss').on('change', function() {
+    gulp.watch(`${config.css.src}/**/*.scss`).on('change', function() {
         browserSync.notify('Styles updating!');
 
         gulp.series('styles:lint', 'styles')(function(){
@@ -19,7 +19,7 @@ function watch() {
         });
     });
 
-    gulp.watch(config.js.src + '/**/*.js').on('change', function() {
+    gulp.watch(`${config.js.src}/**/*.js`).on('change', function() {
         browserSync.notify('Scripts updating!');
 
         gulp.series('scripts:lint', 'scripts')(function(){
@@ -27,7 +27,7 @@ function watch() {
         });
     });
 
-    gulp.watch(config.html.src + '/**/*.pug').on('change', function(path) {
+    gulp.watch(`${config.html.src}/**/*.pug`).on('change', function(path) {
         browserSync.notify('HTML updating!');
         global.isInclude = /includes/.test(path);
         gulp.series('html')(function(){

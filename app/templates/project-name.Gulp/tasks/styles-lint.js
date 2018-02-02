@@ -7,7 +7,7 @@ import scss from 'postcss-scss';
 import config from '../config';
 
 function stylesLint() {
-    return gulp.src([config.css.src + '/**/*.s+(a|c)ss'])
+    return gulp.src(`${config.css.src}/**/*.s+(a|c)ss`)
         .pipe(plumber())
         .pipe(cached('styles'))
         .pipe(postcss([

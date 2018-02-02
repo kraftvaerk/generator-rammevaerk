@@ -27,12 +27,10 @@ function processStyles() {
         }));
     }
 
-    return gulp.src([config.css.src + '/**/' + 'screen.scss'])
+    return gulp.src(`${config.css.src}/**/screen.scss`)
         .pipe(plumber({
             errorHandler: function (err) {
-                gutil.log('Filename: ', gutil.colors.bold.red(err.file));
-                gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
-                gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                gutil.log(gutil.colors.bold.red(err.messageFormatted));
                 gutil.beep();
                 this.emit('end');
             }
@@ -41,7 +39,7 @@ function processStyles() {
         .pipe(sass({includePaths: ['node_modules']}))
         .pipe(postcss(processors))
         .pipe(rename(function(path){
-            path.basename = path.basename + '.min';
+            path.basename = `${path.basename}.min`;
         }))
         .pipe(global.production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: config.css.src}))
         .pipe(gulp.dest(config.css.dest))

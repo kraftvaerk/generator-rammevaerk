@@ -33,7 +33,7 @@ Additionally you can have a look at the [Yeoman's documentation](http://yeoman.i
 ## What's inside
 
 * [webpack](https://webpack.js.org/) a bundler for JavaScript and friends.
-* [Gulp](http://gulpjs.com/) a streaming build system.
+* [gulp](http://gulpjs.com/) a streaming build system.
 * [Babel](https://babeljs.io/) a compiler for writing next generation JavaScript.
 * [PostCSS](http://postcss.org/) a tool for transforming CSS with JavaScript.
 * [Browsersync](http://browsersync.io/) a tool for keeping multiple browsers & devices in sync.

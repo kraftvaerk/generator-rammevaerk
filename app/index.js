@@ -1,11 +1,11 @@
 'use strict';
 
-const _         = require('lodash');
-const chalk     = require('chalk');
+const _ = require('lodash');
+const chalk = require('chalk');
 const Generator = require('yeoman-generator');
-const mkdirp    = require('mkdirp');
-const superb    = require('superb');
-const yosay     = require('yosay');
+const mkdirp = require('mkdirp');
+const superb = require('superb');
+const yosay = require('yosay');
 
 const OPTIONS = {
     KEEP_SILENCE: 'keep-silence',
@@ -21,7 +21,6 @@ function capitalizeKebabCase(name) {
 
 module.exports = class extends Generator {
     constructor(...args) {
-        // Call the parent constructor
         super(...args);
 
         this.answers = {};
@@ -38,7 +37,7 @@ module.exports = class extends Generator {
     }
 
     initializing() {
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log(yosay(
                 chalk.yellow(`Initializing a ${superb()} new rammevaerk project...`)
             ));
@@ -48,7 +47,7 @@ module.exports = class extends Generator {
     prompting() {
         const questions = [];
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log('-------------------------------------------------------');
             this.log('Please answers the following questions:');
             this.log('-------------------------------------------------------\n');
@@ -114,7 +113,7 @@ module.exports = class extends Generator {
             '.Website/Styles/Shared'
         ];
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log('\n');
             this.log.ok('Setting up directories...');
         }
@@ -125,7 +124,7 @@ module.exports = class extends Generator {
 
         done();
     }
-    _dotfiles(){
+    _dotfiles() {
         const done = this.async();
         const dotfiles = [
             'babelrc',
@@ -137,7 +136,7 @@ module.exports = class extends Generator {
             'stylelintrc'
         ];
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the dotfiles...');
         }
 
@@ -151,7 +150,7 @@ module.exports = class extends Generator {
         const done = this.async();
         let readme;
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the README...');
         }
 
@@ -169,7 +168,7 @@ module.exports = class extends Generator {
     _gulp() {
         const done = this.async();
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the Gulp...');
         }
 
@@ -182,7 +181,7 @@ module.exports = class extends Generator {
         const done = this.async();
         let pkg = {};
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the package.json...');
         }
 
@@ -197,10 +196,10 @@ module.exports = class extends Generator {
         pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_CONTRIBUTORS.json'), {}));
 
         let contributor = {};
-        if (this.user.git.name()){
+        if (this.user.git.name()) {
             contributor.name = this.user.git.name();
 
-            if (this.user.git.email()){
+            if (this.user.git.email()) {
                 contributor.email = this.user.git.email();
             }
 
@@ -240,7 +239,7 @@ module.exports = class extends Generator {
     _projectFiles() {
         const done = this.async();
 
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the project files...');
         }
 
@@ -297,14 +296,14 @@ module.exports = class extends Generator {
     }
 
     install() {
-        if (!this.options[OPTIONS.SKIP_INSTALL]){
+        if (!this.options[OPTIONS.SKIP_INSTALL]) {
             this.spawnCommandSync('npm', ['update', '--save', '--save-exact']);
             this.spawnCommandSync('npm', ['update', '--save-dev', '--save-exact']);
         }
     }
 
     end() {
-        if (!this.options[OPTIONS.KEEP_SILENCE]){
+        if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.writeln('\n-------------------------------------------------------');
             this.log.writeln(`All done, you can ${chalk.green.bold('npm run watch')}, to start dev server.`);
             this.log.writeln('-------------------------------------------------------\n');

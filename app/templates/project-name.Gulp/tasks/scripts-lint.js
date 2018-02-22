@@ -1,8 +1,8 @@
-import gulp from 'gulp';
-import eslint from 'gulp-eslint';
-import plumber from 'gulp-plumber';
-import gutil from 'gulp-util';
 import cached from 'gulp-cached';
+import eslint from 'gulp-eslint';
+import gulp from 'gulp';
+import gutil from 'gulp-util';
+import plumber from 'gulp-plumber';
 import config from '../config';
 
 function scriptsLint() {

@@ -1,36 +1,38 @@
-import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import cfonts from 'cfonts';
+import gulp from 'gulp';
 import config from '../config';
 
 function watch() {
     cfonts.say(config.pkg.name, {
-        'font': 'simple',
-        'letterSpacing': 0,
-        'space': false,
-        'maxLength': '20'
+        font: 'simple',
+        letterSpacing: 0,
+        space: false,
+        maxLength: '20'
     });
 
-    gulp.watch(`${config.css.src}/**/*.scss`).on('change', function() {
+    gulp.watch(`${config.css.src}/**/*.scss`).on('change', () => {
         browserSync.notify('Styles updating!');
 
-        gulp.series('styles:lint', 'styles')(function(){
+        gulp.series('styles:lint', 'styles')(() => {
             browserSync.reload('*.css');
         });
     });
 
-    gulp.watch(`${config.js.src}/**/*.js`).on('change', function() {
+    gulp.watch(`${config.js.src}/**/*.js`).on('change', () => {
         browserSync.notify('Scripts updating!');
 
-        gulp.series('scripts:lint', 'scripts')(function(){
+        gulp.series('scripts:lint', 'scripts')(() => {
             browserSync.reload('*.js');
         });
     });
 
-    gulp.watch(`${config.html.src}/**/*.pug`).on('change', function(path) {
+    gulp.watch(`${config.html.src}/**/*.pug`).on('change', (path) => {
         browserSync.notify('HTML updating!');
+
         global.isInclude = /includes/.test(path);
-        gulp.series('html')(function(){
+
+        gulp.series('html')(() => {
             browserSync.reload();
         });
     });

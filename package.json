@@ -13,8 +13,8 @@
   },
   "author": "Kraftvaerk",
   "engines": {
-    "node": ">=6.9.0",
-    "npm": ">=3.10.8"
+    "node": ">=8.0.0",
+    "npm": ">=5.0.0"
   },
   "scripts": {
     "lint": "eslint app/index.js",

@@ -1,17 +1,15 @@
-'use strict';
+import gulp from 'gulp';
+import del from 'del';
+import gutil from 'gulp-util';
+import webpack from 'webpack';
+import config from '../config';
+import webpackConfig from '../../webpack.config';
 
-const del             = require('del');
-const gulp            = require('gulp');
-const gutil           = require('gulp-util');
-const webpack         = require('webpack');
-const conf            = require('../config');
-const webpackConfig   = require('../../webpack.config');
+function cleanScripts(done) {
+    return del(`${config.js.dest}/*.{js,map,LICENSE}`, done);
+}
 
-gulp.task('scripts:clean', () => {
-    return del([conf.js.dest + '/*.{js,map,LICENSE}']);
-});
-
-gulp.task('scripts', ['scripts:clean'], (callback) => {
+function processScripts(done) {
     webpack(webpackConfig, (err, stats) => {
         if (err){
             throw new gutil.PluginError('webpack', err);
@@ -25,6 +23,8 @@ gulp.task('scripts', ['scripts:clean'], (callback) => {
             chunkModules: false
         }));
 
-        callback();
+        done();
     });
-});
+}
+
+gulp.task('scripts', gulp.series(cleanScripts, processScripts));

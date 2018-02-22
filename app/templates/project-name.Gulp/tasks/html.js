@@ -1,22 +1,19 @@
-'use strict';
+import gulp from 'gulp';
+import pug from 'gulp-pug';
+import rename from 'gulp-rename';
+import plumber from 'gulp-plumber';
+import changed from 'gulp-changed';
+import cached from 'gulp-cached';
+import gutil from 'gulp-util';
+import config from '../config';
 
-const gulp            = require('gulp');
-const pug             = require('gulp-pug');
-const rename          = require('gulp-rename');
-const plumber         = require('gulp-plumber');
-const changed         = require('gulp-changed');
-const cached          = require('gulp-cached');
-const gutil           = require('gulp-util');
-const conf            = require('../config');
-
-// Convert pug into html for mockup
-gulp.task('html', () => {
-    return gulp.src([conf.html.src + '/**/*.pug', '!**/includes/*.pug'])
+function processHTML(){
+    return gulp.src([`${config.html.src}/**/*.pug`, '!**/includes/*.pug'])
         .pipe(plumber({
             errorHandler: function (err) {
-                gutil.log('Filename: ', gutil.colors.bold.red(err.file));
+                gutil.log('Filename: ', gutil.colors.bold.red(err.filename));
                 gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
-                gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                gutil.log('Extract: ', gutil.colors.bold.red(err.msg));
                 gutil.beep();
                 this.emit('end');
             }
@@ -28,9 +25,9 @@ gulp.task('html', () => {
         .pipe(pug({
             data: {
                 site: {
-                    name: conf.pkg.name,
-                    namespace: conf.namespace,
-                    description: conf.pkg.description
+                    name: config.pkg.name,
+                    namespace: config.namespace,
+                    description: config.pkg.description
                 }
             },
             pretty: true
@@ -46,6 +43,8 @@ gulp.task('html', () => {
                 return;
             }
         }))
-        .pipe(gulp.dest(conf.html.dest))
+        .pipe(gulp.dest(config.html.dest))
         .on('error', gutil.log);
-});
+}
+
+gulp.task('html', processHTML);

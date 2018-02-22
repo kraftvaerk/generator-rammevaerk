@@ -1,38 +1,29 @@
-'use strict';
+import gulp from "gulp";
+import HubRegistry from 'gulp-hub';
 
-/*
-  gulpfile.js
-  ===========
-  Rather than manage one giant configuration file responsible
-  for creating multiple tasks, each task has been broken out into
-  its own file in gulp/tasks. To add a new task, simply add a
-  new task file that directory.
-*/
+import watcher from './<%= answers.projectName %>.Gulp/tasks/watch.js';
+import server from './<%= answers.projectName %>.Gulp/tasks/browser-sync.js';
 
-const gulp = require('gulp');
-const production = process.env.NODE_ENV === 'production';
-const taskPath = './<%= answers.projectName %>.Gulp';
+global.production = process.env.NODE_ENV === 'production';
+
+// Load some files into the registry
+const hub = new HubRegistry(['./<%= answers.projectName %>.Gulp/tasks/*.js']);
+
+// Tell gulp to use the tasks just loaded
+gulp.registry(hub);
+
 const tasks = [
     'scripts',
     'styles',
     'images'
 ];
 
-// Require tasks in gulp/tasks
 if (!production){
-    require(taskPath + '/tasks/browser-sync');
-    require(taskPath + '/tasks/html');
-    require(taskPath + '/tasks/watch');
-    require(taskPath + '/tasks/scripts-lint');
-    require(taskPath + '/tasks/styles-lint');
-
     tasks.push('html');
     tasks.push('scripts:lint');
     tasks.push('styles:lint');
 }
 
-require(taskPath + '/tasks/scripts');
-require(taskPath + '/tasks/styles');
-require(taskPath + '/tasks/images');
-
-gulp.task('default', tasks);
+gulp.task('default', gulp.parallel(tasks));
+gulp.task('server', gulp.series('default', server.serve));
+gulp.task('watch', gulp.series('watch:flag', 'server', watcher.watch));

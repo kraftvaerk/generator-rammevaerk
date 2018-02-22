@@ -1,45 +1,46 @@
-'use strict';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import cfonts from 'cfonts';
+import config from '../config';
 
-const gulp            = require('gulp');
-const watch           = require('gulp-watch');
-const browserSync     = require('browser-sync');
-const conf            = require('../config');
-
-gulp.task('watch:flag', false, () => {
-    global.isWatching = true;
-});
-
-// Watches for source changes to preform tasks with livereloading browser
-gulp.task('watch', ['watch:flag', 'server'], function(){
-    const FONTS = require('cfonts');
-
-    FONTS.say( conf.pkg.name, {
-        'font': 'simple', // define the font face
-        'letterSpacing': 0, // define letter spacing
-        'space': false, // define if the output text should have empty lines on top and on the bottom
-        'maxLength': '20' // define how many character can be on one line
+function watch() {
+    cfonts.say(config.pkg.name, {
+        'font': 'simple',
+        'letterSpacing': 0,
+        'space': false,
+        'maxLength': '20'
     });
 
-    watch([conf.css.src + '/**/*.scss'], function(){
+    gulp.watch(`${config.css.src}/**/*.scss`).on('change', function() {
         browserSync.notify('Styles updating!');
 
-        gulp.start(['styles:lint', 'styles'], function(){
+        gulp.series('styles:lint', 'styles')(function(){
             browserSync.reload('*.css');
         });
     });
 
-    watch(conf.js.src + '/**/*.js', function(){
+    gulp.watch(`${config.js.src}/**/*.js`).on('change', function() {
         browserSync.notify('Scripts updating!');
-        gulp.start(['scripts'], function(){
+
+        gulp.series('scripts:lint', 'scripts')(function(){
             browserSync.reload('*.js');
         });
     });
 
-    watch(conf.html.src + '/**/*.pug', function(file){
+    gulp.watch(`${config.html.src}/**/*.pug`).on('change', function(path) {
         browserSync.notify('HTML updating!');
-        global.isInclude = /includes/.test(file.relative);
-        gulp.start('html', function(){
+        global.isInclude = /includes/.test(path);
+        gulp.series('html')(function(){
             browserSync.reload();
         });
     });
+}
+
+gulp.task('watch:flag', (done) => {
+    global.isWatching = true;
+    done();
 });
+
+export default {
+    watch
+};

@@ -1,25 +1,25 @@
-'use strict';
+import gulp from 'gulp';
+import sourcemaps from 'gulp-sourcemaps';
+import rename from 'gulp-rename';
+import plumber from 'gulp-plumber';
+import gutil from 'gulp-util';
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import config from '../config';
+import autoprefixer from 'autoprefixer';
+import postcsstype from 'postcss-responsive-type';
+import postcssclear from 'postcss-clearfix';
+import cssnano from 'cssnano';
 
-const gulp            = require('gulp');
-const sourcemaps      = require('gulp-sourcemaps');
-const rename          = require('gulp-rename');
-const plumber         = require('gulp-plumber');
-const gutil           = require('gulp-util');
-const sass            = require('gulp-sass');
-const postcss         = require('gulp-postcss');
-const conf            = require('../config');
-const production      = process.env.NODE_ENV === 'production';
-
-// Generate solution styles
-gulp.task('styles', () => {
+function processStyles() {
     const processors = [
-        require('autoprefixer'),
-        require('postcss-responsive-type'),
-        require('postcss-clearfix')
+        autoprefixer,
+        postcsstype,
+        postcssclear
     ];
 
     if (!global.isWatching) {
-        processors.push(require('cssnano')({
+        processors.push(cssnano({
             autoprefixer: false,
             discardDuplicates: false,
             orderedValues: false,
@@ -27,23 +27,23 @@ gulp.task('styles', () => {
         }));
     }
 
-    return gulp.src([conf.css.src + '/**/' + 'screen.scss'])
+    return gulp.src(`${config.css.src}/**/screen.scss`)
         .pipe(plumber({
             errorHandler: function (err) {
-                gutil.log('Filename: ', gutil.colors.bold.red(err.file));
-                gutil.log('Linenumber: ', gutil.colors.bold.red(err.line));
-                gutil.log('Extract: ', gutil.colors.bold.red(err.message));
+                gutil.log(gutil.colors.bold.red(err.messageFormatted));
                 gutil.beep();
                 this.emit('end');
             }
         }))
-        .pipe(production ? gutil.noop() : sourcemaps.init())
+        .pipe(global.production ? gutil.noop() : sourcemaps.init())
         .pipe(sass({includePaths: ['node_modules']}))
         .pipe(postcss(processors))
         .pipe(rename(function(path){
-            path.basename = path.basename + '.min';
+            path.basename = `${path.basename}.min`;
         }))
-        .pipe(production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: conf.css.src}))
-        .pipe(gulp.dest(conf.css.dest))
+        .pipe(global.production ? gutil.noop() : sourcemaps.write('./', {includeContent: false, sourceRoot: config.css.src}))
+        .pipe(gulp.dest(config.css.dest))
         .on('error', gutil.log);
-});
+}
+
+gulp.task('styles', processStyles);

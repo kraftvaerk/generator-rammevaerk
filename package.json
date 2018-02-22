@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "eslint app/index.js",
-    "test": "jest test/*.js --verbose"
+    "test": "jest --verbose"
   },
   "files": [
     "app"
@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "eslint-config-kraftvaerk": "0.0.5",
-    "eslint": "^4.14.0",
-    "jest": "^22.0.4",
+    "eslint": "^4.17.0",
+    "jest": "^22.3.0",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
   }

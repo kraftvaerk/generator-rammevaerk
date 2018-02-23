@@ -1,5 +1,7 @@
+__tests__
 .editorconfig
+.eslintignore
 .eslintrc
+.gitattributes
 .gitignore
 .travis.yml
-test/

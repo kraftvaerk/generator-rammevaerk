@@ -1,8 +1,8 @@
 import gulp from "gulp";
 import HubRegistry from 'gulp-hub';
 
-import watcher from './<%= answers.projectName %>.Gulp/tasks/watch.js';
 import server from './<%= answers.projectName %>.Gulp/tasks/browser-sync.js';
+import watcher from './<%= answers.projectName %>.Gulp/tasks/watch.js';
 
 global.production = process.env.NODE_ENV === 'production';
 
@@ -18,10 +18,8 @@ const tasks = [
     'images'
 ];
 
-if (!production){
-    tasks.push('html');
-    tasks.push('scripts:lint');
-    tasks.push('styles:lint');
+if (!production) {
+    tasks.push('html', 'scripts:lint', 'styles:lint');
 }
 
 gulp.task('default', gulp.parallel(tasks));

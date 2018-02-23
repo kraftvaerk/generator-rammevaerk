@@ -1,9 +1,10 @@
-import pkg        from '../package.json';
-const baseDir     = './<%= answers.projectName %>.Website';
+import pkg from '../package.json';
+
+const baseDir = './<%= answers.projectName %>.Website';
 
 export default {
-    pkg: pkg,
-    baseDir: baseDir,
+    pkg,
+    baseDir,
     html: {
         dest: `${baseDir}/Mockup`,
         src: `${baseDir}/Mockup`

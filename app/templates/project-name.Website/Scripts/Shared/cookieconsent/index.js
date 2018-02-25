@@ -1,7 +1,7 @@
 import CookieConsent from 'kv.cookieconsent';
 
 export function init(selector){
-    if (!document.getElementById(selector)){
+    if (!document.querySelector(selector);){
         return;
     }
 

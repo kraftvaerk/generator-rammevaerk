@@ -26,6 +26,10 @@ export default {
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development'
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: '<%= answers.projectName %>.vendor',
+            minChunks: module => module.context && module.context.includes('node_modules')
+        }),
         new webpack.ProvidePlugin({
             'window.jQuery': 'jquery',
             'window.$': 'jquery'

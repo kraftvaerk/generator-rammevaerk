@@ -1,49 +1,59 @@
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 import gulp from 'gulp';
-import gutil from 'gulp-util';
-import plumber from 'gulp-plumber';
-import postcss from 'gulp-postcss';
-import postcssclear from 'postcss-clearfix';
-import postcsstype from 'postcss-responsive-type';
-import rename from 'gulp-rename';
-import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
+import rename from 'gulp-rename';
+import plumber from 'gulp-plumber';
+import colors from 'ansi-colors';
+import log from 'fancy-log';
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
 import config from '../config';
+import autoprefixer from 'autoprefixer';
+import postcsstype from 'postcss-responsive-type';
+import postcssclear from 'postcss-clearfix';
+import cssnano from 'cssnano';
+
+const PLUMBER_OPTIONS = {
+    errorHandler: function (err) {
+        log(colors.bold(colors.red(err.messageFormatted)));
+        this.emit('end');
+    }
+};
+
+const SASS_OPTIONS = {
+    includePaths: ['node_modules']
+};
+
+const SOURCEMAP_OPTIONS = {
+    includeContent: false,
+    sourceRoot: config.css.src
+};
+
+function renameStyles(path){
+    path.basename = path.basename + '.min';
+}
 
 function processStyles() {
-    const processors = [
+    const PROCESSORS = [
         autoprefixer,
         postcsstype,
-        postcssclear
-    ];
-
-    if (!global.isWatching) {
-        processors.push(cssnano({
+        postcssclear,
+        ...(!global.isWatching) ? [cssnano({
             autoprefixer: false,
             discardDuplicates: false,
             orderedValues: false,
             svgo: false
-        }));
-    }
+        })] : []
+    ];
 
     return gulp.src(`${config.css.src}/**/screen.scss`)
-        .pipe(plumber({
-            errorHandler(err) {
-                gutil.log(gutil.colors.bold.red(err.messageFormatted));
-                gutil.beep();
-                this.emit('end');
-            }
-        }))
-        .pipe(global.production ? gutil.noop() : sourcemaps.init())
-        .pipe(sass({ includePaths: ['node_modules'] }))
-        .pipe(postcss(processors))
-        .pipe(rename((path) => {
-            path.basename = `${path.basename}.min`;
-        }))
-        .pipe(global.production ? gutil.noop() : sourcemaps.write('./', { includeContent: false, sourceRoot: config.css.src }))
+        .pipe(plumber(PLUMBER_OPTIONS))
+        .pipe(sourcemaps.init())
+        .pipe(sass(SASS_OPTIONS))
+        .pipe(postcss(PROCESSORS))
+        .pipe(rename(renameStyles))
+        .pipe(sourcemaps.write('./', SOURCEMAP_OPTIONS))
         .pipe(gulp.dest(config.css.dest))
-        .on('error', gutil.log);
+        .on('error', log);
 }
 
 gulp.task('styles', processStyles);

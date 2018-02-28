@@ -16,7 +16,7 @@ window.App.common = {
     init() {
         console.log('jQuery:', $.fn.jquery);
 
-        cookieConsent.init('#cookieConsent');
+        cookieConsent.init('#cookieContent');
 
         this.lightbox();
     },

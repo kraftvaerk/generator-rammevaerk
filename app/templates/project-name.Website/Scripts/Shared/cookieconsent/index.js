@@ -1,30 +1,13 @@
-import $ from 'jquery';
-import 'kv.cookieconsent';
+import CookieConsent from 'kv.cookieconsent';
 
-export function init(scope, settings){
-    if (!scope){
+export function init(selector){
+    if (!document.querySelector(selector);){
         return;
     }
 
-    const option = Object.assign({
-        cookieName: 'cookieConsent',
-        btn: {
-            accept: '.accept'
-        },
-        transition: {
-            show: {
-                type: 'fadeIn',
-                duration: 500
-            },
-            hide: {
-                type: 'fadeOut',
-                duration: 500
-            }
-        },
-        consentType: 'explicit'
-    }, settings);
+    const cookieConsent = new CookieConsent();
 
-    $(scope).cookieConsent(option);
+    cookieConsent.init(selector);
 }
 
 export default {

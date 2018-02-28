@@ -1,6 +1,6 @@
+import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import cfonts from 'cfonts';
-import gulp from 'gulp';
 import config from '../config';
 
 function watch() {
@@ -29,9 +29,7 @@ function watch() {
 
     gulp.watch(`${config.html.src}/**/*.pug`).on('change', (path) => {
         browserSync.notify('HTML updating!');
-
         global.isInclude = /includes/.test(path);
-
         gulp.series('html')(() => {
             browserSync.reload();
         });

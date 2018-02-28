@@ -30,15 +30,15 @@ const PLUMBER_OPTIONS = {
 };
 
 function renameTemplate(path) {
-    if (!(/includes/.test(path.dirname))) {
-        path.dirname = path.dirname.replace('pug', '');
-
-        if (path.basename !== 'index'){
-            path.basename = 'tpl-' + path.basename;
-        }
-    } else {
+    if (/includes/.test(path.dirname)) {
         return;
     }
+
+    if (path.basename !== 'index') {
+        path.basename = `tpl-${path.basename}`;
+    }
+
+    path.dirname = path.dirname.replace('pug', '');
 }
 
 function processHTML(){

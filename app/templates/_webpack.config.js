@@ -1,8 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import config from './<%= answers.projectName %>.Gulp/config';
 
 export default {
+    mode: global.production ? 'production' : 'development',
     entry: {
         '<%= answers.projectName %>': [`${config.js.src}/<%= answers.projectName %>/index.js`]
     },
@@ -22,21 +24,31 @@ export default {
             }
         ]
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                sourceMap: true,
+                extractComments: true
+            })
+        ],
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: '<%= answers.projectName %>.vendor',
+                    chunks: 'all',
+                    filename: '[name].bundle.js'
+                }
+            }
+        }
+    },
     plugins: [
         new webpack.EnvironmentPlugin({
             NODE_ENV: 'development'
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: '<%= answers.projectName %>.vendor',
-            minChunks: module => module.context && module.context.includes('node_modules')
-        }),
         new webpack.ProvidePlugin({
             'window.jQuery': 'jquery',
             'window.$': 'jquery'
-        }),
-        ...global.production ? [new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            extractComments: true
-        })] : []
+        })
     ]
 };

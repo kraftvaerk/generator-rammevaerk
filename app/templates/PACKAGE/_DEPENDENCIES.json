@@ -47,6 +47,7 @@
     "stylelint": "9.1.1",
     "stylelint-config-kraftvaerk": "2.0.1",
     "through2": "2.0.3",
-    "webpack": "3.11.0"
+    "uglifyjs-webpack-plugin": "1.2.3",
+    "webpack": "4.1.1"
   }
 }

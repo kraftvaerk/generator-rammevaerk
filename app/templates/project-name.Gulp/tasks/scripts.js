@@ -9,9 +9,7 @@ function webpackCallback(err, stats, done) {
     log('[webpack:build] Completed\n' + stats.toString({
         colors: true,
         modules: false,
-        children: false,
-        chunks: false,
-        chunkModules: false
+        entrypoints: false
     }));
 
     done();

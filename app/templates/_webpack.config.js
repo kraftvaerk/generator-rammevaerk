@@ -32,6 +32,12 @@ export default {
         ]
     },
     optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                sourceMap: true,
+                extractComments: true
+            })
+        ],
         splitChunks: {
             cacheGroups: {
                 vendor: {
@@ -41,15 +47,7 @@ export default {
                     filename: bundleFilename
                 }
             }
-        },
-        ...global.production ? {
-            minimizer: [
-                new UglifyJsPlugin({
-                    sourceMap: true,
-                    extractComments: true
-                })
-            ]
-        }: {}
+        }
     },
     plugins: [
         new webpack.ProvidePlugin({

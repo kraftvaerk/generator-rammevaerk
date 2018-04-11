@@ -1,6 +1,6 @@
 import path from 'path';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import webpack from 'webpack';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import config from './<%= answers.projectName %>.Gulp/config';
 
 const bundleFilename = '[name].bundle.js';
@@ -26,7 +26,7 @@ export default {
                 exclude: vendorRegex,
                 loader: 'babel-loader',
                 options: {
-                    cacheDirectory: !global.production,
+                    cacheDirectory: !global.production
                 }
             }
         ]

@@ -18,7 +18,7 @@ export default {
         filename: bundleFilename,
         chunkFilename: chunkFilename
     },
-    devtool: global.production ? 'source-maps' : 'cheap-module-eval-source-map',
+    devtool: global.production ? 'source-map' : 'cheap-module-eval-source-map',
     module: {
         rules: [
             {

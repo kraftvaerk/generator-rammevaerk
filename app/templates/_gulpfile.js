@@ -1,4 +1,4 @@
-import gulp from "gulp";
+import gulp from 'gulp';
 import HubRegistry from 'gulp-hub';
 
 import server from './<%= answers.projectName %>.Gulp/tasks/browser-sync.js';

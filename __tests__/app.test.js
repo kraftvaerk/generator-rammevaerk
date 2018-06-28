@@ -1,6 +1,8 @@
-import assert from 'yeoman-assert';
-import helpers from 'yeoman-test';
-import path from 'path';
+'use strict';
+
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const path = require('path');
 
 describe('rammevaerk:app', () => {
     beforeAll(() => {

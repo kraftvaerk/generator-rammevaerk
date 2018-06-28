@@ -1,8 +1,6 @@
-'use strict';
-
-const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
-const path = require('path');
+import assert from 'yeoman-assert';
+import helpers from 'yeoman-test';
+import path from 'path';
 
 describe('rammevaerk:app', () => {
     beforeAll(() => {
@@ -27,11 +25,11 @@ describe('rammevaerk:app', () => {
         ]);
     });
 
-    it('generates capitalized kebabcase name', () => {
-        assert.JSONFileContent('package.json', { name: 'T-e-s-t' });
+    it('generates capitalized kebab-case name', () => {
+        assert.JSONFileContent('package.json', { name: 'T-e-s-t' }); // eslint-disable-line new-cap
     });
 
     it('generates expected dependencies', () => {
-        assert.JSONFileContent('package.json', { dependencies: { jquery: 'latest' } });
+        assert.JSONFileContent('package.json', { dependencies: { jquery: 'latest' } }); // eslint-disable-line new-cap
     });
 });

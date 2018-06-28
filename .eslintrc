@@ -1,6 +1,9 @@
 {
   "extends": "kraftvaerk",
-  "rules": {
-    "prefer-const": 0
+  "env": {
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
   }
 }

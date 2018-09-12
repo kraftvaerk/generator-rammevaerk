@@ -27,11 +27,11 @@ describe('rammevaerk:app', () => {
         ]);
     });
 
-    it('generates capitalized kebabcase name', () => {
-        assert.JSONFileContent('package.json', { name: 'T-e-s-t' });
+    it('generates capitalized kebab-case name', () => {
+        assert.JSONFileContent('package.json', { name: 'T-e-s-t' }); // eslint-disable-line new-cap
     });
 
     it('generates expected dependencies', () => {
-        assert.JSONFileContent('package.json', { dependencies: { jquery: 'latest' } });
+        assert.JSONFileContent('package.json', { dependencies: { jquery: 'latest' } }); // eslint-disable-line new-cap
     });
 });

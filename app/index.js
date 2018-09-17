@@ -39,7 +39,7 @@ module.exports = class extends Generator {
     initializing() {
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log(yosay(
-                chalk.yellow(`Initializing a ${superb()} new rammevaerk project...`)
+                chalk.yellow(`Initializing a ${superb.random()} new rammevaerk project...`)
             ));
         }
     }
@@ -93,7 +93,7 @@ module.exports = class extends Generator {
             this.answers = answers;
             this.answers.projectName = capitalizeKebabCase(this.answers.projectName);
             this.answers.projectDescription = this.answers.projectDescription === 'N/A'
-                ? `I promise to add the description later on to this ${superb()} new project${gitName}.`
+                ? `I promise to add the description later on to this ${superb.random()} new project${gitName}.`
                 : this.answers.projectDescription;
         });
     }

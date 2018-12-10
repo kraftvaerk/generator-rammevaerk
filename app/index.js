@@ -297,8 +297,7 @@ module.exports = class extends Generator {
 
     install() {
         if (!this.options[OPTIONS.SKIP_INSTALL]) {
-            this.spawnCommandSync('npm', ['update', '--save', '--save-exact']);
-            this.spawnCommandSync('npm', ['update', '--save-dev', '--save-exact']);
+            this.spawnCommandSync('npm', ['install']);
         }
     }
 

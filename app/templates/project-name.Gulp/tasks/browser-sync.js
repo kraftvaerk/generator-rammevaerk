@@ -12,7 +12,6 @@ const BROWSERSYNC_OPTIONS = {
 
 function serve(done) {
     browserSync(BROWSERSYNC_OPTIONS);
-
     done();
 }
 

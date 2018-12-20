@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@fancyapps/fancybox": "latest",
+    "@fancyapps/fancybox": "3.5.3",
     "bootstrap": "latest",
     "jquery": "latest",
     "kv.cookieconsent": "1.0.0"

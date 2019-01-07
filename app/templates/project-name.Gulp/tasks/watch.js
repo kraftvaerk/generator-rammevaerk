@@ -1,6 +1,7 @@
-import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import cfonts from 'cfonts';
+import gulp from 'gulp';
+import { watchScripts } from './scripts';
 import config from '../config';
 
 function watch() {
@@ -19,20 +20,17 @@ function watch() {
         });
     });
 
-    gulp.watch(`${config.js.src}/**/*.js`).on('change', () => {
-        browserSync.notify('Scripts updating!');
-
-        gulp.series('scripts:lint', 'scripts')(() => {
-            browserSync.reload('*.js');
-        });
-    });
-
     gulp.watch(`${config.html.src}/**/*.pug`).on('change', (path) => {
         browserSync.notify('HTML updating!');
         global.isInclude = /includes/.test(path);
         gulp.series('html')(() => {
             browserSync.reload();
         });
+    });
+
+    watchScripts(() => {
+        browserSync.notify('Scripts updating!');
+        browserSync.reload();
     });
 }
 

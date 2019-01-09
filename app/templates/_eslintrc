@@ -1,4 +1,4 @@
 {
-  "extends": "kraftvaerk",
+  "extends": "@kraftvaerk/eslint-config",
   "parser": "babel-eslint"
 }

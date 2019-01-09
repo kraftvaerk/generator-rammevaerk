@@ -13,13 +13,13 @@ describe('rammevaerk:app', () => {
 
     it('generates expected files', () => {
         assert.file([
-            '.babelrc',
             '.browserslistrc',
             '.editorconfig',
             '.eslintrc',
             '.gitattributes',
             '.gitignore',
             '.stylelintrc',
+            'babel.config.js',
             'gulpfile.js',
             'package.json',
             'README.md',
@@ -28,7 +28,7 @@ describe('rammevaerk:app', () => {
     });
 
     it('generates capitalized kebab-case name', () => {
-        assert.JSONFileContent('package.json', { name: 'T-e-s-t' }); // eslint-disable-line new-cap
+        assert.JSONFileContent('package.json', { name: 't-e-s-t' }); // eslint-disable-line new-cap
     });
 
     it('generates expected dependencies', () => {

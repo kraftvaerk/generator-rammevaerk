@@ -16,11 +16,11 @@ footer {
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 1000;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, .5);
         opacity: 0;
-        z-index: 1000;
+        background: rgba(0, 0, 0, .5);
         user-select: none;
         transition: opacity .3s;
     }
@@ -37,9 +37,9 @@ footer {
         padding: 20px;
         border-radius: 10px;
         background: #fff;
+        box-shadow: 0 13px 38px -13px rgba(0, 0, 0, .75);
         color: #666;
         text-align: center;
-        box-shadow: 0 13px 38px -13px rgba(0, 0, 0, .75);
         transform: scale(0);
         transition: transform .5s cubic-bezier(.5, -.5, .5, 1.5);
 
@@ -67,9 +67,9 @@ footer {
     }
 
     .loader__overlay {
+        opacity: 1;
         pointer-events: none;
         cursor: wait;
-        opacity: 1;
     }
 
     .loader__container {

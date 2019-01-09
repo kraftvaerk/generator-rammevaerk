@@ -16,8 +16,8 @@
     }
 
     .list {
-        margin: 10px 0;
         clear: fix;
+        margin: 10px 0;
 
         li {
             float: left;
@@ -37,11 +37,11 @@
             border-radius: 2px;
             background: rgba(0, 0, 0, .2);
             color: #555;
-            font-family: verdana;
+            font-family: verdana, sans-serif;
             font-size: 8px;
             font-style: normal;
-            line-height: 12px;
             text-align: center;
+            line-height: 12px;
             cursor: pointer;
 
             &:hover {

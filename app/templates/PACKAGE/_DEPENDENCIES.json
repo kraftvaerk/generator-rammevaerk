@@ -13,7 +13,7 @@
     "@babel/plugin-transform-modules-commonjs": "7.2.0",
     "@babel/preset-env": "7.2.3",
     "@babel/register": "7.0.0",
-    "@kraftvaerk/eslint-config": "1.0.0",
+    "@kraftvaerk/eslint-config": "1.1.0",
     "@kraftvaerk/stylelint-config": "3.0.1",
     "ansi-colors": "3.2.3",
     "autoprefixer": "9.4.4",

@@ -34,12 +34,12 @@
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "superb": "^3.0.0",
-    "yeoman-generator": "^3.1.1",
+    "yeoman-generator": "^3.2.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
-    "eslint-config-kraftvaerk": "0.0.5",
-    "eslint": "^5.10.0",
+    "@kraftvaerk/eslint-config": "1.0.0",
+    "eslint": "^5.12.0",
     "jest": "^23.6.0",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"

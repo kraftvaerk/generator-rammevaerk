@@ -1,13 +1,21 @@
-import CookieConsent from 'kv.cookieconsent';
+import CookieConsent from '@kraftvaerk/cookieconsent';
 
-export function init(selector){
-    if (!document.querySelector(selector)){
-        return;
+export function init(selector) {
+
+    const cookieConsent = new CookieConsent({
+        cookieName: 'cookieConsent',
+        btn: {
+            accept: 'js-cookie-accept',
+            close: 'js-cookie-close'
+        },
+        toggleClass: 'is-shown'
+    });
+
+    try {
+        cookieConsent.init(selector ? selector : '#cookieContent');
+    } catch (err) {
+        //
     }
-
-    const cookieConsent = new CookieConsent();
-
-    cookieConsent.init(selector);
 }
 
 export default {

@@ -1,4 +1,4 @@
-## Run using any other IDE
+## Run using any command line interface
 
 #### Install needed Node.js modules
 

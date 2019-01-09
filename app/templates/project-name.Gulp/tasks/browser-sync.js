@@ -1,9 +1,8 @@
 import browserSync from 'browser-sync';
-import colors from 'ansi-colors';
 import config from '../config';
 
 const BROWSERSYNC_OPTIONS = {
-    logPrefix: colors.bold(colors.white(config.pkg.name.toUpperCase())),
+    logPrefix: config.pkg.name.toUpperCase(),
     server: {
         baseDir: config.baseDir
     },

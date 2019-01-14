@@ -15,16 +15,6 @@
         padding: 10px 15px;
     }
 
-    .list {
-        clear: fix;
-        margin: 10px 0;
-
-        li {
-            float: left;
-            margin-right: 10px;
-        }
-    }
-
     .close {
         &::after {
             content: 'x';

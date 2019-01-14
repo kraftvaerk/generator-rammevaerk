@@ -7,7 +7,6 @@ import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import config from '../config';
 import autoprefixer from 'autoprefixer';
-import postcssClear from 'postcss-clearfix';
 import postcssCssVars from 'postcss-css-variables';
 import postcssAssets from 'postcss-assets';
 import postcssImport from 'postcss-import';
@@ -32,7 +31,6 @@ const SOURCEMAP_OPTIONS = {
 function processStyles() {
     const PROCESSORS = [
         autoprefixer,
-        postcssClear,
         postcssCssVars,
         postcssAssets,
         postcssImport,

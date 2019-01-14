@@ -104,6 +104,7 @@ module.exports = class extends Generator {
             '.Website',
             '.Website/Assets',
             '.Website/Assets/Fonts',
+            '.Website/Assets/Images',
             '.Website/Content',
             '.Website/Scripts',
             '.Website/Scripts/' + this.answers.projectName,

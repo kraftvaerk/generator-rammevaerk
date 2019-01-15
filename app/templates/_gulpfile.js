@@ -13,8 +13,7 @@ gulp.registry(hub);
 const production = process.env.NODE_ENV === 'production';
 const tasks = [
     'scripts',
-    'styles',
-    'images'
+    'styles'
 ];
 
 if (!production) {

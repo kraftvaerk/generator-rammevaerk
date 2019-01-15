@@ -32,8 +32,7 @@ export default {
                     cacheDirectory: !production
                 },
                 include: [
-                    path.resolve(__dirname, config.js.src),
-                    path.resolve(__dirname, './node_modules/bootstrap')
+                    path.resolve(__dirname, config.js.src)
                 ]
             }
         ]

@@ -42,7 +42,7 @@ function processStyles() {
         })] : []
     ];
 
-    return gulp.src(`${config.css.src}/**/screen.scss`)
+    return gulp.src(`${config.css.src}/**/style.scss`)
         .pipe(plumber(PLUMBER_OPTIONS))
         .pipe(sourcemaps.init())
         .pipe(sass(SASS_OPTIONS))

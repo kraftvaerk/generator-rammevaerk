@@ -13,13 +13,13 @@ describe('rammevaerk:app', () => {
 
     it('generates expected files', () => {
         assert.file([
+            '.babelrc',
             '.browserslistrc',
             '.editorconfig',
             '.eslintrc',
             '.gitattributes',
             '.gitignore',
             '.stylelintrc',
-            'babel.config.js',
             'gulpfile.js',
             'package.json',
             'README.md',

@@ -128,6 +128,7 @@ module.exports = class extends Generator {
     _dotfiles() {
         const done = this.async();
         const dotfiles = [
+            'babelrc',
             'browserslistrc',
             'editorconfig',
             'eslintrc',
@@ -240,11 +241,6 @@ module.exports = class extends Generator {
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the project files...');
         }
-
-        this.fs.copy(
-            this.templatePath('_babel.config.js'),
-            this.destinationPath('babel.config.js')
-        );
 
         this.fs.copy(
             this.templatePath('project-name.Website/favicon.ico'),

@@ -1,5 +1,7 @@
-IE >= 11
-Edge >= 16
-Firefox >= 64
-Chrome >= 70
-Safari >= 12
+Explorer 11
+last 2 Edge versions
+last 4 Chrome versions
+last 4 ChromeAndroid versions
+last 4 Firefox versions
+last 2 iOS major versions
+last 2 Safari major versions

@@ -4,10 +4,10 @@ import cookieConsent from '@/Shared/cookieconsent/index';
 // Expose jQuery to global scope
 global.$ = global.jQuery = $;
 
-// Add an alias to the App, if App if needed to be called from outside
-window.App = window.App || {};
+// Add an alias to the app, if app if needed to be called from outside
+window.app = window.app || {};
 
-window.App.common = {
+window.app.common = {
     dynamicImportModules() {
         const lightBoxElm = document.querySelector('[class*=js-lightbox]');
         if (lightBoxElm) {
@@ -18,9 +18,9 @@ window.App.common = {
             });
         }
     },
-    // App.common.init runs on all pages
+    // app.common.init runs on all pages
     init() {
-        console.log('%cINIT', 'padding:0 4px;background:#090;color:#fff', 'jQuery:', $.fn.jquery); // eslint-disable-line no-console
+        console.log('%cINIT', 'padding:0 4px;background:#090;color:#fff', '<%= answers.projectName %>'); // eslint-disable-line no-console
 
         cookieConsent.init();
 
@@ -34,6 +34,4 @@ window.App.common = {
  */
 
 // jQuery document ready
-$(document).ready(() => {
-    window.App.common.init($);
-});
+$(() => window.app.common.init($));

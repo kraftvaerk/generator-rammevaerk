@@ -248,9 +248,10 @@ module.exports = class extends Generator {
         );
 
         // Scripts
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('project-name.Website/Scripts/Company/index.js'),
-            this.destinationPath(`${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`)
+            this.destinationPath(`${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`),
+            this
         );
 
         this.fs.copy(

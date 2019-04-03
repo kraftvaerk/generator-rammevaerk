@@ -11,8 +11,8 @@ html.no-js(lang="en" dir="ltr")
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-        meta(name="description" content="")
-        meta(name="author" content="")
+        meta(name="description" content=site.description)
+        meta(name="author" content=site.name)
 
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(name="format-detection" content="telephone=no")
@@ -23,11 +23,11 @@ html.no-js(lang="en" dir="ltr")
 
 
         //- Open graph
-        meta(property="og:title" content="" + pageTitle )
+        meta(property="og:title" content=pageTitle )
         meta(property="og:type" content="website")
         meta(property="og:image" content="")
         meta(property="og:url" content="")
-        meta(property="og:site_name" content="" + site.name )
+        meta(property="og:site_name" content=site.name )
 
 
         //- Add to homescreen for Chrome on Android
@@ -52,7 +52,7 @@ html.no-js(lang="en" dir="ltr")
         title #{pageTitle}
 
         //- Stylesheet
-        link(rel="stylesheet" href="/Content/Styles/<%= answers.projectName %>/screen.min.css" type="text/css" media="all")
+        link(rel="stylesheet" href="/Content/Styles/<%= answers.projectName %>/style.css" type="text/css" media="all")
 
         script.
             //change className of html from .noJS to .hasJS.

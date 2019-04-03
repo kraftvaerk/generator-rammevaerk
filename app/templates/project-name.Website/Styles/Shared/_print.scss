@@ -20,8 +20,8 @@
         background: none;
         color: #000; // Black prints faster: http://www.sanbeiji.com/archives/953
         font-size: 8px;
-        letter-spacing: .2pt;
         line-height: 1.4;
+        letter-spacing: .2pt;
     }
 
     a,
@@ -67,8 +67,8 @@
     }
 
     img {
-        page-break-before: auto;
         page-break-after: auto;
+        page-break-before: auto;
         page-break-inside: avoid;
     }
 }

@@ -84,7 +84,7 @@ module.exports = class extends Generator {
             type: 'input',
             name: 'projectRepositoryUrl',
             message: chalk.yellow('What is the repository URL?'),
-            default: `https://tfs.kraftvaerk.com/tfs/KvCollection/_git/${_.kebabCase(this.appname)}`
+            default: `https://kraftvaerkgroup.visualstudio.com/_git/${_.kebabCase(this.appname)}`
         });
 
         return this.prompt(questions).then((answers) => {
@@ -103,8 +103,9 @@ module.exports = class extends Generator {
         const folders = [
             '.Website',
             '.Website/Assets',
+            '.Website/Assets/Fonts',
+            '.Website/Assets/Images',
             '.Website/Content',
-            '.Website/Fonts',
             '.Website/Scripts',
             '.Website/Scripts/' + this.answers.projectName,
             '.Website/Scripts/Shared',
@@ -156,8 +157,6 @@ module.exports = class extends Generator {
 
         readme = this.fs.read(this.templatePath('README/_BODY.md'));
         readme += '\n';
-        readme += this.fs.read(this.templatePath('README/_IDE_VISUAL_STUDIO.md'));
-        readme += '\n';
         readme += this.fs.read(this.templatePath('README/_USAGE.md'));
         readme = _.template(readme)(this);
 
@@ -188,9 +187,9 @@ module.exports = class extends Generator {
         pkg = this.fs.readJSON(this.templatePath('PACKAGE/_BASE.json'));
 
         // Info
-        pkg.name = this.answers.projectName;
+        pkg.name = (this.answers.projectName).toLowerCase();
         pkg.description = this.answers.projectDescription;
-        pkg.homepage = this.answers.projectUrl;
+        pkg.homepage = this.answers.projectUrl === 'N/A' ? 'https://' : this.answers.projectUrl;
 
         // Contributors
         pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_CONTRIBUTORS.json'), {}));
@@ -249,9 +248,10 @@ module.exports = class extends Generator {
         );
 
         // Scripts
-        this.fs.copy(
+        this.fs.copyTpl(
             this.templatePath('project-name.Website/Scripts/Company/index.js'),
-            this.destinationPath(`${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`)
+            this.destinationPath(`${this.answers.projectName}.Website/Scripts/${this.answers.projectName}/index.js`),
+            this
         );
 
         this.fs.copy(
@@ -260,11 +260,6 @@ module.exports = class extends Generator {
         );
 
         // Pug
-        this.fs.copy(
-            this.templatePath('project-name.Website/Mockup/Company/images'),
-            this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}/images`)
-        );
-
         this.fs.copyTpl(
             this.templatePath('project-name.Website/Mockup/Company/**/*.pug'),
             this.destinationPath(`${this.answers.projectName}.Website/Mockup/${this.answers.projectName}`),

@@ -8,12 +8,11 @@ block content
     section(role="region").section.jumbotron
         article.container
             h1.display-4 Frontend
-                span  #{site.name}
+                span  #{site.name.replace(/^\w/, c => c.toUpperCase())}
             p.lead
                 | #{site.description}
 
             //-include:markdown ../../../README.md
-
 
     section(role="region").section
         div.container
@@ -26,23 +25,21 @@ block content
                     nav
                         ul.list-unstyled
                             li
-                                a(href="tpl-frontpage.html") Front page
+                                a(href="frontpage.html") Front page
                             li
-                                a(href="tpl-404.html") 404 page
+                                a(href="404.html") 404 page
 
                 article.col-md-3
                     h5 Modules
                     nav
                         ul.list-unstyled
                             li
-                                a(href="tpl-cookie.html") Cookie consent
+                                a(href="cookie.html") Cookie consent
                 article.col-md-3
                     h5 Elements
                     nav
                         ul.list-unstyled
                             li
-                                a(href="tpl-typography.html") Typography
+                                a(href="typography.html") Typography
                             li
-                                a(href="tpl-lightbox.html") Lightbox
-                            li
-                                a(href="tpl-popup.html" onClick="var href = this.href; this.href = document.location.href; window.open('tpl-popup.html', 'window name', 'width=650,height=740,resizable=false,statusbar=no,scrollbars=1'); return false;") Popup
+                                a(href="lightbox.html") Lightbox

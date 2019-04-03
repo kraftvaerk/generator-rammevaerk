@@ -1,29 +1,30 @@
-'use strict';
-
-import $                from 'jquery';
-
-import cookieConsent    from '../Shared/cookieconsent/index';
-import lightbox         from '../Shared/lightbox/index';
+import $ from 'jquery';
+import cookieConsent from '@/Shared/cookieconsent/index';
 
 // Expose jQuery to global scope
 global.$ = global.jQuery = $;
 
-//Add an alias to the App, if we need to call App from the outside:
-window.App = window.App || {};
+// Add an alias to the app, if app if needed to be called from outside
+window.app = window.app || {};
 
-window.App.common = {
-    // App.common.init runs on all pages
-    init() {
-        console.log('jQuery:', $.fn.jquery);
-
-        cookieConsent.init('#cookieContent');
-
-        this.lightbox();
+window.app.common = {
+    dynamicImportModules() {
+        const lightBoxElm = document.querySelector('[class*=js-lightbox]');
+        if (lightBoxElm) {
+            import(/* webpackChunkName: "lightbox" */ '@/Shared/lightbox').then(({default: lightBox}) => {
+                lightBox.normal('.js-lightbox');
+                lightBox.iframe('.js-lightbox-iframe');
+                lightBox.video('.js-lightbox-video');
+            });
+        }
     },
-    lightbox() {
-        lightbox.normal('.lightbox');
-        lightbox.iframe('.lightbox-iframe');
-        lightbox.video('.lightbox-video');
+    // app.common.init runs on all pages
+    init() {
+        console.log('%cINIT', 'padding:0 4px;background:#090;color:#fff', '<%= answers.projectName %>'); // eslint-disable-line no-console
+
+        cookieConsent.init();
+
+        this.dynamicImportModules();
     }
 };
 
@@ -33,6 +34,4 @@ window.App.common = {
  */
 
 // jQuery document ready
-$(document).ready(() => {
-    window.App.common.init($);
-});
+$(() => window.app.common.init($));

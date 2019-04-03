@@ -28,7 +28,7 @@ describe('rammevaerk:app', () => {
     });
 
     it('generates capitalized kebab-case name', () => {
-        assert.JSONFileContent('package.json', { name: 'T-e-s-t' }); // eslint-disable-line new-cap
+        assert.JSONFileContent('package.json', { name: 't-e-s-t' }); // eslint-disable-line new-cap
     });
 
     it('generates expected dependencies', () => {

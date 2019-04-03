@@ -28,6 +28,10 @@ function watch() {
         });
     });
 
+    gulp.watch(`${config.js.src}/**/*.js`).on('change', () => {
+        gulp.task('scripts:lint')();
+    });
+
     watchScripts(() => {
         browserSync.notify('Scripts updating!');
         browserSync.reload();

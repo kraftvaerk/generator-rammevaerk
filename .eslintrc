@@ -1,6 +1,4 @@
 {
-  "extends": "kraftvaerk",
-  "env": {
-    "jest": true
-  }
+    "root": true,
+    "extends": "@kraftvaerk/eslint-config"
 }

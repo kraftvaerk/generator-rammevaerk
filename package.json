@@ -1,54 +1,54 @@
 {
-  "name": "@kraftvaerk/generator-rammevaerk",
-  "version": "4.0.0",
-  "description": "Scaffold out a web project in Kraftvaerk style",
-  "keywords": [
-    "kraftvaerk",
-    "generator",
-    "initialize",
-    "project",
-    "scaffold",
-    "yeoman",
-    "yeoman-generator"
-  ],
-  "homepage": "https://github.com/kraftvaerk/generator-rammevaerk",
-  "bugs": {
-    "url": "https://github.com/kraftvaerk/generator-rammevaerk/issues"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Kraftvaerk",
-    "url": "https://www.kraftvaerk.com/"
-  },
-  "files": [
-    "app"
-  ],
-  "main": "app/index.js",
-  "repository": "kraftvaerk/generator-rammevaerk",
-  "scripts": {
-    "lint": "eslint .",
-    "test": "jest"
-  },
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "lodash": "^4.17.11",
-    "mkdirp": "^0.5.1",
-    "superb": "^3.0.0",
-    "yeoman-generator": "^3.2.0",
-    "yosay": "^2.0.2"
-  },
-  "devDependencies": {
-    "@kraftvaerk/eslint-config": "1.1.0",
-    "eslint": "^5.16.0",
-    "jest": "^24.7.0",
-    "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.9.1"
-  },
-  "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=5.0.0"
-  },
-  "jest": {
-    "verbose": true
-  }
+    "name": "@kraftvaerk/generator-rammevaerk",
+    "version": "4.0.0",
+    "description": "Scaffold out a web project in Kraftvaerk style",
+    "keywords": [
+        "kraftvaerk",
+        "generator",
+        "initialize",
+        "project",
+        "scaffold",
+        "yeoman",
+        "yeoman-generator"
+    ],
+    "homepage": "https://github.com/kraftvaerk/generator-rammevaerk",
+    "bugs": {
+        "url": "https://github.com/kraftvaerk/generator-rammevaerk/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Kraftvaerk",
+        "url": "https://www.kraftvaerk.com/"
+    },
+    "files": [
+        "app"
+    ],
+    "main": "app/index.js",
+    "repository": "kraftvaerk/generator-rammevaerk",
+    "scripts": {
+        "lint": "eslint .",
+        "test": "jest"
+    },
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "lodash": "^4.17.11",
+        "mkdirp": "^0.5.1",
+        "superb": "^3.0.0",
+        "yeoman-generator": "^3.2.0",
+        "yosay": "^2.0.2"
+    },
+    "devDependencies": {
+        "@kraftvaerk/eslint-config": "1.1.0",
+        "eslint": "^5.16.0",
+        "jest": "^24.7.0",
+        "yeoman-assert": "^3.1.1",
+        "yeoman-test": "^1.9.1"
+    },
+    "engines": {
+        "node": ">=8.0.0",
+        "npm": ">=5.0.0"
+    },
+    "jest": {
+        "verbose": true
+    }
 }

@@ -1,5 +1,5 @@
 {
-  "root": true,
-  "extends": "@kraftvaerk/eslint-config",
-  "parser": "babel-eslint"
+    "root": true,
+    "extends": "@kraftvaerk/eslint-config",
+    "parser": "babel-eslint"
 }

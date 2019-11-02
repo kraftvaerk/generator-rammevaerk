@@ -1,11 +1,11 @@
 sudo: false
 language: node_js
 cache:
-  directories:
-    - node_modules
+    directories:
+        - node_modules
 branches:
-  only:
-    - master
+    only:
+        - master
 node_js:
-  - "node"
-  - "8"
+    - "node"
+    - "8"

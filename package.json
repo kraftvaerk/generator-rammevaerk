@@ -45,8 +45,7 @@
         "yeoman-test": "^1.9.1"
     },
     "engines": {
-        "node": ">=8.0.0",
-        "npm": ">=5.0.0"
+        "node": ">=10.13.0"
     },
     "jest": {
         "verbose": true

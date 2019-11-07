@@ -1,4 +1,4 @@
-import CookieConsent from '@kraftvaerk/cookieconsent';
+import CookieConsent from '@kraftvaerk/cookieconsent/src';
 
 export function init(selector) {
 

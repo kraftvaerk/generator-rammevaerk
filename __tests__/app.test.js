@@ -16,11 +16,11 @@ describe('rammevaerk:app', () => {
             '.babelrc',
             '.browserslistrc',
             '.editorconfig',
+            '.env',
             '.eslintrc',
             '.gitattributes',
             '.gitignore',
             '.stylelintrc',
-            'gulpfile.js',
             'package.json',
             'README.md',
             'webpack.config.js'

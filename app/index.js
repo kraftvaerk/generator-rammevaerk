@@ -131,6 +131,7 @@ module.exports = class extends Generator {
             'babelrc',
             'browserslistrc',
             'editorconfig',
+            'env',
             'eslintrc',
             'gitattributes',
             'gitignore',
@@ -171,8 +172,7 @@ module.exports = class extends Generator {
             this.log.ok('Setting up the Gulp...');
         }
 
-        this.fs.copyTpl(this.templatePath('project-name.Gulp'), this.destinationPath(`${this.answers.projectName}.Gulp`), this);
-        this.fs.copyTpl(this.templatePath('_gulpfile.js'), this.destinationPath('gulpfile.js'), this);
+        this.fs.copyTpl(this.templatePath('project-name.Webpack'), this.destinationPath(`${this.answers.projectName}.Webpack`), this);
         this.fs.copyTpl(this.templatePath('_webpack.config.js'), this.destinationPath('webpack.config.js'), this);
         done();
     }

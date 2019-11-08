@@ -1,4 +1,3 @@
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const csso = require('postcss-csso');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -25,10 +24,6 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
-        }),
-
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static'
         })
     ]
 };

@@ -1,3 +1,4 @@
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -63,5 +64,9 @@ module.exports = {
         new ManifestPlugin({
             fileName: 'assets-manifest.json'
         })
+
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static'
+        // })
     ]
 };

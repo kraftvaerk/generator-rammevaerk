@@ -16,6 +16,7 @@ describe('rammevaerk:app', () => {
             '.babelrc',
             '.browserslistrc',
             '.editorconfig',
+            '.env.example',
             '.env',
             '.eslintrc',
             '.gitattributes',

@@ -131,6 +131,7 @@ module.exports = class extends Generator {
             'babelrc',
             'browserslistrc',
             'editorconfig',
+            'env.example',
             'env',
             'eslintrc',
             'gitattributes',

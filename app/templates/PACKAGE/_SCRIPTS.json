@@ -1,9 +1,10 @@
 {
     "scripts": {
-        "gulp": "gulp --require @babel/register",
-        "build": "cross-env NODE_ENV=production npm run gulp",
-        "lint": "npm run gulp scripts:lint styles:lint",
-        "watch": "npm run gulp watch",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build:legacy": "cross-env BROWSERSLIST_ENV=legacy webpack",
+        "build:modern": "cross-env BROWSERSLIST_ENV=modern webpack",
+        "build": "run-p build:*",
+        "watch:legacy": "npm run build:legacy -- --watch",
+        "watch:modern": "npm run build:modern -- --watch",
+        "watch": "npm run watch:legacy"
     }
 }

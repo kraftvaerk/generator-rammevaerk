@@ -8,8 +8,8 @@
 // Should you need specific files, you can easily use separate `@import`s.
 
 // Vendor
-@import 'bootstrap/scss/bootstrap';
-@import '@fancyapps/fancybox/dist/jquery.fancybox.css';
+@import '~bootstrap/scss/bootstrap';
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
 
 // Components
 @import 'cookieconsent';

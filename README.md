@@ -17,7 +17,7 @@ npm install -g yo @kraftvaerk/generator-rammevaerk
 To scaffold a new project run:
 
 ```
-yo @kraftvaerk/generator-rammevaerk
+yo @kraftvaerk/rammevaerk
 ```
 
 ## Troubleshooting

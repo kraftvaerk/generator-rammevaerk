@@ -2,9 +2,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // eslint-d
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 const autoprefixer = require('autoprefixer');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -63,6 +65,14 @@ module.exports = {
 
         new ManifestPlugin({
             fileName: 'assets-manifest.json'
+        }),
+
+        new ESLintPlugin({
+            context: './<%= answers.projectName %>.Website/Scripts'
+        }),
+
+        new StylelintPlugin({
+            context: './<%= answers.projectName %>.Website/Styles'
         })
 
         // new BundleAnalyzerPlugin({

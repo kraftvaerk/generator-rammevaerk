@@ -21,8 +21,8 @@
         "build:legacy": "cross-env BROWSERSLIST_ENV=legacy webpack",
         "build:modern": "cross-env BROWSERSLIST_ENV=modern webpack",
         "build": "run-p build:*",
-        "watch:legacy": "npm run build:legacy -- --watch",
-        "watch:modern": "npm run build:modern -- --watch",
+        "watch:legacy": "npm run build:legacy -- --watch --progress",
+        "watch:modern": "npm run build:modern -- --watch --progress",
         "watch": "npm run watch:legacy"
     },
     "dependencies": {
@@ -48,6 +48,7 @@
         "cross-env": "6.0.3",
         "css-loader": "3.2.0",
         "dotenv": "8.2.0",
+        "eslint-webpack-plugin": "0.1.0",
         "eslint": "6.6.0",
         "mini-css-extract-plugin": "0.8.0",
         "npm-run-all": "4.1.5",
@@ -57,6 +58,7 @@
         "regenerator-runtime": "0.13.3",
         "sass-loader": "8.0.0",
         "sass": "1.23.3",
+        "stylelint-webpack-plugin": "1.1.2",
         "stylelint": "11.1.1",
         "webpack-bundle-analyzer": "3.6.0",
         "webpack-cli": "3.3.10",

@@ -88,18 +88,19 @@ module.exports = class extends Generator {
         });
 
         return this.prompt(questions).then((answers) => {
-            const gitName = this.user.git.name() ? ` — ${this.user.git.name().split(' ')[0]}` : '.';
+            const username = this.user.git.name() ? this.user.git.name().split(' ')[0] : null;
 
             this.answers = answers;
             this.answers.projectName = capitalizeKebabCase(this.answers.projectName);
             this.answers.projectDescription = this.answers.projectDescription === 'N/A'
-                ? `I promise to add the description later on to this ${superb.random()} new project${gitName}.`
+                ? `I promise to add the description later on to this ${superb.random()} new project${username ? ` — ${username}` : ''}.`
                 : this.answers.projectDescription;
         });
     }
 
     _directories() {
         const done = this.async();
+
         const folders = [
             '.Website',
             '.Website/Assets',
@@ -125,8 +126,10 @@ module.exports = class extends Generator {
 
         done();
     }
+
     _dotfiles() {
         const done = this.async();
+
         const dotfiles = [
             'babelrc',
             'browserslistrc',
@@ -149,23 +152,24 @@ module.exports = class extends Generator {
 
         done();
     }
+
     _readme() {
         const done = this.async();
+
         let readme;
 
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the README...');
         }
 
-        readme = this.fs.read(this.templatePath('README/_BODY.md'));
-        readme += '\n';
-        readme += this.fs.read(this.templatePath('README/_USAGE.md'));
+        readme = this.fs.read(this.templatePath('_README.md'));
         readme = _.template(readme)(this);
 
         this.fs.write(this.destinationPath('README.md'), readme);
 
         done();
     }
+
     _gulp() {
         const done = this.async();
 
@@ -175,67 +179,57 @@ module.exports = class extends Generator {
 
         this.fs.copyTpl(this.templatePath('project-name.Webpack'), this.destinationPath(`${this.answers.projectName}.Webpack`), this);
         this.fs.copyTpl(this.templatePath('_webpack.config.js'), this.destinationPath('webpack.config.js'), this);
+
         done();
     }
+
     _packageJSON() {
         const done = this.async();
+
         let pkg = {};
 
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the package.json...');
         }
 
-        pkg = this.fs.readJSON(this.templatePath('PACKAGE/_BASE.json'));
+        pkg = this.fs.readJSON(this.templatePath('_package.json'));
 
         // Info
-        pkg.name = (this.answers.projectName).toLowerCase();
+        pkg.name = this.answers.projectName.toLowerCase();
         pkg.description = this.answers.projectDescription;
-        pkg.homepage = this.answers.projectUrl === 'N/A' ? 'https://' : this.answers.projectUrl;
+        pkg.homepage = this.answers.projectUrl === 'N/A' ? `http://${pkg.name}.local/` : this.answers.projectUrl;
 
         // Contributors
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_CONTRIBUTORS.json'), {}));
-
         let contributor = {};
+
         if (this.user.git.name()) {
             contributor.name = this.user.git.name();
 
             if (this.user.git.email()) {
                 contributor.email = this.user.git.email();
             }
-
-            contributor.url = 'https://github.com/';
         } else {
             contributor = {
                 name: 'Kraftvaerk',
-                url: 'https://github.com/kraftvaerk'
+                url: 'https://www.kraftvaerk.com/'
             };
         }
 
         pkg.contributors.push(contributor);
 
         // Version control
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_REPOSITORY.json'), {}));
         pkg.repository.type = 'git';
         pkg.repository.url = this.answers.projectRepositoryUrl;
 
-        // npm scripts
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_SCRIPTS.json'), {}));
-
         // Keywords
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_KEYWORDS.json'), {}));
         pkg.keywords.push(this.answers.projectName.toLowerCase());
-
-        // Engines
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_ENGINES.json'), {}));
-
-        // Dependencies
-        pkg = _.merge(pkg, this.fs.readJSON(this.templatePath('PACKAGE/_DEPENDENCIES.json'), {}));
 
         // Write package.json
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
         done();
     }
+
     _projectFiles() {
         const done = this.async();
 

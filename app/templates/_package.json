@@ -1,4 +1,30 @@
 {
+    "name": "projectName",
+    "version": "1.0.0",
+    "description": "A scaffold for company website",
+    "keywords": [
+        "website",
+        "frontend"
+    ],
+    "homepage": "http://company.com/",
+    "author": {
+        "name": "Kraftvaerk",
+        "url": "https://www.kraftvaerk.com/"
+    },
+    "contributors": [],
+    "main": "index.html",
+    "repository": {
+        "type": "git",
+        "url": "https://kraftvaerkgroup.visualstudio.com/_git/Company"
+    },
+    "scripts": {
+        "build:legacy": "cross-env BROWSERSLIST_ENV=legacy webpack",
+        "build:modern": "cross-env BROWSERSLIST_ENV=modern webpack",
+        "build": "run-p build:*",
+        "watch:legacy": "npm run build:legacy -- --watch",
+        "watch:modern": "npm run build:modern -- --watch",
+        "watch": "npm run watch:legacy"
+    },
     "dependencies": {
         "@fancyapps/fancybox": "latest",
         "@kraftvaerk/cookieconsent": "2.0.0",
@@ -37,5 +63,9 @@
         "webpack-manifest-plugin": "2.2.0",
         "webpack-merge": "4.2.2",
         "webpack": "4.41.2"
-    }
+    },
+    "engines": {
+        "node": ">=10.13.0"
+    },
+    "private": true
 }

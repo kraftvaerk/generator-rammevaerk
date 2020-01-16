@@ -1,28 +1,28 @@
+'use strict';
+
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
+const { scriptsDir, stylesDir, entryFiles } = require('./paths');
+
 module.exports = {
-    entry: [
-        './<%= answers.projectName %>.Website/Scripts/<%= answers.projectName %>/index.js',
-        './<%= answers.projectName %>.Website/Styles/<%= answers.projectName %>/index.scss'
-    ],
+    entry: entryFiles,
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '../<%= answers.projectName %>.Website/Scripts')
+            '@': scriptsDir
         }
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /[\\/]node_modules[\\/]/,
+                include: scriptsDir,
                 loader: 'babel-loader'
             },
             {
@@ -54,7 +54,7 @@ module.exports = {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanPlugin(),
 
         new ProvidePlugin({
             $: 'jquery',
@@ -68,11 +68,11 @@ module.exports = {
         }),
 
         new ESLintPlugin({
-            context: './<%= answers.projectName %>.Website/Scripts'
+            context: scriptsDir
         }),
 
         new StylelintPlugin({
-            context: './<%= answers.projectName %>.Website/Styles'
+            context: stylesDir
         })
 
         // new BundleAnalyzerPlugin({

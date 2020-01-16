@@ -1,11 +1,13 @@
+'use strict';
+
 const dotenv = require('dotenv');
 const merge = require('webpack-merge');
 
-const common = require('./<%= answers.projectName %>.Webpack/common');
-const dev = require('./<%= answers.projectName %>.Webpack/dev');
-const legacy = require('./<%= answers.projectName %>.Webpack/legacy');
-const modern = require('./<%= answers.projectName %>.Webpack/modern');
-const prod = require('./<%= answers.projectName %>.Webpack/prod');
+const common = require('./<%= answers.projectName %>.Webpack/webpack.common');
+const dev = require('./<%= answers.projectName %>.Webpack/webpack.dev');
+const legacy = require('./<%= answers.projectName %>.Webpack/webpack.legacy');
+const modern = require('./<%= answers.projectName %>.Webpack/webpack.modern');
+const prod = require('./<%= answers.projectName %>.Webpack/webpack.prod');
 
 dotenv.config();
 

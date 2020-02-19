@@ -16,7 +16,7 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [csso()]
+                            plugins: [csso]
                         }
                     }
                 ]

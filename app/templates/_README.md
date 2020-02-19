@@ -6,11 +6,9 @@
 
 ## Installation
 
-Install Node.js dependencies:
+1. Run `npm ci` to install Node.js dependencies.
 
-```
-npm install
-```
+2. Copy `.env.example` and rename it to `.env`.
 
 ## Usage
 
@@ -20,7 +18,7 @@ To build all resources run:
 npm run build
 ```
 
-To start dev server and watch files for changes run:
+To watch files and rebuild whenever they change run:
 
 ```
 npm run watch

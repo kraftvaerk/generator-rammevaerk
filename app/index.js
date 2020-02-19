@@ -294,7 +294,7 @@ module.exports = class extends Generator {
     end() {
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.writeln('\n-------------------------------------------------------');
-            this.log.writeln(`All done, you can ${chalk.green.bold('npm run watch')}, to start dev server.`);
+            this.log.writeln(`All done, you can ${chalk.green.bold('npm run watch')} to watch files and rebuild whenever they change.`);
             this.log.writeln('-------------------------------------------------------\n');
         }
     }

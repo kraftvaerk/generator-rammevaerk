@@ -3,9 +3,9 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // eslint-disable-line no-unused-vars
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
+const AssetManifestPlugin = require('webpack-manifest-plugin');
 const autoprefixer = require('autoprefixer');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
@@ -63,8 +63,8 @@ module.exports = {
             'window.jQuery': 'jquery'
         }),
 
-        new ManifestPlugin({
-            fileName: 'assets-manifest.json'
+        new AssetManifestPlugin({
+            fileName: 'asset-manifest.json'
         }),
 
         new ESLintPlugin({

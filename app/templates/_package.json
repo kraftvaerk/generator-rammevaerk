@@ -18,12 +18,8 @@
         "url": "https://kraftvaerkgroup.visualstudio.com/_git/Company"
     },
     "scripts": {
-        "build:legacy": "cross-env BROWSERSLIST_ENV=legacy webpack",
-        "build:modern": "cross-env BROWSERSLIST_ENV=modern webpack",
-        "build": "run-p build:*",
-        "watch:legacy": "npm run build:legacy -- --watch --progress",
-        "watch:modern": "npm run build:modern -- --watch --progress",
-        "watch": "npm run watch:legacy"
+        "build": "webpack",
+        "watch": "npm run build -- --watch --progress"
     },
     "dependencies": {
         "@fancyapps/fancybox": "latest",
@@ -45,13 +41,11 @@
         "babel-loader": "8.0.6",
         "clean-webpack-plugin": "3.0.0",
         "core-js": "3.4.0",
-        "cross-env": "6.0.3",
         "css-loader": "3.2.0",
         "dotenv": "8.2.0",
         "eslint-webpack-plugin": "0.1.0",
         "eslint": "6.6.0",
         "mini-css-extract-plugin": "0.8.0",
-        "npm-run-all": "4.1.5",
         "postcss-csso": "4.0.0",
         "postcss-loader": "3.0.0",
         "postcss-scss": "2.0.0",

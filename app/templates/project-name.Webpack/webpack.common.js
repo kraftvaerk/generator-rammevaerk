@@ -9,10 +9,20 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
-const { scriptsDir, stylesDir, entryFiles } = require('./paths');
+const {
+    destDir,
+    publicDir,
+    scriptsDir,
+    stylesDir,
+    entryFiles
+} = require('./paths');
 
 module.exports = {
     entry: entryFiles,
+    output: {
+        path: destDir,
+        publicPath: publicDir
+    },
     resolve: {
         alias: {
             '@': scriptsDir

@@ -13,12 +13,13 @@ const {
     destDir,
     publicDir,
     scriptsDir,
-    stylesDir,
-    entryFiles
+    stylesDir
 } = require('./paths');
 
+const entries = require('./entries');
+
 module.exports = {
-    entry: entryFiles,
+    entry: entries,
     output: {
         path: destDir,
         publicPath: publicDir
@@ -43,7 +44,9 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [autoprefixer]
+                            postcssOptions: {
+                                plugins: [autoprefixer]
+                            }
                         }
                     },
                     'sass-loader'
@@ -52,16 +55,17 @@ module.exports = {
         ]
     },
     optimization: {
-        runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
-                vendors: {
+                vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
+                    name: 'vendor',
                     chunks: 'all'
                 }
             }
-        }
+        },
+        runtimeChunk: 'single',
+        moduleIds: 'hashed'
     },
     plugins: [
         new CleanPlugin(),
@@ -77,12 +81,14 @@ module.exports = {
             fileName: 'asset-manifest.json'
         }),
 
-        new ESLintPlugin({
-            context: scriptsDir
+        new EslintPlugin({
+            context: scriptsDir,
+            emitError: false
         }),
 
         new StylelintPlugin({
-            context: stylesDir
+            context: stylesDir,
+            emitError: false
         })
 
         // new BundleAnalyzerPlugin({

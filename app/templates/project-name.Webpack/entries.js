@@ -4,6 +4,6 @@ const { join } = require('path');
 const { scriptsDir, stylesDir } = require('./paths');
 
 module.exports = [
-    join(scriptsDir, './index.js'),
-    join(stylesDir, './index.scss')
+    join(scriptsDir, './<%= answers.projectName %>/index.js'),
+    join(stylesDir, './<%= answers.projectName %>/index.scss')
 ];

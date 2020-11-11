@@ -99,8 +99,6 @@ module.exports = class extends Generator {
     }
 
     _directories() {
-        const done = this.async();
-
         const folders = [
             '.Website',
             '.Website/Assets',
@@ -123,13 +121,9 @@ module.exports = class extends Generator {
         folders.forEach((folder) => {
             mkdirp.sync(`${this.answers.projectName}${folder}`);
         });
-
-        done();
     }
 
     _dotfiles() {
-        const done = this.async();
-
         const dotfiles = [
             'babelrc',
             'browserslistrc',
@@ -149,13 +143,9 @@ module.exports = class extends Generator {
         dotfiles.forEach((file) => {
             this.fs.copy(this.templatePath(`_${file}`), this.destinationPath(`.${file}`));
         });
-
-        done();
     }
 
     _readme() {
-        const done = this.async();
-
         let readme;
 
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
@@ -166,26 +156,18 @@ module.exports = class extends Generator {
         readme = _.template(readme)(this);
 
         this.fs.write(this.destinationPath('README.md'), readme);
-
-        done();
     }
 
     _gulp() {
-        const done = this.async();
-
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the Gulp...');
         }
 
         this.fs.copyTpl(this.templatePath('project-name.Webpack'), this.destinationPath(`${this.answers.projectName}.Webpack`), this);
         this.fs.copyTpl(this.templatePath('_webpack.config.js'), this.destinationPath('webpack.config.js'), this);
-
-        done();
     }
 
     _packageJSON() {
-        const done = this.async();
-
         let pkg = {};
 
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
@@ -226,13 +208,9 @@ module.exports = class extends Generator {
 
         // Write package.json
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
-        done();
     }
 
     _projectFiles() {
-        const done = this.async();
-
         if (!this.options[OPTIONS.KEEP_SILENCE]) {
             this.log.ok('Setting up the project files...');
         }
@@ -272,8 +250,6 @@ module.exports = class extends Generator {
             this.templatePath('project-name.Website/Styles/Shared'),
             this.destinationPath(`${this.answers.projectName}.Website/Styles/Shared`)
         );
-
-        done();
     }
 
     writing() {

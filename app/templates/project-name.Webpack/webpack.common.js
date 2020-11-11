@@ -4,8 +4,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // eslint-d
 const { CleanWebpackPlugin: CleanPlugin } = require('clean-webpack-plugin');
 const { ProvidePlugin } = require('webpack');
 const AssetManifestPlugin = require('webpack-manifest-plugin');
-const autoprefixer = require('autoprefixer');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const EslintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
@@ -39,17 +38,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [autoprefixer]
-                            }
-                        }
-                    },
-                    'sass-loader'
+                    { loader: MiniCssExtractPlugin.loader },
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader' },
+                    { loader: 'sass-loader' }
                 ]
             }
         ]

@@ -1,5 +1,6 @@
 'use strict';
 
+const autoprefixer = require('autoprefixer');
 const csso = require('postcss-csso');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -17,11 +18,10 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
-                                plugins: [csso]
+                                plugins: [autoprefixer, csso]
                             }
                         }
                     }
-
                 ]
             }
         ]

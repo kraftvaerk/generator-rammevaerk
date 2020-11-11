@@ -1,7 +1,7 @@
 'use strict';
 
+const { mergeWithRules } = require('webpack-merge');
 const dotenv = require('dotenv');
-const merge = require('webpack-merge');
 
 const common = require('./<%= answers.projectName %>.Webpack/webpack.common');
 const dev = require('./<%= answers.projectName %>.Webpack/webpack.dev');
@@ -11,4 +11,16 @@ dotenv.config();
 
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = merge.smart(common, isProd ? prod : dev);
+const merger = mergeWithRules({
+    module: {
+        rules: {
+            test: 'match',
+            use: {
+                loader: 'match',
+                options: 'replace'
+            }
+        }
+    }
+});
+
+module.exports = merger(common, isProd ? prod : dev);
